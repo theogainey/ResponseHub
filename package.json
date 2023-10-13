@@ -4,9 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run build:typescript && npm run copy:assets && npm run copy:other",
+    "build:typescript": "esbuild src/app/index.ts --bundle --outdir=extension --minify --target=chrome80,safari13 --loader:.ts=ts",
+    "copy:assets": "cp src/assets/* extension/assets/",
+    "copy:other": "cp src/* extension/"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "chrome-types": "^0.1.231",
+    "esbuild": "^0.19.4",
+    "typescript": "^5.2.2"
+  }
 }
