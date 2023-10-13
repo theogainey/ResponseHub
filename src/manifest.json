@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "ResponseHub",
+  "description": "todo description",
+  "version": "1.0",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "assets/hello_extensions.png"
+  },
+  "icons": {
+    "48": "assets/hello_extensions.png",
+    "96": "assets/hello_extensions.png"
+  }  
+}
