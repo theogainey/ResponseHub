@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npm run build:typescript && npm run copy:assets && npm run copy:other",
+    "build": "npm run build:typescript && npm run build:scss && npm run copy:assets && npm run copy:other",
+    "build:scss": "sass src/scss/main.scss extension/main.css --no-source-map",
     "build:typescript": "esbuild src/app/index.ts --bundle --outdir=extension --minify --target=chrome80,safari13 --loader:.ts=ts",
     "copy:assets": "cp src/assets/* extension/assets/",
     "copy:other": "cp src/* extension/"
@@ -15,6 +16,7 @@
   "devDependencies": {
     "chrome-types": "^0.1.231",
     "esbuild": "^0.19.4",
+    "sass": "^1.69.3",
     "typescript": "^5.2.2"
   }
 }
