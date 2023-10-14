@@ -1,3 +1,5 @@
+import { handleResponse } from "./response";
+
 const defaultRequestOptions = {
   method: "GET",
 };
@@ -16,7 +18,7 @@ const sendRequest = () => {
   const requestURL = urlInput?.value ?? '';
   if(isValidURL(requestURL)){
     const userRequest = new Request(requestURL, defaultRequestOptions);
-    fetch(userRequest).then(()=> console.log('sent'));
+    fetch(userRequest).then((response)=> handleResponse(response));
     return;
   }
   console.log('invalid url');
