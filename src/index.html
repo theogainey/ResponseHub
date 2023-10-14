@@ -5,10 +5,13 @@
   </head>
   <body>
     <div class="obj-layout">
-      <!-- to do visually hide label -->
-      <label for="url" ></label>
-      <input class="cmp-input" type="text" id="url-input" name="url" required placeholder="url"/>
-      <button class="cmp-button" id="send-button">Send</button>
+      <div class="cmp-url-input">
+        <!-- to do accessibility for this button and inputs -->
+        <button type="button" role="combobox" class="cmp-url-input--method">GET </button>
+        <!-- to do add visually hidden label -->
+        <input class="cmp-url-input--url" type="text" id="url-input" name="url" required placeholder="url"/>
+      </div>
+      <button class="cmp-send-button" id="send-button">Send</button>
     </div>
     <div class="obj-layout">
       <div class="cmp-response" id="response-area">

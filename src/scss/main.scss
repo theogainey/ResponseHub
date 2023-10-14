@@ -20,6 +20,7 @@
 //    This puts variables at the top of the cascade so they are accessible
 //    to all partials further down. No CSS selectors should be generated
 //    by the preprocessor from partials in this section.
+@import "./settings/variables";
 
 //    When not using a preprocessor, the settings area is a good place
 //    to write comments describing the colors and font stacks as a guide.
@@ -56,8 +57,8 @@
 // 6. Components
 //    Specific UI components. This is where majority of our work takes place
 //    and our UI components are often composed of Objects and Components
-@import "./components/button";
-@import "./components/input";
+@import "./components/send-button";
+@import "./components/url-input";
 
 // =====================================================================
 // 7. Utilities

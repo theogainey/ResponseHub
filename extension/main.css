@@ -17,7 +17,7 @@ button {
   max-width: 75ch;
 }
 
-.cmp-button {
+.cmp-send-button {
   background-color: #0F172A;
   border-radius: 6px;
   height: 2.5rem;
@@ -26,10 +26,22 @@ button {
   padding: 0.5rem 1rem;
 }
 
-.cmp-input {
-  box-sizing: border-box;
+.cmp-url-input {
+  display: flex;
   border: 1px solid #e5e7eb;
   border-radius: 6px;
+}
+.cmp-url-input--method {
+  box-sizing: border-box;
   height: 2.5rem;
   font-size: 1rem;
+  padding: 0.5rem 1rem;
+}
+.cmp-url-input--url {
+  border: none;
+  box-sizing: border-box;
+  height: 2.5rem;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  width: 100%;
 }
