@@ -14,9 +14,11 @@ const isValidURL = (url:string) =>{
 }
 
 const sendRequest = () => {
-  const urlInput = document.querySelector('#url-input') as HTMLInputElement;
-  const requestURL = urlInput?.value ?? '';
-  if(isValidURL(requestURL)){
+  const  { value } = document.querySelector('#url-input') as HTMLInputElement;
+  const proxyURL = 'http://localhost:3000';
+  
+  if(isValidURL(value)){
+    const requestURL = `${proxyURL}/?url=${encodeURIComponent(value)}`;
     const userRequest = new Request(requestURL, defaultRequestOptions);
     fetch(userRequest).then((response)=> handleResponse(response));
     return;
