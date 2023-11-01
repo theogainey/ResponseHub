@@ -5,7 +5,6 @@ const cors = require('cors');
 const app = express();
 const port = 3000;
 
-// TODO Figure out why this works for https://theogainey.com but not http://theogainey.com
 app.use(cors());
 
 app.use(express.json());
@@ -23,9 +22,10 @@ app.get('/', (req, res) => {
   const proxy = createProxyMiddleware({
     target: url,
     changeOrigin: true,
+    followRedirects: true,
     pathRewrite: function (path, req) { 
       return '' 
-    }
+    },
   });
 
   // Use the proxy middleware
