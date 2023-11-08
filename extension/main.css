@@ -85,3 +85,26 @@ button {
   border-left: none;
   border-right: none;
 }
+
+.cmp-headers {
+  margin: 1rem 0;
+}
+.cmp-headers__input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+.cmp-headers__label {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.util-margin-right {
+  margin-right: 1rem;
+}
