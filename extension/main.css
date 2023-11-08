@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 button {
   background-color: transparent;
   color: inherit;
@@ -17,6 +23,35 @@ button {
   max-width: 75ch;
 }
 
+.obj-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+.obj-grid__full {
+  width: auto;
+  grid-column: span 12;
+}
+.obj-grid__half {
+  width: auto;
+  grid-column: span 6;
+}
+.obj-grid__third {
+  width: auto;
+  grid-column: span 4;
+}
+.obj-grid__two-third {
+  width: auto;
+  grid-column: span 8;
+}
+.obj-grid__quarter {
+  width: auto;
+  grid-column: span 3;
+}
+.obj-grid__three-quarter {
+  width: auto;
+  grid-column: span 9;
+}
+
 .cmp-send-button {
   background-color: #0F172A;
   border-radius: 6px;
@@ -30,18 +65,18 @@ button {
   display: flex;
   border: 1px solid #e5e7eb;
   border-radius: 6px;
+  margin-bottom: 0.5rem;
 }
 .cmp-url-input--method {
-  box-sizing: border-box;
   height: 2.5rem;
   font-size: 1rem;
   padding: 0.5rem 1rem;
 }
 .cmp-url-input--url {
   border: none;
-  box-sizing: border-box;
   height: 2.5rem;
   font-size: 1rem;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
+  margin: 0 1rem;
   width: 100%;
 }
