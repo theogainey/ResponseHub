@@ -1,3 +1,4 @@
+import { getHeaders } from "./headers";
 import { handleResponse } from "./response";
 
 const defaultRequestOptions = {
@@ -17,13 +18,18 @@ const sendRequest = () => {
   const  { value } = document.querySelector('#url-input') as HTMLInputElement;
   const proxyURL = 'http://localhost:3000';
   
-  if(isValidURL(value)){
-    const requestURL = `${proxyURL}/?url=${encodeURIComponent(value)}`;
-    const userRequest = new Request(requestURL, defaultRequestOptions);
-    fetch(userRequest).then((response)=> handleResponse(response));
+  // TO DO BUILD REQUEST AND VALIDATE WHILE USER IS TYPING IT IN 
+  if(!isValidURL(value)){
+    // TODO: Visual Error State
+    console.log('invalid url');
     return;
   }
-  console.log('invalid url');
+  const requestURL = `${proxyURL}/?url=${encodeURIComponent(value)}`;
+  const requestHeaders = getHeaders();
+  const requestOptions = Object.assign({}, defaultRequestOptions, { headers: requestHeaders})
+  const userRequest = new Request(requestURL, requestOptions);
+  fetch(userRequest).then((response)=> handleResponse(response));
+
 }
 
 export { sendRequest };
