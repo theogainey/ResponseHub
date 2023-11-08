@@ -54,7 +54,9 @@ button {
 
 .cmp-send-button {
   background-color: #0F172A;
-  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  border-left: none;
+  border-radius: 0 6px 6px 0;
   height: 2.5rem;
   font-size: 1rem;
   color: #fff;
@@ -63,20 +65,23 @@ button {
 
 .cmp-url-input {
   display: flex;
-  border: 1px solid #e5e7eb;
-  border-radius: 6px;
   margin-bottom: 0.5rem;
 }
 .cmp-url-input--method {
   height: 2.5rem;
   font-size: 1rem;
   padding: 0.5rem 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px 0 0 6px;
+  border-right: none;
 }
 .cmp-url-input--url {
   border: none;
   height: 2.5rem;
   font-size: 1rem;
-  padding: 0.5rem;
-  margin: 0 1rem;
+  padding: 0.5rem 1.5rem;
   width: 100%;
+  border: 1px solid #e5e7eb;
+  border-left: none;
+  border-right: none;
 }

@@ -1,21 +1,24 @@
 .cmp-url-input {
   display: flex;
-  border: $border-primary;
-  border-radius: $border-width-primary;
-
+  margin-bottom: 0.5rem;
+  
   &--method {
-    box-sizing: border-box;
     height: 2.5rem;
     font-size: 1rem;
-    padding: 0.5rem 1rem;  
+    padding: 0.5rem 1rem; 
+    border: $border-primary;
+    border-radius: $border-radius-primary 0 0 $border-radius-primary;
+    border-right: none;
   }
-
+ 
   &--url {
     border: none;
-    box-sizing: border-box;
     height: 2.5rem;
     font-size: 1rem; 
-    padding: 0.5rem 1rem;   
+    padding: 0.5rem 1.5rem;   
     width: 100%;
+    border: $border-primary;
+    border-left: none;
+    border-right: none;
   }
 }
