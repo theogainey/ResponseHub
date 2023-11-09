@@ -7,11 +7,12 @@
     "build": "npm run build:typescript && npm run build:scss && bash copy.sh",
     "build:scss": "sass src/scss/main.scss extension/main.css --no-source-map",
     "build:typescript": "esbuild src/app/index.ts --bundle --outdir=extension --minify --target=chrome80,safari13 --loader:.ts=ts",
-    "dev": "run-p watch start:proxy",
+    "dev": "run-p watch watch:proxy",
     "watch": "run-p watch:scss watch:typescript watch:html",
     "watch:scss": "nodemon --watch src/scss --ext scss, --exec npm run build:scss", 
     "watch:typescript": "nodemon --watch src/app --ext ts, --exec npm run build:typescript", 
     "watch:html": "nodemon --watch src --ext html, --exec bash copy.sh",
+    "watch:proxy": "nodemon proxy/server.js",
     "start:proxy": "node proxy/server.js"
   },
   "keywords": [],
