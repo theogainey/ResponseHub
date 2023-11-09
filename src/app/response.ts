@@ -1,11 +1,23 @@
+import hljs from 'highlight.js/lib/core';
+import xml from 'highlight.js/lib/languages/xml';
+import javascript from 'highlight.js/lib/languages/javascript';
+
+hljs.registerLanguage('xml', xml);
+hljs.registerLanguage('javascript', javascript);
+
 const isJSONResponse = (response: Response) => {
   const contentType = response.headers.get('content-type') ?? ''; 
   return contentType.includes('application/json');
 }
 
 const printResponse = (data:string) => {
-  const responseArea = document.getElementById('response-area') as HTMLDivElement;
-  responseArea.innerText = data;
+  const responseCodeElement = document.querySelector('.cmp-response') as Element;
+  const highlightedCode = hljs.highlight(
+    data,
+    { language: 'xml' }
+  ).value
+  
+  responseCodeElement.innerHTML = `<pre><code class="cmp-response__text">${highlightedCode}</code></pre>`;
 }
 
 const handleResponse = async (response: Response) => {

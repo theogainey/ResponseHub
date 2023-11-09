@@ -1,0 +1,15 @@
+.cmp-response {
+  code {
+    display: block;
+    background-color: var(--response-background-color);
+    white-space: pre;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: scroll;
+    max-width: 100%;
+    min-width: 100px;
+    padding: 1rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    color: var(--response-color);
+  }
+}

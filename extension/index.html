@@ -5,18 +5,14 @@
   </head>
   <body>
     <div class="obj-layout">
-      <div class="obj-grid">
-        <div class="obj-grid__three-quarter">
+      <div>
           <div class="cmp-url-input">
             <!-- to do accessibility for this button and inputs -->
             <button type="button" role="combobox" class="cmp-url-input--method">GET </button>
             <!-- to do add visually hidden label -->
             <input class="cmp-url-input--url" type="text" id="url-input" name="url" required placeholder="url"/>
+            <button class="cmp-send-button" id="send-button">Send</button>
           </div>  
-        </div>
-        <div class="obj-grid__quarter">
-          <button class="cmp-send-button" id="send-button">Send</button>
-        </div>
       </div>
       <div class="cmp-headers">
         <div class="obj-grid cmp-headers__header-pair">
@@ -30,7 +26,8 @@
           </div>  
         </div>
       </div>
-      <div class="cmp-response" id="response-area"></div>
+      <div class="cmp-response atom-one-dark-reasonable">
+      </div>
     </div>
   </body>
 </html>

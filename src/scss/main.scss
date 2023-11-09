@@ -12,7 +12,8 @@
 // 4. Elements
 // 5. Objects
 // 6. Components
-// 7. Utilities
+// 7. Vendors
+// 8. Utilities
 
 // =====================================================================
 // 1. Settings
@@ -63,6 +64,15 @@
 @import "./components/send-button";
 @import "./components/url-input";
 @import "./components/headers";
+@import "./components/response";
+
+// =====================================================================
+// 7. Vendors
+//    Whenever third party styles are needed add them to this section,
+//    below the Components, but above the Utilities. This allows them
+//    to live alongside our styles but still be overridden if needed by
+//    a utility class.
+@import "./vendors/themes";
 
 // =====================================================================
 // 7. Utilities

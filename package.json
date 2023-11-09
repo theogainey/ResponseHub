@@ -9,8 +9,8 @@
     "build:typescript": "esbuild src/app/index.ts --bundle --outdir=extension --minify --target=chrome80,safari13 --loader:.ts=ts",
     "dev": "run-p watch watch:proxy",
     "watch": "run-p watch:scss watch:typescript watch:html",
-    "watch:scss": "nodemon --watch src/scss --ext scss, --exec npm run build:scss", 
-    "watch:typescript": "nodemon --watch src/app --ext ts, --exec npm run build:typescript", 
+    "watch:scss": "nodemon --watch src/scss --ext scss, --exec npm run build:scss",
+    "watch:typescript": "nodemon --watch src/app --ext ts, --exec npm run build:typescript",
     "watch:html": "nodemon --watch src --ext html, --exec bash copy.sh",
     "watch:proxy": "nodemon proxy/server.js",
     "start:proxy": "node proxy/server.js"
@@ -30,6 +30,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.2",
+    "highlight.js": "^11.9.0",
     "http-proxy-middleware": "^2.0.6"
   }
 }

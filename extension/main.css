@@ -105,6 +105,99 @@ button {
   overflow: hidden;
 }
 
+.cmp-response code {
+  display: block;
+  background-color: var(--response-background-color);
+  white-space: pre;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: scroll;
+  max-width: 100%;
+  min-width: 100px;
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  color: var(--response-color);
+}
+
+.atom-one-dark-reasonable {
+  /*
+
+  Atom One Dark With support for ReasonML by Gidi Morris, based off work by Daniel Gamage
+
+  Original One Dark Syntax theme from https://github.com/atom/one-dark-syntax
+
+  */
+  --response-background-color: #282c34;
+  --response-color: #abb2bf;
+}
+.atom-one-dark-reasonable .hljs {
+  color: #abb2bf;
+  background: #282c34;
+}
+.atom-one-dark-reasonable .hljs-keyword, .atom-one-dark-reasonable .hljs-operator {
+  color: #F92672;
+}
+.atom-one-dark-reasonable .hljs-pattern-match {
+  color: #F92672;
+}
+.atom-one-dark-reasonable .hljs-pattern-match .hljs-constructor {
+  color: #61aeee;
+}
+.atom-one-dark-reasonable .hljs-function {
+  color: #61aeee;
+}
+.atom-one-dark-reasonable .hljs-function .hljs-params {
+  color: #A6E22E;
+}
+.atom-one-dark-reasonable .hljs-function .hljs-params .hljs-typing {
+  color: #FD971F;
+}
+.atom-one-dark-reasonable .hljs-module-access .hljs-module {
+  color: #7e57c2;
+}
+.atom-one-dark-reasonable .hljs-constructor {
+  color: #e2b93d;
+}
+.atom-one-dark-reasonable .hljs-constructor .hljs-string {
+  color: #9CCC65;
+}
+.atom-one-dark-reasonable .hljs-comment, .atom-one-dark-reasonable .hljs-quote {
+  color: #b18eb1;
+  font-style: italic;
+}
+.atom-one-dark-reasonable .hljs-doctag, .atom-one-dark-reasonable .hljs-formula {
+  color: #c678dd;
+}
+.atom-one-dark-reasonable .hljs-section, .atom-one-dark-reasonable .hljs-name, .atom-one-dark-reasonable .hljs-selector-tag, .atom-one-dark-reasonable .hljs-deletion, .atom-one-dark-reasonable .hljs-subst {
+  color: #e06c75;
+}
+.atom-one-dark-reasonable .hljs-literal {
+  color: #56b6c2;
+}
+.atom-one-dark-reasonable .hljs-string, .atom-one-dark-reasonable .hljs-regexp, .atom-one-dark-reasonable .hljs-addition, .atom-one-dark-reasonable .hljs-attribute, .atom-one-dark-reasonable .hljs-meta .hljs-string {
+  color: #98c379;
+}
+.atom-one-dark-reasonable .hljs-built_in,
+.atom-one-dark-reasonable .hljs-title.class_,
+.atom-one-dark-reasonable .hljs-class .hljs-title {
+  color: #e6c07b;
+}
+.atom-one-dark-reasonable .hljs-attr, .atom-one-dark-reasonable .hljs-variable, .atom-one-dark-reasonable .hljs-template-variable, .atom-one-dark-reasonable .hljs-type, .atom-one-dark-reasonable .hljs-selector-class, .atom-one-dark-reasonable .hljs-selector-attr, .atom-one-dark-reasonable .hljs-selector-pseudo, .atom-one-dark-reasonable .hljs-number {
+  color: #d19a66;
+}
+.atom-one-dark-reasonable .hljs-symbol, .atom-one-dark-reasonable .hljs-bullet, .atom-one-dark-reasonable .hljs-link, .atom-one-dark-reasonable .hljs-meta, .atom-one-dark-reasonable .hljs-selector-id, .atom-one-dark-reasonable .hljs-title {
+  color: #61aeee;
+}
+.atom-one-dark-reasonable .hljs-emphasis {
+  font-style: italic;
+}
+.atom-one-dark-reasonable .hljs-strong {
+  font-weight: bold;
+}
+.atom-one-dark-reasonable .hljs-link {
+  text-decoration: underline;
+}
+
 .util-margin-right {
   margin-right: 1rem;
 }
