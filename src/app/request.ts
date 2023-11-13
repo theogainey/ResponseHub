@@ -1,5 +1,6 @@
 import { getHeaders } from "./headers";
 import { handleResponse } from "./response";
+import { getURLSearchParams } from "./urlSearchParams";
 
 const defaultRequestOptions = {
   method: "GET",
@@ -24,7 +25,7 @@ const sendRequest = () => {
     console.log('invalid url');
     return;
   }
-  const requestURL = `${proxyURL}/?url=${encodeURIComponent(value)}`;
+  const requestURL = `${proxyURL}/?url=${encodeURIComponent(value)}?${getURLSearchParams()}`;
   const requestHeaders = getHeaders();
   const requestOptions = Object.assign({}, defaultRequestOptions, { headers: requestHeaders})
   const userRequest = new Request(requestURL, requestOptions);

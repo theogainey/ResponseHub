@@ -1,0 +1,15 @@
+.cmp-url-search-params {
+  margin: 1rem 0;
+
+  &__input {
+    width: 100%;
+    border: none;
+    border-bottom: $border-primary;
+    font-size: 1.25rem;
+    line-height: 1.5;
+  }
+
+  &__label {
+    @include visually-hidden;
+  }
+}

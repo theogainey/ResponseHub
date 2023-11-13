@@ -138,6 +138,25 @@ button {
   color: #0F172A;
 }
 
+.cmp-url-search-params {
+  margin: 1rem 0;
+}
+.cmp-url-search-params__input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+.cmp-url-search-params__label {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .atom-one-dark-reasonable {
   /*
 
