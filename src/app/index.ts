@@ -1,5 +1,6 @@
 import { sendRequest} from "./request";
 import { reHighlightCode } from "./response";
+import { addTabListeners } from "./tabs";
 
 document.addEventListener("DOMContentLoaded", () => {
   const sendButton = document.getElementById('send-button');
@@ -8,5 +9,5 @@ document.addEventListener("DOMContentLoaded", () => {
   const xmlButton = document.querySelector('#xml-button');
   jsonButton?.addEventListener('click', () => reHighlightCode('json'));
   xmlButton?.addEventListener('click', () => reHighlightCode('xml'));
-
+  addTabListeners();
 });

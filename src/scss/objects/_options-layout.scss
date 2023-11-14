@@ -1,0 +1,29 @@
+.obj-options-layout {
+
+  &[data-view="preview"]{
+    .cmp-headers {
+      @include visually-hidden;
+    }
+    .cmp-url-search-params {
+      @include visually-hidden;
+    }
+  }
+
+  &[data-view="headers"]{
+    .cmp-preview {
+      @include visually-hidden;
+    }
+    .cmp-url-search-params {
+      @include visually-hidden;
+    }
+  }
+
+  &[data-view="url-search-params"]{
+    .cmp-headers {
+      @include visually-hidden;
+    }
+    .cmp-preview {
+      @include visually-hidden;
+    }
+  }
+}

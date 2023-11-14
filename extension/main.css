@@ -16,6 +16,12 @@ button {
   appearance: none;
 }
 
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 .obj-layout {
   margin: 0 auto;
   margin-top: 3rem;
@@ -50,6 +56,55 @@ button {
 .obj-grid__three-quarter {
   width: auto;
   grid-column: span 9;
+}
+
+.obj-options-layout[data-view=preview] .cmp-headers {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.obj-options-layout[data-view=preview] .cmp-url-search-params {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.obj-options-layout[data-view=headers] .cmp-preview {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.obj-options-layout[data-view=headers] .cmp-url-search-params {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.obj-options-layout[data-view=url-search-params] .cmp-headers {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.obj-options-layout[data-view=url-search-params] .cmp-preview {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
 .cmp-send-button {
@@ -155,6 +210,27 @@ button {
   width: 1px;
   height: 1px;
   overflow: hidden;
+}
+
+.cmp-options-tabs {
+  display: flex;
+  border-bottom: 1px solid #e5e7eb;
+}
+.cmp-options-tabs__tab {
+  display: flex;
+  font-size: 1rem;
+}
+.cmp-options-tabs__tab:focus-within label {
+  border-bottom: 2px solid #000000;
+}
+.cmp-options-tabs__tab label {
+  padding: 0.5rem 1rem;
+}
+.cmp-options-tabs__tab label:focus, .cmp-options-tabs__tab label:hover, .cmp-options-tabs__tab label:active {
+  border-bottom: 2px solid #000000;
+}
+.cmp-options-tabs__tab--active label {
+  border-bottom: 2px solid #000000;
 }
 
 .atom-one-dark-reasonable {
