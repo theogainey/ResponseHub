@@ -1,3 +1,5 @@
+import { printPreview } from "./preview";
+
 const getURLSearchParamKey = (component:Element): string => {
   const  { value } = component.querySelector('.cmp-url-search-params__input--key') as HTMLInputElement;
   return value ?? ''
@@ -21,4 +23,12 @@ const getURLSearchParams = (): URLSearchParams => {
   }
   return new URLSearchParams(urlSearchParamsPairs.filter(isValidURLSearchParam));
 }
-export { getURLSearchParams };
+
+const addURLSearchParamsListeners = () =>{
+  const URLSearchParamsKeyInput = document.querySelector('.cmp-url-search-params__input--key');
+  const URLSearchParamsValueInput = document.querySelector('.cmp-url-search-params__input--value');
+  URLSearchParamsKeyInput?.addEventListener('input', printPreview); 
+  URLSearchParamsValueInput?.addEventListener('input', printPreview); 
+}
+
+export { getURLSearchParams, addURLSearchParamsListeners };

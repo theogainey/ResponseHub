@@ -1,6 +1,9 @@
 import { sendRequest} from "./request";
 import { reHighlightCode } from "./response";
 import { addTabListeners } from "./tabs";
+import { addPrintPreviewListeners } from './preview';
+import { addHeaderListeners } from "./headers";
+import { addURLSearchParamsListeners } from "./urlSearchParams";
 
 document.addEventListener("DOMContentLoaded", () => {
   const sendButton = document.getElementById('send-button');
@@ -10,4 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   jsonButton?.addEventListener('click', () => reHighlightCode('json'));
   xmlButton?.addEventListener('click', () => reHighlightCode('xml'));
   addTabListeners();
+  addPrintPreviewListeners();
+  addHeaderListeners();
+  addURLSearchParamsListeners();
 });

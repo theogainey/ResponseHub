@@ -15,8 +15,13 @@ const isValidURL = (url:string) =>{
   }
 }
 
+const getURL = () => {
+  const { value } = document.querySelector('#url-input') as HTMLInputElement;
+  return value;
+}
+
 const sendRequest = () => {
-  const  { value } = document.querySelector('#url-input') as HTMLInputElement;
+  const value  = getURL();
   const proxyURL = 'http://localhost:3000';
   
   // TO DO BUILD REQUEST AND VALIDATE WHILE USER IS TYPING IT IN 
@@ -33,4 +38,4 @@ const sendRequest = () => {
 
 }
 
-export { sendRequest };
+export { sendRequest, getURL };

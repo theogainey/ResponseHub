@@ -1,3 +1,5 @@
+import { printPreview } from "./preview";
+
 const getHeaderKey = (component:Element): string => {
   const  { value } = component.querySelector('.cmp-headers__input--header') as HTMLInputElement;
   return value ?? ''
@@ -21,4 +23,11 @@ const getHeaders = (): Headers => {
   return new Headers(headerKeyValuePairs.filter(isValidHeader));
 } 
 
-export { getHeaders };
+const addHeaderListeners = () =>{
+  const headerKeyInput = document.querySelector('.cmp-headers__input--header');
+  const headerValueInput = document.querySelector('.cmp-headers__input--value');
+  headerKeyInput?.addEventListener('input', printPreview); 
+  headerValueInput?.addEventListener('input', printPreview); 
+}
+
+export { getHeaders, addHeaderListeners };
