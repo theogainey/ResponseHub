@@ -14,4 +14,7 @@
     color: var(--response-color);
   }
 
+  .hljs-attribute{
+    text-transform: capitalize;
+  }
 }

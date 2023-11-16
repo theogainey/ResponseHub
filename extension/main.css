@@ -246,6 +246,9 @@ ul {
   border-radius: 0.5rem;
   color: var(--response-color);
 }
+.cmp-preview .hljs-attribute {
+  text-transform: capitalize;
+}
 
 .atom-one-dark-reasonable {
   /*

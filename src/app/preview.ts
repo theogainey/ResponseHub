@@ -26,7 +26,7 @@ const getHost = (urlString: string) => {
 const stringifyHeaders = (headers:Headers) => {
   let message = '';
   for (const [key, value] of headers.entries()) {
-    message += `${key}: ${value}`;
+    message += `${key}: ${value}\n`;
   }
   return message;
 }
