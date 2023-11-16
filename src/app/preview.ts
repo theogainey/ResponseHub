@@ -44,17 +44,37 @@ const getHTTPMessageData = () => {
   }
 }
 
+const formatHTTPMessage = (HTTPMessageData: { path: string; searchParams: string; host: string; headers: string; }) => `GET ${HTTPMessageData.path}${HTTPMessageData.searchParams ? `?${HTTPMessageData.searchParams}`: ''} HTTP/1.1\nHost: ${HTTPMessageData.host}\n${HTTPMessageData.headers}`;
+
 
 const printPreview = () => {
   const previewCodeElement = document.querySelector('.cmp-preview pre code') as Element;
-  const HTTPMessageData = getHTTPMessageData();
   // TODO ADD NOTE THAT THIS DOESN'T INCLUDE Headers Automatically included by the browser
-  const formattedMessage  = `GET ${HTTPMessageData.path}${HTTPMessageData.searchParams ? `?${HTTPMessageData.searchParams}`: ''} HTTP/1.1\nHost: ${HTTPMessageData.host}\n${HTTPMessageData.headers}`;
+  const formattedMessage = formatHTTPMessage(getHTTPMessageData());
   previewCodeElement.innerHTML =  hljs.highlight(
     formattedMessage,
     { language: 'http' }
   ).value;
 }
+
+const toggleHidden = (e: Element) => {
+  e.classList.toggle('util-visually-hidden');
+  setTimeout(()=>{
+    e.classList.toggle('util-visually-hidden');
+  }, 2000)
+}
+
+const copyToPreviewClipBoard =  () => {
+  const copyIcons = document.querySelectorAll('.cmp-preview__copy-button-icon');
+  const copyButton = document.querySelector('.cmp-preview__copy-button');
+  copyButton?.classList.toggle('cmp-preview__copy-button--green');
+  setTimeout(()=>{
+    copyButton?.classList.toggle('cmp-preview__copy-button--green');
+  }, 2000)
+
+  copyIcons.forEach(toggleHidden);
+  navigator.clipboard.writeText(formatHTTPMessage(getHTTPMessageData()))
+};
 
 const addPrintPreviewListeners = () => {
   const previewCodeElement = document.querySelector('.cmp-preview pre code') as Element;
@@ -65,6 +85,8 @@ const addPrintPreviewListeners = () => {
   ).value;
   const urlInput = document.querySelector('#url-input') as HTMLInputElement;
   urlInput.addEventListener('input', printPreview); 
+  const copyButton = document.querySelector('.cmp-preview__copy-button');
+  copyButton?.addEventListener('click', copyToPreviewClipBoard);
 };
 
 export { addPrintPreviewListeners, printPreview };

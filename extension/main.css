@@ -233,6 +233,9 @@ ul {
   border-bottom: 2px solid #000000;
 }
 
+.cmp-preview {
+  position: relative;
+}
 .cmp-preview code {
   display: block;
   background-color: var(--response-background-color);
@@ -248,6 +251,24 @@ ul {
 }
 .cmp-preview .hljs-attribute {
   text-transform: capitalize;
+}
+.cmp-preview__copy-button {
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 0.5rem;
+}
+.cmp-preview__copy-button:focus, .cmp-preview__copy-button:hover {
+  border-color: #0F172A;
+}
+.cmp-preview__copy-button--green {
+  border-color: #238636;
+}
+.cmp-preview__copy-button--green:focus, .cmp-preview__copy-button--green:hover {
+  border-color: #238636;
 }
 
 .atom-one-dark-reasonable {
