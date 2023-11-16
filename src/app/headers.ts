@@ -31,12 +31,16 @@ const createNewHeaderInput = () => {
   newHeaderInputContainer.classList.add('obj-grid', 'cmp-headers__header-pair');
   newHeaderInputContainer.innerHTML = `
     <div class="obj-grid__half util-margin-right">
-      <label class="cmp-headers__label">Header</label>
-      <input class="cmp-headers__input cmp-headers__input--header" type="text" name="header" placeholder="header"/>
+      <label class="cmp-headers__label">
+        <span>Header</span>
+        <input class="cmp-headers__input cmp-headers__input--header" type="text" name="header" placeholder="header"/>
+      </label>
     </div>
     <div class="obj-grid__half">
-      <label class="cmp-headers__label">Value</label>
-      <input class="cmp-headers__input cmp-headers__input--value" type="text" name="value" placeholder="value"/>
+      <label class="cmp-headers__label">
+        <span>Value</span>
+        <input class="cmp-headers__input cmp-headers__input--value" type="text" name="value" placeholder="value"/>
+      </label>
     </div> 
   `;
   return newHeaderInputContainer;

@@ -9,7 +9,7 @@
     line-height: 1.5;
   }
 
-  &__label {
+  &__label span {
     @include visually-hidden;
   }
 }

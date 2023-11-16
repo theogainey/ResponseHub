@@ -29,12 +29,16 @@ const createNewURLSearchParamInput = () => {
   newURLSearchParamInputContainer.classList.add('obj-grid', 'cmp-url-search-params__params-pair');
   newURLSearchParamInputContainer.innerHTML = `
     <div class="obj-grid__half util-margin-right">
-      <label class="cmp-url-search-params__label">URL Search Parameter Key</label>
-      <input class="cmp-url-search-params__input cmp-url-search-params__input--key" type="text" name="header" placeholder="URL Search Parameter Key"/>
+      <label class="cmp-url-search-params__label">
+        <span>URL Search Parameter Key</span>
+        <input class="cmp-url-search-params__input cmp-url-search-params__input--key" type="text" name="header" placeholder="URL Search Parameter Key"/>
+      </label>
     </div>
     <div class="obj-grid__half">
-      <label class="cmp-url-search-params__label">Value</label>
-      <input class="cmp-url-search-params__input cmp-url-search-params__input--value" type="text" name="value" placeholder="value"/>
+      <label class="cmp-url-search-params__label">
+        <span>Value</span>
+        <input class="cmp-url-search-params__input cmp-url-search-params__input--value" type="text" name="value" placeholder="value"/>
+      </label>
     </div>  
   `;
   return newURLSearchParamInputContainer;
