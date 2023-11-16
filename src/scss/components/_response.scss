@@ -1,5 +1,7 @@
 .cmp-response {
-
+  position: relative;
+  padding-top: 1.5rem;
+  
   code {
     display: block;
     background-color: var(--response-background-color);

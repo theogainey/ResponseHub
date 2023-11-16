@@ -1,3 +1,4 @@
+import { toggleHidden } from './utils';
 import hljs from 'highlight.js/lib/core';
 import xml from 'highlight.js/lib/languages/xml';
 import javascript from 'highlight.js/lib/languages/javascript';
@@ -55,11 +56,30 @@ const setResponseLanguage = (language:string) => {
   }
 };
 
+const copyToResponseToClipBoard = (data: string) => () => {
+  const copyIcons = document.querySelectorAll('.cmp-response .cmp-copy-button .cmp-copy-button__icon');
+  const copyButton = document.querySelector('.cmp-response .cmp-copy-button');
+  copyButton?.classList.toggle('cmp-copy-button--green');
+  setTimeout(()=>{
+    copyButton?.classList.toggle('cmp-copy-button--green');
+  }, 2000)
+
+  copyIcons.forEach(toggleHidden);
+  navigator.clipboard.writeText(data)
+};
+
+const showResponseFormattingButtons = (data:string) => {
+  const copyButton = document.querySelector('.cmp-response .cmp-copy-button');
+  copyButton?.classList.toggle('util-visually-hidden');
+  copyButton?.addEventListener('click', copyToResponseToClipBoard(data));
+}
+
 const printResponse = (data:string) => {
   const responseTextElement = document.querySelector('.cmp-response__text') as Element;
   const highlightedCode = hljs.highlightAuto(data);
   responseTextElement.innerHTML = highlightedCode.value;
-  setResponseLanguage(highlightedCode.language ?? 'xml');
+  // setResponseLanguage(highlightedCode.language ?? 'xml');
+  showResponseFormattingButtons(data);
 }
 
 const handleResponse = async (response: Response) => {

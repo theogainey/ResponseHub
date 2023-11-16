@@ -1,6 +1,7 @@
 import { getHeaders } from './headers';
 import { getURLSearchParams } from './urlSearchParams';
 import { getURL } from './request';
+import { toggleHidden } from './utils';
 import hljs from 'highlight.js/lib/core';
 import http from 'highlight.js/lib/languages/http';
 hljs.registerLanguage('http', http);
@@ -57,19 +58,12 @@ const printPreview = () => {
   ).value;
 }
 
-const toggleHidden = (e: Element) => {
-  e.classList.toggle('util-visually-hidden');
-  setTimeout(()=>{
-    e.classList.toggle('util-visually-hidden');
-  }, 2000)
-}
-
 const copyToPreviewClipBoard =  () => {
-  const copyIcons = document.querySelectorAll('.cmp-preview__copy-button-icon');
-  const copyButton = document.querySelector('.cmp-preview__copy-button');
-  copyButton?.classList.toggle('cmp-preview__copy-button--green');
+  const copyIcons = document.querySelectorAll('.cmp-preview .cmp-copy-button  .cmp-copy-button__icon');
+  const copyButton = document.querySelector('.cmp-preview .cmp-copy-button');
+  copyButton?.classList.toggle('cmp-copy-button--green');
   setTimeout(()=>{
-    copyButton?.classList.toggle('cmp-preview__copy-button--green');
+    copyButton?.classList.toggle('cmp-copy-button--green');
   }, 2000)
 
   copyIcons.forEach(toggleHidden);
@@ -85,7 +79,7 @@ const addPrintPreviewListeners = () => {
   ).value;
   const urlInput = document.querySelector('#url-input') as HTMLInputElement;
   urlInput.addEventListener('input', printPreview); 
-  const copyButton = document.querySelector('.cmp-preview__copy-button');
+  const copyButton = document.querySelector('.cmp-preview .cmp-copy-button');
   copyButton?.addEventListener('click', copyToPreviewClipBoard);
 };
 

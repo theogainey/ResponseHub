@@ -160,6 +160,10 @@ ul {
   overflow: hidden;
 }
 
+.cmp-response {
+  position: relative;
+  padding-top: 1.5rem;
+}
 .cmp-response code {
   display: block;
   background-color: var(--response-background-color);
@@ -252,7 +256,8 @@ ul {
 .cmp-preview .hljs-attribute {
   text-transform: capitalize;
 }
-.cmp-preview__copy-button {
+
+.cmp-copy-button {
   display: flex;
   position: absolute;
   top: 0;
@@ -261,13 +266,13 @@ ul {
   border-radius: 6px;
   padding: 0.5rem;
 }
-.cmp-preview__copy-button:focus, .cmp-preview__copy-button:hover {
+.cmp-copy-button:focus, .cmp-copy-button:hover {
   border-color: #0F172A;
 }
-.cmp-preview__copy-button--green {
+.cmp-copy-button--green {
   border-color: #238636;
 }
-.cmp-preview__copy-button--green:focus, .cmp-preview__copy-button--green:hover {
+.cmp-copy-button--green:focus, .cmp-copy-button--green:hover {
   border-color: #238636;
 }
 

@@ -1,0 +1,20 @@
+.cmp-copy-button {
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: $border-primary;
+  border-radius: $border-radius-primary;
+  padding: 0.5rem;
+
+  &:focus, &:hover {
+    border-color: #0F172A;
+  }
+
+  &--green{
+    border-color: #238636;
+    &:focus, &:hover {
+      border-color: #238636;
+    }
+  }
+}
