@@ -1,5 +1,11 @@
 .cmp-preview {
   position: relative;
+  height: $options-area-height;
+
+  pre {
+    height: calc($options-area-height - 1rem);
+    overflow: scroll;
+  }
 
   code {
     display: block;

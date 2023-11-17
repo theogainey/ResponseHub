@@ -143,6 +143,8 @@ ul {
 
 .cmp-headers {
   margin: 1rem 0;
+  height: 10rem;
+  overflow: scroll;
 }
 .cmp-headers__input {
   width: 100%;
@@ -163,6 +165,7 @@ ul {
 .cmp-response {
   position: relative;
   padding-top: 1.5rem;
+  margin-top: 1rem;
 }
 .cmp-response code {
   display: block;
@@ -179,26 +182,27 @@ ul {
   height: 70vh;
 }
 .cmp-response__languages {
-  border-radius: 10px;
-  background-color: rgb(244, 244, 245);
+  position: absolute;
+  top: 0;
   display: inline-block;
-  padding: 0.25rem;
 }
 .cmp-response__languages-button {
   display: inline-block;
-  height: 2.5rem;
+  height: 42px;
   font-size: 1rem;
-  padding: 0.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 9px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
 }
 .cmp-response__languages-button--active {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-  border-radius: 6px;
-  background-color: #fff;
-  color: #0F172A;
+  background-color: #f4f4f5;
 }
 
 .cmp-url-search-params {
   margin: 1rem 0;
+  height: 10rem;
+  overflow: scroll;
 }
 .cmp-url-search-params__input {
   width: 100%;
@@ -239,6 +243,11 @@ ul {
 
 .cmp-preview {
   position: relative;
+  height: 10rem;
+}
+.cmp-preview pre {
+  height: 9rem;
+  overflow: scroll;
 }
 .cmp-preview code {
   display: block;
@@ -265,6 +274,7 @@ ul {
   border: 1px solid #e5e7eb;
   border-radius: 6px;
   padding: 0.5rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
 }
 .cmp-copy-button:focus, .cmp-copy-button:hover {
   border-color: #0F172A;

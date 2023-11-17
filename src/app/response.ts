@@ -70,7 +70,9 @@ const copyToResponseToClipBoard = (data: string) => () => {
 
 const showResponseFormattingButtons = (data:string) => {
   const copyButton = document.querySelector('.cmp-response .cmp-copy-button');
-  copyButton?.classList.toggle('util-visually-hidden');
+  const responseLanguageDiv = document.querySelector('.cmp-response__languages');
+  responseLanguageDiv?.classList.remove('util-visually-hidden');
+  copyButton?.classList.remove('util-visually-hidden');
   copyButton?.addEventListener('click', copyToResponseToClipBoard(data));
 }
 
@@ -78,7 +80,7 @@ const printResponse = (data:string) => {
   const responseTextElement = document.querySelector('.cmp-response__text') as Element;
   const highlightedCode = hljs.highlightAuto(data);
   responseTextElement.innerHTML = highlightedCode.value;
-  // setResponseLanguage(highlightedCode.language ?? 'xml');
+  setResponseLanguage(highlightedCode.language ?? 'xml');
   showResponseFormattingButtons(data);
 }
 

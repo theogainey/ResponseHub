@@ -1,6 +1,7 @@
 .cmp-response {
   position: relative;
   padding-top: 1.5rem;
+  margin-top: 1rem;
   
   code {
     display: block;
@@ -18,22 +19,21 @@
   }
 
   &__languages {
-    border-radius: 10px;
-    background-color: rgb(244, 244, 245) ;
+    position: absolute;
+    top: 0;
     display: inline-block;
-    padding: 0.25rem;
   }
 
   &__languages-button {
     display: inline-block;
-    height: 2.5rem;
+    height: 42px;
     font-size: 1rem;
-    padding: 0.5rem;  
-
+    border: $border-primary;
+    border-radius: $border-radius-primary;
+    padding: 9px;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
     &--active {
-      box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);      border-radius: $border-radius-primary;
-      background-color: #fff;
-      color: #0F172A;
+      background-color: #f4f4f5;
     }
   }
 }
