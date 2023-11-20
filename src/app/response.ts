@@ -1,4 +1,4 @@
-import { toggleHidden } from './utils';
+import { toggleHiddenWithTimeout, toggleHidden } from './utils';
 import hljs from 'highlight.js/lib/core';
 import xml from 'highlight.js/lib/languages/xml';
 import javascript from 'highlight.js/lib/languages/javascript';
@@ -64,7 +64,7 @@ const copyToResponseToClipBoard = (data: string) => () => {
     copyButton?.classList.toggle('cmp-copy-button--green');
   }, 2000)
 
-  copyIcons.forEach(toggleHidden);
+  copyIcons.forEach(toggleHiddenWithTimeout);
   navigator.clipboard.writeText(data)
 };
 
@@ -85,6 +85,9 @@ const printResponse = (data:string) => {
 }
 
 const handleResponse = async (response: Response) => {
+  console.log('response')
+  const sendButton = document.querySelector('#send-button div') as Element;
+  toggleHidden(sendButton);
   if (isJSONResponse(response)) {
     const data = JSON.stringify(await response.json());
     RESPONSE_STATE.body = data;

@@ -116,8 +116,33 @@ ul {
   font-size: 1rem;
   color: #fff;
   padding: 0.5rem 1rem;
+  display: flex;
+}
+.cmp-send-button__loader {
+  display: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .cmp-send-button__loader {
+    display: initial;
+    margin: auto;
+    margin-left: 0.5rem;
+    border: 2px solid #f4f4f5;
+    border-radius: 50%;
+    border-top: 2px solid #0F172A;
+    width: 20px;
+    height: 20px;
+    animation: spinner 2s linear infinite;
+  }
 }
 
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 .cmp-url-input {
   display: flex;
   margin-bottom: 0.5rem;

@@ -1,6 +1,7 @@
 import { getHeaders } from "./headers";
 import { handleResponse } from "./response";
 import { getURLSearchParams } from "./urlSearchParams";
+import { toggleHidden } from "./utils";
 
 const defaultRequestOptions = {
   method: "GET",
@@ -30,6 +31,9 @@ const sendRequest = () => {
     console.log('invalid url');
     return;
   }
+  console.log('request');
+  const sendButton = document.querySelector('#send-button div') as Element;
+  toggleHidden(sendButton);
   const requestURL = `${proxyURL}/?url=${encodeURIComponent(value)}?${getURLSearchParams()}`;
   const requestHeaders = getHeaders();
   const requestOptions = Object.assign({}, defaultRequestOptions, { headers: requestHeaders})

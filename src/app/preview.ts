@@ -1,7 +1,7 @@
 import { getHeaders } from './headers';
 import { getURLSearchParams } from './urlSearchParams';
 import { getURL } from './request';
-import { toggleHidden } from './utils';
+import { toggleHiddenWithTimeout } from './utils';
 import hljs from 'highlight.js/lib/core';
 import http from 'highlight.js/lib/languages/http';
 hljs.registerLanguage('http', http);
@@ -66,7 +66,7 @@ const copyToPreviewClipBoard =  () => {
     copyButton?.classList.toggle('cmp-copy-button--green');
   }, 2000)
 
-  copyIcons.forEach(toggleHidden);
+  copyIcons.forEach(toggleHiddenWithTimeout);
   navigator.clipboard.writeText(formatHTTPMessage(getHTTPMessageData()))
 };
 
