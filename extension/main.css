@@ -188,9 +188,13 @@ ul {
 }
 
 .cmp-response {
-  position: relative;
   padding-top: 1.5rem;
   margin-top: 1rem;
+  border-top: 1px solid #e5e7eb;
+}
+.cmp-response__button-container {
+  position: relative;
+  height: 42px;
 }
 .cmp-response code {
   display: block;
@@ -204,24 +208,35 @@ ul {
   font-size: 1rem;
   border-radius: 0.5rem;
   color: var(--response-color);
-  height: 70vh;
 }
 .cmp-response__languages {
   position: absolute;
   top: 0;
   display: inline-block;
 }
+.cmp-response__languages {
+  background-color: #f4f4f5;
+  padding: 0.25rem;
+  border-radius: 6px;
+  display: flex;
+  gap: 0.35rem;
+}
 .cmp-response__languages-button {
   display: inline-block;
   height: 42px;
   font-size: 1rem;
+  padding: 9px;
   border: 1px solid #e5e7eb;
   border-radius: 6px;
-  padding: 9px;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  border-color: transparent;
+}
+.cmp-response__languages-button:hover {
+  border-color: #e5e7eb;
 }
 .cmp-response__languages-button--active {
-  background-color: #f4f4f5;
+  background-color: #fefefe;
+  border-color: #e5e7eb;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
 }
 
 .cmp-url-search-params {
@@ -269,6 +284,7 @@ ul {
 .cmp-preview {
   position: relative;
   height: 10rem;
+  margin: 1rem 0;
 }
 .cmp-preview pre {
   height: 9rem;
@@ -282,7 +298,7 @@ ul {
   overflow-x: scroll;
   max-width: 100%;
   min-width: 100px;
-  padding: 1rem;
+  padding: 0 1rem;
   font-size: 1rem;
   border-radius: 0.5rem;
   color: var(--response-color);

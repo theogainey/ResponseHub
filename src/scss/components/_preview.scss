@@ -1,6 +1,7 @@
 .cmp-preview {
   position: relative;
   height: $options-area-height;
+  margin: 1rem 0;
 
   pre {
     height: calc($options-area-height - 1rem);
@@ -15,7 +16,7 @@
     overflow-x: scroll;
     max-width: 100%;
     min-width: 100px;
-    padding: 1rem;
+    padding: 0 1rem;
     font-size: 1rem;
     border-radius: 0.5rem;
     color: var(--response-color);

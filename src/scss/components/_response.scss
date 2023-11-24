@@ -1,8 +1,13 @@
 .cmp-response {
-  position: relative;
   padding-top: 1.5rem;
   margin-top: 1rem;
-  
+  border-top: $border-primary;
+
+  &__button-container {
+    position: relative;
+    height: 42px;
+  }
+
   code {
     display: block;
     background-color: var(--response-background-color);
@@ -15,7 +20,6 @@
     font-size: 1rem;
     border-radius: 0.5rem;
     color: var(--response-color);
-    height: 70vh; // TODO: Make this not a magic number
   }
 
   &__languages {
@@ -24,16 +28,29 @@
     display: inline-block;
   }
 
+  &__languages {
+    background-color: #f4f4f5;
+    padding: 0.25rem;
+    border-radius: $border-radius-primary;
+    display: flex;
+    gap: 0.35rem;
+  }
   &__languages-button {
     display: inline-block;
     height: 42px;
     font-size: 1rem;
-    border: $border-primary;
-    border-radius: $border-radius-primary;
     padding: 9px;
-    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-    &--active {
-      background-color: #f4f4f5;
+    border: $border-primary;
+    border-radius: $border-radius-primary;  
+    border-color: transparent;
+    &:hover {
+      border-color: #e5e7eb;
     }
+    &--active {
+      background-color: #fefefe;
+      border-color: #e5e7eb;
+      box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    }
+
   }
 }
