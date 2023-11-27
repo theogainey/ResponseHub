@@ -20,6 +20,11 @@ const getURL = () => {
   const { value } = document.querySelector('#url-input') as HTMLInputElement;
   return value;
 }
+const printResponseTime = (time: number) => {
+  const timeElement = document.querySelector('.cmp-response__details__time') as Element;
+  timeElement.innerHTML = `${time}ms`
+};
+
 
 const sendRequest = () => {
   const value  = getURL();
@@ -37,7 +42,14 @@ const sendRequest = () => {
   const requestHeaders = getHeaders();
   const requestOptions = Object.assign({}, defaultRequestOptions, { headers: requestHeaders})
   const userRequest = new Request(requestURL, requestOptions);
-  fetch(userRequest).then((response)=> handleResponse(response));
+  const startTime = Date.now();
+  fetch(userRequest)
+  .then((response)=> {
+    const endTime = Date.now();
+    printResponseTime(endTime - startTime);
+    return response;
+  })
+  .then((response)=> handleResponse(response))
 
 }
 
