@@ -67,6 +67,7 @@
 @import "./components/url-input";
 @import "./components/headers";
 @import "./components/response";
+@import "./components/response-details";
 @import "./components/url-search-parameters";
 @import "./components/options-tabs";
 @import "./components/preview";
@@ -86,3 +87,4 @@
 //    which goes before in the triangle, eg. hide helper class
 @import "./utilities/margin";
 @import "./utilities/visually-hidden";
+@import "./utilities/color";

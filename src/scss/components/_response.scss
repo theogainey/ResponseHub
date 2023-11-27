@@ -1,7 +1,10 @@
 .cmp-response {
-  padding-top: 1.5rem;
   margin-top: 1rem;
   border-top: $border-primary;
+
+  &__details {
+    margin-bottom: 1rem;
+  }
 
   &__button-container {
     position: relative;
@@ -51,6 +54,16 @@
       border-color: #e5e7eb;
       box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
     }
+  }
 
+  &[data-view="body"]{
+    .cmp-response__headers {
+      @include visually-hidden;
+    }
+  }
+  &[data-view="headers"]{
+    .cmp-response__body {
+      @include visually-hidden;
+    }
   }
 }

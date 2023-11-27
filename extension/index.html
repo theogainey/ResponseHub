@@ -18,7 +18,7 @@
             </button>
           </div>  
       </div>
-      <div>
+      <div id="request-options">
         <ul class="cmp-options-tabs">
           <li class="cmp-options-tabs__tab cmp-options-tabs__tab--active">
             <label>
@@ -90,32 +90,60 @@
         </div>
   
       </div>
-      <div class="cmp-response atom-one-light">
-        <div class="cmp-response__button-container">
-          <div class="cmp-response__languages util-visually-hidden">
-            <label class="cmp-response__languages-button" id="json-button">
-              <input class="util-visually-hidden" type="radio" name="formatting-language" />
-              JSON
-            </label>
-            <label class="cmp-response__languages-button" id="xml-button">
-              <input class="util-visually-hidden" type="radio" name="formatting-language" />
-              XML
-            </label>
+      <div class="cmp-response atom-one-light" data-view="body">
+        <div class="cmp-response__details cmp-response-details util-visually-hidden">
+          <ul class="cmp-options-tabs">
+            <li class="cmp-options-tabs__tab cmp-options-tabs__tab--active">
+              <label>
+                <input class="util-visually-hidden" checked type="radio" value="body" name="view-tab" />
+                Body
+              </label>
+            </li>  
+            <li class="cmp-options-tabs__tab">
+              <label>
+                <input class="util-visually-hidden" type="radio" value="headers" name="view-tab" />
+                Headers
+              </label>
+            </li>      
+          </ul>
+          <div>
+            <span class="cmp-response__details__status-code">status</span>
+            <span>time</span>
+            <span>response size</span>
           </div>
-          <button class="cmp-copy-button util-visually-hidden">
-            <span class="util-visually-hidden">copy to clipboard</span>
-            <svg class="cmp-copy-button__icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M20 9H11C9.89543 9 9 9.89543 9 11V20C9 21.1046 9.89543 22 11 22H20C21.1046 22 22 21.1046 22 20V11C22 9.89543 21.1046 9 20 9Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M5 15H4C3.46957 15 2.96086 14.7893 2.58579 14.4142C2.21071 14.0391 2 13.5304 2 13V4C2 3.46957 2.21071 2.96086 2.58579 2.58579C2.96086 2.21071 3.46957 2 4 2H13C13.5304 2 14.0391 2.21071 14.4142 2.58579C14.7893 2.96086 15 3.46957 15 4V5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <svg class="cmp-copy-button__icon util-visually-hidden" width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M20 6L9 17L4 12" stroke="#238636" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>  
         </div>
-        <pre>
-          <code class="cmp-response__text"></code> 
-        </pre>       
+        <div class="cmp-response__body">
+          <div class="cmp-response__button-container">
+            <div class="cmp-response__languages util-visually-hidden">
+              <label class="cmp-response__languages-button" id="json-button">
+                <input class="util-visually-hidden" type="radio" name="formatting-language" />
+                JSON
+              </label>
+              <label class="cmp-response__languages-button" id="xml-button">
+                <input class="util-visually-hidden" type="radio" name="formatting-language" />
+                XML
+              </label>
+            </div>
+            <button class="cmp-copy-button util-visually-hidden">
+              <span class="util-visually-hidden">copy to clipboard</span>
+              <svg class="cmp-copy-button__icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M20 9H11C9.89543 9 9 9.89543 9 11V20C9 21.1046 9.89543 22 11 22H20C21.1046 22 22 21.1046 22 20V11C22 9.89543 21.1046 9 20 9Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M5 15H4C3.46957 15 2.96086 14.7893 2.58579 14.4142C2.21071 14.0391 2 13.5304 2 13V4C2 3.46957 2.21071 2.96086 2.58579 2.58579C2.96086 2.21071 3.46957 2 4 2H13C13.5304 2 14.0391 2.21071 14.4142 2.58579C14.7893 2.96086 15 3.46957 15 4V5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <svg class="cmp-copy-button__icon util-visually-hidden" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M20 6L9 17L4 12" stroke="#238636" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>  
+          </div>
+          <pre>
+            <code class="cmp-response__text"></code> 
+          </pre>
+        </div>
+        <div class="cmp-response__headers">
+          <pre>
+            <code></code> 
+          </pre>
+        </div>
       </div>
     </div>
   </body>

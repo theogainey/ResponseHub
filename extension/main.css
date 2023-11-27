@@ -188,9 +188,11 @@ ul {
 }
 
 .cmp-response {
-  padding-top: 1.5rem;
   margin-top: 1rem;
   border-top: 1px solid #e5e7eb;
+}
+.cmp-response__details {
+  margin-bottom: 1rem;
 }
 .cmp-response__button-container {
   position: relative;
@@ -237,6 +239,33 @@ ul {
   background-color: #fefefe;
   border-color: #e5e7eb;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+}
+.cmp-response[data-view=body] .cmp-response__headers {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.cmp-response[data-view=headers] .cmp-response__body {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.cmp-response-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+.cmp-response-details ul {
+  border-bottom: unset;
 }
 
 .cmp-url-search-params {
@@ -502,4 +531,12 @@ ul {
   width: 1px;
   height: 1px;
   overflow: hidden;
+}
+
+.util-color-green {
+  color: #238636;
+}
+
+.util-color-red {
+  color: #d93020;
 }

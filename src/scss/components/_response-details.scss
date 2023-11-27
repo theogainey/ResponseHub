@@ -1,0 +1,11 @@
+.cmp-response-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.5rem;
+  border-bottom: $border-primary;
+
+  ul {
+    border-bottom: unset;
+  }
+}

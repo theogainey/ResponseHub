@@ -1,12 +1,16 @@
-const toggleHidden = (e: Element) => {
-  e.classList.toggle('util-visually-hidden');
+const toggleHidden = (...elements: Array<Element | null>) => {
+  elements.forEach((e) => {
+    e?.classList.toggle('util-visually-hidden');
+  });
 }
 
-const toggleHiddenWithTimeout = (e: Element) => {
-  e.classList.toggle('util-visually-hidden');
-  setTimeout(()=>{
-    e.classList.toggle('util-visually-hidden');
-  }, 2000)
+const toggleHiddenWithTimeout = (...elements: Array<Element | null>) => {
+  elements.forEach((e) => {
+    e?.classList.toggle('util-visually-hidden');
+    setTimeout(()=>{
+      e?.classList.toggle('util-visually-hidden');
+    }, 2000)
+  });
 }
 
 export { toggleHidden, toggleHiddenWithTimeout };

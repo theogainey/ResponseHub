@@ -31,7 +31,6 @@ const sendRequest = () => {
     console.log('invalid url');
     return;
   }
-  console.log('request');
   const sendButton = document.querySelector('#send-button div') as Element;
   toggleHidden(sendButton);
   const requestURL = `${proxyURL}/?url=${encodeURIComponent(value)}?${getURLSearchParams()}`;
