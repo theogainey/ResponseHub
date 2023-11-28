@@ -96,9 +96,9 @@ const getStatusCodeClass =  (status: number) => {
 
 
 const printStatusCode = (status: number) => {
-  const statusCodeElement = document.querySelector('.cmp-response__details__status-code') as Element;
+  const statusCodeElement = document.querySelector('.cmp-response-details__status-code') as Element;
   statusCodeElement.innerHTML = `status ${status}`
-  statusCodeElement.setAttribute('class', `cmp-response__details__status-code ${getStatusCodeClass(status)}`);
+  statusCodeElement.setAttribute('class', `cmp-response-details__status-code ${getStatusCodeClass(status)}`);
 };
 
 const printResponse = (data:string) => {

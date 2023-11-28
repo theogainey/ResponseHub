@@ -1,13 +1,12 @@
 .cmp-url-input {
   display: flex;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
   
   &--method {
     height: 2.5rem;
     font-size: 1rem;
     padding: 0.5rem 1rem; 
     border: $border-primary;
-    border-radius: $border-radius-primary 0 0 $border-radius-primary;
     border-right: none;
   }
  

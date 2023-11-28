@@ -21,7 +21,7 @@ const getURL = () => {
   return value;
 }
 const printResponseTime = (time: number) => {
-  const timeElement = document.querySelector('.cmp-response__details__time') as Element;
+  const timeElement = document.querySelector('.cmp-response-details__time') as Element;
   timeElement.innerHTML = `${time}ms`
 };
 

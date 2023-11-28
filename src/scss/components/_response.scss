@@ -32,27 +32,23 @@
   }
 
   &__languages {
-    background-color: #f4f4f5;
-    padding: 0.25rem;
-    border-radius: $border-radius-primary;
     display: flex;
-    gap: 0.35rem;
+    border: 1px solid black;
   }
   &__languages-button {
     display: inline-block;
     height: 42px;
     font-size: 1rem;
     padding: 9px;
-    border: $border-primary;
-    border-radius: $border-radius-primary;  
-    border-color: transparent;
+    transition: all 250ms ease-in-out;
+
     &:hover {
-      border-color: #e5e7eb;
+      background-color: black;
+      color: white;
     }
     &--active {
-      background-color: #fefefe;
-      border-color: #e5e7eb;
-      box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+      background-color: black;
+      color: white;
     }
   }
 

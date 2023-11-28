@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono&display=swap" rel="stylesheet">
     <link href="main.css" rel="stylesheet">
     <script src="index.js"></script>
   </head>
   <body>
     <div class="obj-layout">
-      <div>
-          <div class="cmp-url-input">
-            <!-- TODO BUTTON ACCESSIBILITY -->
-            <button type="button" role="combobox" class="cmp-url-input--method">GET </button>
-            <label for="url-input" class="util-visually-hidden">url input</label>
-            <input id="url-input" class="cmp-url-input--url" type="text" id="url-input" name="url" required placeholder="url"/>
-            <button class="cmp-send-button" id="send-button">
-              Send
-              <div class="cmp-send-button__loader util-visually-hidden"></div>
-            </button>
-          </div>  
-      </div>
+      <div class="cmp-url-input">
+        <!-- TODO BUTTON ACCESSIBILITY -->
+        <button type="button" role="combobox" class="cmp-url-input--method">GET </button>
+        <label for="url-input" class="util-visually-hidden">url input</label>
+        <input id="url-input" class="cmp-url-input--url" type="text" id="url-input" name="url" required placeholder="url"/>
+        <button class="cmp-send-button" id="send-button">
+          Send
+          <div class="cmp-send-button__loader util-visually-hidden"></div>
+        </button>
+      </div>  
       <div id="request-options">
+        <!-- TODO: Keyboard accessibility on the tabs -->
         <ul class="cmp-options-tabs">
           <li class="cmp-options-tabs__tab cmp-options-tabs__tab--active">
             <label>
@@ -28,7 +30,7 @@
           </li>
           <li class="cmp-options-tabs__tab">
             <label>
-              <input class="util-visually-hidden" type="radio" value="headers" name="view-tab" />
+              <input class="util-visually-hidden"  type="radio" value="headers" name="view-tab" />
               Headers
             </label>
           </li>
@@ -107,8 +109,8 @@
             </li>      
           </ul>
           <div>
-            <span class="cmp-response__details__status-code">status</span>
-            <span class="cmp-response__details__time"></span>
+            <span class="cmp-response-details__status-code">status</span>
+            <span class="cmp-response-details__time"></span>
           </div>
         </div>
         <div class="cmp-response__body">

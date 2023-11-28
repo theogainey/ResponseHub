@@ -22,6 +22,18 @@ ul {
   padding: 0;
 }
 
+body {
+  font-family: "Noto Sans Mono", monospace;
+}
+
+input {
+  font-family: "Noto Sans Mono", monospace;
+}
+
+code {
+  font-family: "Noto Sans Mono", monospace;
+}
+
 .obj-layout {
   margin: 0 auto;
   margin-top: 3rem;
@@ -108,10 +120,9 @@ ul {
 }
 
 .cmp-send-button {
-  background-color: #0F172A;
+  background-color: black;
   border: 1px solid #e5e7eb;
   border-left: none;
-  border-radius: 0 6px 6px 0;
   height: 2.5rem;
   font-size: 1rem;
   color: #fff;
@@ -145,14 +156,13 @@ ul {
 }
 .cmp-url-input {
   display: flex;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 .cmp-url-input--method {
   height: 2.5rem;
   font-size: 1rem;
   padding: 0.5rem 1rem;
   border: 1px solid #e5e7eb;
-  border-radius: 6px 0 0 6px;
   border-right: none;
 }
 .cmp-url-input--url {
@@ -217,28 +227,23 @@ ul {
   display: inline-block;
 }
 .cmp-response__languages {
-  background-color: #f4f4f5;
-  padding: 0.25rem;
-  border-radius: 6px;
   display: flex;
-  gap: 0.35rem;
+  border: 1px solid black;
 }
 .cmp-response__languages-button {
   display: inline-block;
   height: 42px;
   font-size: 1rem;
   padding: 9px;
-  border: 1px solid #e5e7eb;
-  border-radius: 6px;
-  border-color: transparent;
+  transition: all 250ms ease-in-out;
 }
 .cmp-response__languages-button:hover {
-  border-color: #e5e7eb;
+  background-color: black;
+  color: white;
 }
 .cmp-response__languages-button--active {
-  background-color: #fefefe;
-  border-color: #e5e7eb;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  background-color: black;
+  color: white;
 }
 .cmp-response[data-view=body] .cmp-response__headers {
   position: absolute;
@@ -261,11 +266,16 @@ ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 0.5rem;
-  border-bottom: 1px solid #e5e7eb;
+  padding: 1rem 0;
 }
 .cmp-response-details ul {
   border-bottom: unset;
+}
+.cmp-response-details__status-code {
+  font-size: 1rem;
+}
+.cmp-response-details__time {
+  font-size: 1rem;
 }
 
 .cmp-url-search-params {
@@ -291,23 +301,28 @@ ul {
 
 .cmp-options-tabs {
   display: flex;
-  border-bottom: 1px solid #e5e7eb;
+  gap: 0.5rem;
 }
 .cmp-options-tabs__tab {
   display: flex;
   font-size: 1rem;
+  border: 1px solid black;
 }
 .cmp-options-tabs__tab:focus-within label {
-  border-bottom: 2px solid #000000;
+  background-color: black;
+  color: white;
 }
 .cmp-options-tabs__tab label {
   padding: 0.5rem 1rem;
+  transition: all 250ms ease-in-out;
 }
 .cmp-options-tabs__tab label:focus, .cmp-options-tabs__tab label:hover, .cmp-options-tabs__tab label:active {
-  border-bottom: 2px solid #000000;
+  background-color: black;
+  color: white;
 }
 .cmp-options-tabs__tab--active label {
-  border-bottom: 2px solid #000000;
+  background-color: black;
+  color: white;
 }
 
 .cmp-preview {

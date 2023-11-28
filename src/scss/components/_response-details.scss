@@ -2,10 +2,17 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 0.5rem;
-  border-bottom: $border-primary;
+  padding: 1rem 0;
 
   ul {
     border-bottom: unset;
+  }
+
+  &__status-code {
+    font-size: 1rem;
+  }
+
+  &__time {
+    font-size: 1rem;
   }
 }

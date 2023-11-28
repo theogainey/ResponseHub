@@ -1,29 +1,35 @@
 .cmp-options-tabs {
   display: flex;
-  border-bottom: $border-primary;
+  gap: 0.5rem;
 
   &__tab {
     display: flex;
     font-size: 1rem;
+    border: 1px solid black;
+
     &:focus-within {
       label {
-        border-bottom: 2px solid #000000;
+        background-color: black;
+        color: white;
       }
     }
+
     label {
       padding: 0.5rem 1rem;
+      transition: all 250ms ease-in-out;
 
       &:focus, &:hover, &:active {
-        border-bottom: 2px solid #000000;
+        background-color: black;
+        color: white;
       }
     }
 
     
     &--active {
       label {
-        border-bottom: 2px solid #000000;
+        background-color: black;
+        color: white;
       }
     }
   }
-
 }
