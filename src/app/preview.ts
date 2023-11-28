@@ -65,8 +65,7 @@ const copyToPreviewClipBoard =  () => {
   setTimeout(()=>{
     copyButton?.classList.toggle('cmp-copy-button--green');
   }, 2000)
-
-  copyIcons.forEach(toggleHiddenWithTimeout);
+  copyIcons.forEach((icon) => toggleHiddenWithTimeout(icon));
   navigator.clipboard.writeText(formatHTTPMessage(getHTTPMessageData()))
 };
 
