@@ -59,9 +59,9 @@ const setResponseLanguage = (language:string) => {
 const copyToResponseToClipBoard = (data: string) => () => {
   const copyIcons = document.querySelectorAll('.cmp-response .cmp-copy-button .cmp-copy-button__icon');
   const copyButton = document.querySelector('.cmp-response .cmp-copy-button');
-  copyButton?.classList.toggle('cmp-copy-button--green');
+  copyButton?.classList.toggle('cmp-copy-button--checked');
   setTimeout(()=>{
-    copyButton?.classList.toggle('cmp-copy-button--green');
+    copyButton?.classList.toggle('cmp-copy-button--checked');
   }, 2000)
   copyIcons.forEach((e) => toggleHiddenWithTimeout(e));
   navigator.clipboard.writeText(data)

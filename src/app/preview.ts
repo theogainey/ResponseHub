@@ -61,9 +61,9 @@ const printPreview = () => {
 const copyToPreviewClipBoard =  () => {
   const copyIcons = document.querySelectorAll('.cmp-preview .cmp-copy-button  .cmp-copy-button__icon');
   const copyButton = document.querySelector('.cmp-preview .cmp-copy-button');
-  copyButton?.classList.toggle('cmp-copy-button--green');
+  copyButton?.classList.toggle('cmp-copy-button--checked');
   setTimeout(()=>{
-    copyButton?.classList.toggle('cmp-copy-button--green');
+    copyButton?.classList.toggle('cmp-copy-button--checked');
   }, 2000)
   copyIcons.forEach((icon) => toggleHiddenWithTimeout(icon));
   navigator.clipboard.writeText(formatHTTPMessage(getHTTPMessageData()))
