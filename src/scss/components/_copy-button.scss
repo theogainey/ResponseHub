@@ -5,6 +5,7 @@
   right: 0;
   border: 1px solid black;
   padding: 0.5rem;
+  transition: all 250ms ease-in-out;
 
   &:hover {
     background-color: black;
@@ -15,5 +16,9 @@
 
   &--checked {
     background-color: black;
+  }
+
+  svg {
+    transition: all 250ms ease-in-out;
   }
 }

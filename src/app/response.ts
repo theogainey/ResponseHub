@@ -3,6 +3,8 @@ import hljs from 'highlight.js/lib/core';
 import xml from 'highlight.js/lib/languages/xml';
 import javascript from 'highlight.js/lib/languages/javascript';
 import json from 'highlight.js/lib/languages/json';
+import prettier from "prettier/standalone";
+import htmlParser from "prettier/plugins/html";
 
 hljs.registerLanguage('xml', xml);
 hljs.registerLanguage('javascript', javascript);
@@ -15,12 +17,14 @@ const RESPONSE_STATE = {
 };
 
 const reHighlightCode = (language: string) => {
-  const responseTextElement = document.querySelector('.cmp-response__text') as Element;
+  formatCode(RESPONSE_STATE.body).then((code) => {
+    const responseTextElement = document.querySelector('.cmp-response__text') as Element;
     responseTextElement.innerHTML =  hljs.highlight(
-      RESPONSE_STATE.body,
+      code,
       { language: language }
     ).value;
   setResponseLanguage(language);
+  });
 }
 
 const isJSONResponse = (response: Response) => {
@@ -101,12 +105,28 @@ const printStatusCode = (status: number) => {
   statusCodeElement.setAttribute('class', `cmp-response-details__status-code ${getStatusCodeClass(status)}`);
 };
 
-const printResponse = (data:string) => {
+const formatHTML = (html: string) => prettier.format(html, { parser: "html", plugins: [htmlParser],});
+
+const formatJSON = (json: string) => {
+  const parsedJSON = JSON.parse(json);
+  return JSON.stringify(parsedJSON, null, 2);
+}
+
+const formatCode = async (code: string) => {
+  const language = hljs.highlightAuto(code).language;
+  if(language !== 'xml') {
+    return formatJSON(code);
+  }
+  return formatHTML(code);
+}
+
+const printResponse = async (data:string) => {
   const responseTextElement = document.querySelector('.cmp-response__text') as Element;
-  const highlightedCode = hljs.highlightAuto(data);
+  const formattedCode = await formatCode(data);
+  const highlightedCode = hljs.highlightAuto(formattedCode);
   responseTextElement.innerHTML = highlightedCode.value;
   setResponseLanguage(highlightedCode.language ?? 'xml');
-  showResponseFormattingButtons(data);
+  showResponseFormattingButtons(data);  
 }
 
 const printHeaders = (response: Response) => {

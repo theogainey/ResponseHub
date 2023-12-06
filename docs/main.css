@@ -372,6 +372,7 @@ a {
   right: 0;
   border: 1px solid black;
   padding: 0.5rem;
+  transition: all 250ms ease-in-out;
 }
 .cmp-copy-button:hover {
   background-color: black;
@@ -381,6 +382,9 @@ a {
 }
 .cmp-copy-button--checked {
   background-color: black;
+}
+.cmp-copy-button svg {
+  transition: all 250ms ease-in-out;
 }
 
 .cmp-site-preview {
