@@ -215,12 +215,15 @@ a {
   margin-top: 1rem;
   border-top: 1px solid #e5e7eb;
 }
-.cmp-response__details {
-  margin-bottom: 1rem;
+.cmp-response__body {
+  position: relative;
 }
 .cmp-response__button-container {
   position: relative;
   height: 42px;
+}
+.cmp-response__copy-button {
+  top: 27px !important;
 }
 .cmp-response code {
   display: block;
@@ -231,8 +234,8 @@ a {
   max-width: 100%;
   min-width: 100px;
   padding: 1rem;
+  padding-left: 0;
   font-size: 1rem;
-  border-radius: 0.5rem;
   color: var(--response-color);
 }
 .cmp-response__languages {
@@ -280,7 +283,7 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 0;
+  margin-top: 1.5rem;
 }
 .cmp-response-details ul {
   border-bottom: unset;
@@ -356,9 +359,8 @@ a {
   overflow-x: scroll;
   max-width: 100%;
   min-width: 100px;
-  padding: 0 1rem;
+  padding-right: 1rem;
   font-size: 1rem;
-  border-radius: 0.5rem;
   color: var(--response-color);
 }
 .cmp-preview .hljs-attribute {
@@ -399,6 +401,14 @@ a {
   margin-bottom: 1rem;
   font-size: 1.5rem;
   text-transform: capitalize;
+}
+
+.hljs-line-number {
+  display: inline-block;
+  text-align: right;
+  width: 3ch;
+  margin-right: 1ch;
+  background-color: rgba(139, 148, 158, 0.4784313725);
 }
 
 .atom-one-dark-reasonable {
