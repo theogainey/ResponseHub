@@ -1,16 +1,9 @@
 import { toggleHiddenWithTimeout, toggleHidden } from './utils';
-import hljs from 'highlight.js/lib/core';
-import xml from 'highlight.js/lib/languages/xml';
-import javascript from 'highlight.js/lib/languages/javascript';
-import json from 'highlight.js/lib/languages/json';
 import prettier from "prettier/standalone";
 import htmlParser from "prettier/plugins/html";
+import { getLanguage, highLightWithLineNumbers, highlight } from './hljs';
 
-hljs.registerLanguage('xml', xml);
-hljs.registerLanguage('javascript', javascript);
-hljs.registerLanguage('json', json);
 
-// TODO BETTER HANDLE APP STATE POSSIBLY MAKE THE RESPONSE AREA A WEB COMPONENT
 const RESPONSE_STATE = {
   body: '',
   language: '',
@@ -19,11 +12,8 @@ const RESPONSE_STATE = {
 const reHighlightCode = (language: string) => {
   formatCode(RESPONSE_STATE.body).then((code) => {
     const responseTextElement = document.querySelector('.cmp-response__text') as Element;
-    responseTextElement.innerHTML =  hljs.highlight(
-      code,
-      { language: language }
-    ).value;
-  setResponseLanguage(language);
+    responseTextElement.innerHTML =  highLightWithLineNumbers(code, language );
+  // setResponseLanguage(language);
   });
 }
 
@@ -73,11 +63,11 @@ const copyToResponseToClipBoard = (data: string) => () => {
 
 const showResponseFormattingButtons = (data:string) => {
   const copyButton = document.querySelector('.cmp-response .cmp-copy-button');
-  const responseLanguageDiv = document.querySelector('.cmp-response__languages');
+  // const responseLanguageDiv = document.querySelector('.cmp-response__languages');
   const responseDetailsDiv = document.querySelector('.cmp-response-details');
-  [copyButton, responseLanguageDiv, responseDetailsDiv].forEach((e) => {
+  [copyButton, responseDetailsDiv].forEach((e) => {
     e?.classList.remove('util-visually-hidden');
-  })
+  });
   copyButton?.addEventListener('click', copyToResponseToClipBoard(data));
 }
 
@@ -113,7 +103,7 @@ const formatJSON = (json: string) => {
 }
 
 const formatCode = async (code: string) => {
-  const language = hljs.highlightAuto(code).language;
+  const language = getLanguage(code);
   if(language !== 'xml') {
     return formatJSON(code);
   }
@@ -123,9 +113,10 @@ const formatCode = async (code: string) => {
 const printResponse = async (data:string) => {
   const responseTextElement = document.querySelector('.cmp-response__text') as Element;
   const formattedCode = await formatCode(data);
-  const highlightedCode = hljs.highlightAuto(formattedCode);
-  responseTextElement.innerHTML = highlightedCode.value;
-  setResponseLanguage(highlightedCode.language ?? 'xml');
+  const language = getLanguage(formattedCode)
+  const highlightedCode = highLightWithLineNumbers(formattedCode, language);
+  responseTextElement.innerHTML = highlightedCode;
+  // setResponseLanguage(highlightedCode.language ?? 'xml');
   showResponseFormattingButtons(data);  
 }
 
@@ -135,8 +126,8 @@ const printHeaders = (response: Response) => {
   for (const pair of response.headers.entries()) {
     headers += `${pair[0]}: ${pair[1]}\n`
   }
-  const highlightedCode = hljs.highlightAuto(headers);
-  responseHeadersElement.innerHTML = highlightedCode.value;
+  const highlightedCode = highlight(headers);
+  responseHeadersElement.innerHTML = highlightedCode;
 }
 
 const handleResponse = async (response: Response) => {
@@ -155,4 +146,4 @@ const handleResponse = async (response: Response) => {
   }  
 }
 
-export { handleResponse, setResponseLanguage, reHighlightCode };
+export { handleResponse, reHighlightCode };

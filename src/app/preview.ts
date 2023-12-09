@@ -2,9 +2,7 @@ import { getHeaders } from './headers';
 import { getURLSearchParams } from './urlSearchParams';
 import { getURL } from './request';
 import { toggleHiddenWithTimeout } from './utils';
-import hljs from 'highlight.js/lib/core';
-import http from 'highlight.js/lib/languages/http';
-hljs.registerLanguage('http', http);
+import { highlight } from './hljs';
 
 const getPathName = (urlString: string) => {
   try {
@@ -52,10 +50,7 @@ const printPreview = () => {
   const previewCodeElement = document.querySelector('.cmp-preview pre code') as Element;
   // TODO ADD NOTE THAT THIS DOESN'T INCLUDE Headers Automatically included by the browser
   const formattedMessage = formatHTTPMessage(getHTTPMessageData());
-  previewCodeElement.innerHTML =  hljs.highlight(
-    formattedMessage,
-    { language: 'http' }
-  ).value;
+  previewCodeElement.innerHTML = highlight(formattedMessage, 'http');
 }
 
 const copyToPreviewClipBoard =  () => {
@@ -72,10 +67,7 @@ const copyToPreviewClipBoard =  () => {
 const addPrintPreviewListeners = () => {
   const previewCodeElement = document.querySelector('.cmp-preview pre code') as Element;
   const defaultMessage = "GET \ HTTP/1.1\nHost: ";
-  previewCodeElement.innerHTML =  hljs.highlight(
-    defaultMessage,
-    { language: 'http' }
-  ).value;
+  previewCodeElement.innerHTML =  highlight(defaultMessage, 'http');
   const urlInput = document.querySelector('#url-input') as HTMLInputElement;
   urlInput.addEventListener('input', printPreview); 
   const copyButton = document.querySelector('.cmp-preview .cmp-copy-button');
