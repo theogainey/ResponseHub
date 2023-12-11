@@ -2,7 +2,9 @@
   "name": "ResponseHub",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "engines": {
+    "node": "20.x"
+  },  
   "scripts": {
     "build": "npm run build:typescript && npm run build:scss && bash copy.sh",
     "build:scss": "sass src/scss/main.scss extension/main.css --no-source-map && cp extension/main.css docs/main.css",
