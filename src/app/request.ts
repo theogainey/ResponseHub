@@ -28,7 +28,6 @@ const printResponseTime = (time: number) => {
 
 const sendRequest = () => {
   const value  = getURL();
-  const proxyURL = 'http://localhost:3000';
   
   // TO DO BUILD REQUEST AND VALIDATE WHILE USER IS TYPING IT IN 
   if(!isValidURL(value)){
@@ -38,7 +37,7 @@ const sendRequest = () => {
   }
   const sendButton = document.querySelector('#send-button div') as Element;
   toggleHidden(sendButton);
-  const requestURL = `${proxyURL}/?url=${encodeURIComponent(value)}?${getURLSearchParams()}`;
+  const requestURL = `${value}?${getURLSearchParams()}`;
   const requestHeaders = getHeaders();
   const requestOptions = Object.assign({}, defaultRequestOptions, { headers: requestHeaders})
   const userRequest = new Request(requestURL, requestOptions);
