@@ -44,7 +44,7 @@ a {
   margin: 0 auto;
   margin-top: 3rem;
   width: calc(100% - 4rem);
-  max-width: 75ch;
+  max-width: 100ch;
 }
 
 .obj-site-layout {
@@ -374,7 +374,7 @@ a {
   right: 0;
   border: 1px solid black;
   padding: 0.5rem;
-  transition: all 250ms ease-in-out;
+  transition: background-color 250ms, color 250ms ease-in-out;
 }
 .cmp-copy-button:hover {
   background-color: black;
@@ -386,7 +386,7 @@ a {
   background-color: black;
 }
 .cmp-copy-button svg {
-  transition: all 250ms ease-in-out;
+  transition: background-color 250ms, color 250ms ease-in-out;
 }
 
 .cmp-site-preview {
