@@ -262,6 +262,36 @@ a {
   background-color: black;
   color: white;
 }
+.cmp-response__error {
+  margin-top: 1.5rem;
+}
+.cmp-response__error-message {
+  font-size: 1.5rem;
+}
+.cmp-response[data-view=error] .cmp-response__headers {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.cmp-response[data-view=error] .cmp-response__body {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.cmp-response[data-view=error] .cmp-response__details {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
 .cmp-response[data-view=body] .cmp-response__headers {
   position: absolute;
   left: -10000px;
@@ -270,7 +300,23 @@ a {
   height: 1px;
   overflow: hidden;
 }
+.cmp-response[data-view=body] .cmp-response__error {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
 .cmp-response[data-view=headers] .cmp-response__body {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.cmp-response[data-view=headers] .cmp-response__error {
   position: absolute;
   left: -10000px;
   top: auto;

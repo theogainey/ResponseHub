@@ -56,13 +56,38 @@
     }
   }
 
+  &__error {
+    margin-top: 1.5rem;
+  }
+
+  &__error-message {
+    font-size: 1.5rem;
+  }
+
+  &[data-view="error"]{
+    .cmp-response__headers {
+      @include visually-hidden;
+    }
+    .cmp-response__body {
+      @include visually-hidden;
+    }
+    .cmp-response__details {
+      @include visually-hidden;
+    }
+  }
   &[data-view="body"]{
     .cmp-response__headers {
+      @include visually-hidden;
+    }
+    .cmp-response__error {
       @include visually-hidden;
     }
   }
   &[data-view="headers"]{
     .cmp-response__body {
+      @include visually-hidden;
+    }
+    .cmp-response__error {
       @include visually-hidden;
     }
   }

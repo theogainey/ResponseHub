@@ -130,9 +130,15 @@ const printHeaders = (response: Response) => {
   responseHeadersElement.innerHTML = highlightedCode;
 }
 
+const setBodyView = () => {
+  const responseLayoutDiv = document.querySelector('.cmp-response') as Element;
+  responseLayoutDiv?.setAttribute('data-view', 'body');
+}
+
 const handleResponse = async (response: Response) => {
   const sendButton = document.querySelector('#send-button div') as Element;
   toggleHidden(sendButton);
+  setBodyView();
   printStatusCode(response.status);
   printHeaders(response);
   if (isJSONResponse(response)) {

@@ -1,3 +1,4 @@
+import { handleRequestError } from "./errors";
 import { getHeaders } from "./headers";
 import { handleResponse } from "./response";
 import { getURLSearchParams } from "./urlSearchParams";
@@ -28,7 +29,6 @@ const printResponseTime = (time: number) => {
 
 const sendRequest = () => {
   const value  = getURL();
-  
   // TO DO BUILD REQUEST AND VALIDATE WHILE USER IS TYPING IT IN 
   if(!isValidURL(value)){
     // TODO: Visual Error State
@@ -49,7 +49,9 @@ const sendRequest = () => {
     return response;
   })
   .then((response)=> handleResponse(response))
-
+  .catch((_err)=>{
+    handleRequestError();
+  })
 }
 
 export { sendRequest, getURL };
