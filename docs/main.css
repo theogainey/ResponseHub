@@ -54,6 +54,12 @@ a {
   align-items: center;
   min-height: 100vh;
 }
+.obj-site-layout__icons {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
 
 .obj-grid {
   display: grid;

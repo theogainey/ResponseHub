@@ -4,4 +4,11 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+
+  &__icons {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
 }

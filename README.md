@@ -1,12 +1,14 @@
-# ResponseHub (Coming soon!)
+# ResponseHub
 
 Send HTTP requests and inspect the responses without leaving the browser.   
+
+[![](./docs/chromewebstore-small.png)](https://chromewebstore.google.com/detail/responsehub/niidoedhdeimlngomcapbbklgdaoddkl)
 
 ## Why ResponseHub
 
 There are many powerful tools for API testing, such as Postman. However, nearly all these tools either have fewer features in their browser version or require you to leave the browser to use them. If you are developing for the browser, wouldn't it be more convenient to send HTTP requests and inspect the responses without leaving the browser? ResponseHub aims to do just that by bringing a full-featured API testing platform with a modern and user-friendly UI to the browser. 
 
-![](./example.png)
+![](./example-screenshot.png)
 
 ## Getting Started
 
