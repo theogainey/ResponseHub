@@ -32,4 +32,10 @@
       }
     }
   }
+
+  &[data-method="GET"] {
+    #body-tab {
+      display: none;
+    }
+  }
 }

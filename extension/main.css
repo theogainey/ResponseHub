@@ -393,6 +393,9 @@ a {
   background-color: black;
   color: white;
 }
+.cmp-options-tabs[data-method=GET] #body-tab {
+  display: none;
+}
 
 .cmp-preview {
   position: relative;

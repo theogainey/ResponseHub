@@ -22,7 +22,7 @@
       </div>  
       <div id="request-options">
         <!-- TODO: Keyboard accessibility on the tabs -->
-        <ul class="cmp-options-tabs">
+        <ul class="cmp-options-tabs" data-method="GET">
           <li class="cmp-options-tabs__tab cmp-options-tabs__tab--active">
             <label>
               <input class="util-visually-hidden" checked type="radio" value="preview" name="view-tab" />
@@ -39,6 +39,12 @@
             <label>
               <input class="util-visually-hidden" type="radio" value="url-search-params" name="view-tab" />
               URL Search Params
+            </label>
+          </li>
+          <li class="cmp-options-tabs__tab" id="body-tab">
+            <label>
+              <input class="util-visually-hidden" type="radio" value="body" name="view-tab" />
+              Body
             </label>
           </li>
         </ul>
