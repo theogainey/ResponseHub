@@ -5,6 +5,7 @@ import { addPrintPreviewListeners } from './preview';
 import { addHeaderListeners } from "./headers";
 import { addURLSearchParamsListeners } from "./urlSearchParams";
 import { addURLListeners } from "./url";
+import { addFormDataListeners } from "./formData";
 
 document.addEventListener("DOMContentLoaded", () => {
   const sendButton = document.getElementById('send-button');
@@ -18,4 +19,5 @@ document.addEventListener("DOMContentLoaded", () => {
   addHeaderListeners();
   addURLSearchParamsListeners();
   addURLListeners();
+  addFormDataListeners();
 });
