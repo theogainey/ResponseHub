@@ -4,6 +4,7 @@ import { addTabListeners } from "./tabs";
 import { addPrintPreviewListeners } from './preview';
 import { addHeaderListeners } from "./headers";
 import { addURLSearchParamsListeners } from "./urlSearchParams";
+import { addURLListeners } from "./url";
 
 document.addEventListener("DOMContentLoaded", () => {
   const sendButton = document.getElementById('send-button');
@@ -16,4 +17,5 @@ document.addEventListener("DOMContentLoaded", () => {
   addPrintPreviewListeners();
   addHeaderListeners();
   addURLSearchParamsListeners();
+  addURLListeners();
 });

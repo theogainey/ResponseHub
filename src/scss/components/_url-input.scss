@@ -3,9 +3,13 @@
   margin-bottom: 1.5rem;
   
   &--method {
+    font-family: 'Noto Sans Mono', monospace;
+    appearance: none;
+    text-align: center;
+    width: 8ch;
     height: 2.5rem;
     font-size: 1rem;
-    padding: 0.5rem 1rem; 
+    padding: 0.5rem 0; 
     border: $border-primary;
     border-right: none;
   }

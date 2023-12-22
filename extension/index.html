@@ -12,7 +12,11 @@
     <div class="obj-layout">
       <div class="cmp-url-input">
         <!-- TODO BUTTON ACCESSIBILITY -->
-        <button type="button" role="combobox" class="cmp-url-input--method">GET </button>
+        <label class="util-visually-hidden" for="method-select">HTTP method</label>
+        <select id="method-select" class="cmp-url-input--method">
+          <option value="GET" selected>GET</option>
+          <option value="POST">POST</option>
+        </select>
         <label for="url-input" class="util-visually-hidden">url input</label>
         <input id="url-input" class="cmp-url-input--url" type="text" id="url-input" name="url" required placeholder="url"/>
         <button class="cmp-send-button" id="send-button">
@@ -23,7 +27,7 @@
       <div id="request-options">
         <!-- TODO: Keyboard accessibility on the tabs -->
         <ul class="cmp-options-tabs" data-method="GET">
-          <li class="cmp-options-tabs__tab cmp-options-tabs__tab--active">
+          <li class="cmp-options-tabs__tab cmp-options-tabs__tab--active" id="preview-tab"> 
             <label>
               <input class="util-visually-hidden" checked type="radio" value="preview" name="view-tab" />
               Preview
@@ -97,7 +101,31 @@
             </div>  
           </div>
         </div>
-  
+        <div class="cmp-request-body">
+          <ul class="cmp-request-body__tabs" data-method="GET">
+            <li class="cmp-request-body__tab cmp-options-tabs__tab--active">
+              <label>
+                <input class="util-visually-hidden" checked type="radio" value="form-data" name="body-tab" />
+                form-data
+              </label>
+            </li>
+            <li class="cmp-request-body__tab">
+              <label>
+                <input class="util-visually-hidden" checked type="radio" value="x-www-form-urlencoded" name="body-tab" />
+                x-www-form-urlencoded
+              </label>
+            </li>
+            <li class="cmp-request-body__tab">
+              <label>
+                <input class="util-visually-hidden" checked type="radio" value="raw" name="body-tab" />
+                raw
+              </label>
+            </li>
+          </ul> 
+          <div class="obj-grid cmp-request-body__input-area" data-view="form-data">
+            
+          </div>  
+        </div>
       </div>
       <div class="cmp-response response-hub" data-view="body">
         <div class="cmp-response__error">

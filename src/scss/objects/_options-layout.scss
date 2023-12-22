@@ -7,6 +7,9 @@
     .cmp-url-search-params {
       @include visually-hidden;
     }
+    .cmp-request-body {
+      @include visually-hidden;
+    }
   }
 
   &[data-view="headers"]{
@@ -16,6 +19,9 @@
     .cmp-url-search-params {
       @include visually-hidden;
     }
+    .cmp-request-body {
+      @include visually-hidden;
+    }
   }
 
   &[data-view="url-search-params"]{
@@ -23,6 +29,21 @@
       @include visually-hidden;
     }
     .cmp-preview {
+      @include visually-hidden;
+    }
+    .cmp-request-body {
+      @include visually-hidden;
+    }
+  }
+
+  &[data-view="body"]{
+    .cmp-headers {
+      @include visually-hidden;
+    }
+    .cmp-preview {
+      @include visually-hidden;
+    }
+    .cmp-url-search-params {
       @include visually-hidden;
     }
   }

@@ -1,7 +1,16 @@
-.cmp-options-tabs {
-  display: flex;
-  gap: 0.5rem;
+.cmp-request-body {
+  margin: 1rem 0;
+  height: $options-area-height;
+  overflow: scroll;
 
+  &__tabs {
+    display: flex;
+    gap: 0.5rem;
+
+    &[data-method="GET"]{
+      display: none;
+    }
+  }
   &__tab {
     display: flex;
     font-size: 1rem;
@@ -15,7 +24,8 @@
     }
 
     label {
-      padding: 0.5rem 1rem;
+      padding: 0.25rem 0.5rem;
+      font-size: 0.875rem;
       transition: all 250ms ease-in-out;
 
       &:focus, &:hover, &:active {
@@ -33,9 +43,5 @@
     }
   }
 
-  &[data-method="GET"] {
-    #body-tab {
-      @include visually-hidden;
-    }
-  }
+  
 }

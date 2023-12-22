@@ -106,6 +106,14 @@ a {
   height: 1px;
   overflow: hidden;
 }
+.obj-options-layout[data-view=preview] .cmp-request-body {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
 .obj-options-layout[data-view=headers] .cmp-preview {
   position: absolute;
   left: -10000px;
@@ -122,6 +130,14 @@ a {
   height: 1px;
   overflow: hidden;
 }
+.obj-options-layout[data-view=headers] .cmp-request-body {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
 .obj-options-layout[data-view=url-search-params] .cmp-headers {
   position: absolute;
   left: -10000px;
@@ -131,6 +147,38 @@ a {
   overflow: hidden;
 }
 .obj-options-layout[data-view=url-search-params] .cmp-preview {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.obj-options-layout[data-view=url-search-params] .cmp-request-body {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.obj-options-layout[data-view=body] .cmp-headers {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.obj-options-layout[data-view=body] .cmp-preview {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.obj-options-layout[data-view=body] .cmp-url-search-params {
   position: absolute;
   left: -10000px;
   top: auto;
@@ -179,9 +227,13 @@ a {
   margin-bottom: 1.5rem;
 }
 .cmp-url-input--method {
+  font-family: "Noto Sans Mono", monospace;
+  appearance: none;
+  text-align: center;
+  width: 8ch;
   height: 2.5rem;
   font-size: 1rem;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0;
   border: 1px solid #e5e7eb;
   border-right: none;
 }
@@ -394,7 +446,12 @@ a {
   color: white;
 }
 .cmp-options-tabs[data-method=GET] #body-tab {
-  display: none;
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
 .cmp-preview {
@@ -442,6 +499,41 @@ a {
 }
 .cmp-copy-button svg {
   transition: background-color 250ms, color 250ms ease-in-out;
+}
+
+.cmp-request-body {
+  margin: 1rem 0;
+  height: 10rem;
+  overflow: scroll;
+}
+.cmp-request-body__tabs {
+  display: flex;
+  gap: 0.5rem;
+}
+.cmp-request-body__tabs[data-method=GET] {
+  display: none;
+}
+.cmp-request-body__tab {
+  display: flex;
+  font-size: 1rem;
+  border: 1px solid black;
+}
+.cmp-request-body__tab:focus-within label {
+  background-color: black;
+  color: white;
+}
+.cmp-request-body__tab label {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  transition: all 250ms ease-in-out;
+}
+.cmp-request-body__tab label:focus, .cmp-request-body__tab label:hover, .cmp-request-body__tab label:active {
+  background-color: black;
+  color: white;
+}
+.cmp-request-body__tab--active label {
+  background-color: black;
+  color: white;
 }
 
 .cmp-site-preview {

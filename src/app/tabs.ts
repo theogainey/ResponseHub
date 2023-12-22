@@ -5,7 +5,7 @@ const addTabChangeHandler = (layoutDiv: Element) => (tabSelector: string) =>(tab
     const tabs = document.querySelectorAll(tabSelector);
     tabs.forEach((e) => e.classList.remove('cmp-options-tabs__tab--active'))
     tab.classList.add('cmp-options-tabs__tab--active')
-    layoutDiv?.setAttribute('data-view', tabInput.getAttribute('value') ?? '')
+    layoutDiv?.setAttribute('data-view', tabInput.getAttribute('value') ?? '');
   });
 }
 
@@ -18,6 +18,9 @@ const addTabListeners = () => {
   const responseOptionsTabs = document.querySelectorAll('.cmp-response__details .cmp-options-tabs__tab');
   responseOptionsTabs.forEach(addTabChangeHandler(responseLayoutDiv)('.cmp-response__details .cmp-options-tabs__tab'));
 
+  const requestBodyLayoutDiv = document.querySelector('.cmp-request-body__input-area') as Element;
+  const requestBodyOptionsTabs = document.querySelectorAll('.cmp-request-body__tab');
+  requestBodyOptionsTabs.forEach(addTabChangeHandler(requestBodyLayoutDiv)('.cmp-request-body__tab'));
 }
 
 export { addTabListeners };
