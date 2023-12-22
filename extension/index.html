@@ -122,8 +122,38 @@
               </label>
             </li>
           </ul> 
-          <div class="obj-grid cmp-request-body__input-area" data-view="form-data">
-            
+          <div class="cmp-request-body__input-area" data-view="form-data">
+            <div class="obj-grid cmp-request-body__form-data">
+              <div class="obj-grid__half util-margin-right">
+                <label class="cmp-request-body__label">
+                  <span>Key</span>
+                  <input class="cmp-request-body__input cmp-request-body__input--key" type="text" name="form-data-key" placeholder="Key"/>
+                </label>
+              </div>
+              <div class="obj-grid__half">
+                <label class="cmp-request-body__label">
+                  <span>Value</span>
+                  <input class="cmp-request-body__input cmp-request-body__input--value" type="text" name="form-data-value" placeholder="value"/>
+                </label>
+              </div>    
+            </div>
+            <div class="obj-grid cmp-request-body__x-www-form-urlencoded">
+              <div class="obj-grid__half util-margin-right">
+                <label class="cmp-request-body__label">
+                  <span>Key</span>
+                  <input class="cmp-request-body__input cmp-request-body__input--key" type="text" name="x-www-form-urlencoded-key" placeholder="Key"/>
+                </label>
+              </div>
+              <div class="obj-grid__half">
+                <label class="cmp-request-body__label">
+                  <span>Value</span>
+                  <input class="cmp-request-body__input cmp-request-body__input--value" type="text" name="x-www-form-urlencoded-value" placeholder="value"/>
+                </label>
+              </div>      
+            </div>
+            <div class="cmp-request-body__raw">
+              <textarea class="cmp-request-body__text-area" placeholder="raw body text"></textarea>
+            </div>
           </div>  
         </div>
       </div>

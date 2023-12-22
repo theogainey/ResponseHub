@@ -1,7 +1,6 @@
 .cmp-request-body {
   margin: 1rem 0;
   height: $options-area-height;
-  overflow: scroll;
 
   &__tabs {
     display: flex;
@@ -43,5 +42,61 @@
     }
   }
 
+  &__input-area {
+
+    &[data-view="form-data"] {
+      .cmp-request-body__x-www-form-urlencoded {
+        @include visually-hidden;
+      }
+      .cmp-request-body__raw {
+        @include visually-hidden;
+      }
+    }
+    &[data-view="x-www-form-urlencoded"] {
+      .cmp-request-body__form-data {
+        @include visually-hidden;
+      }
+      .cmp-request-body__raw {
+        @include visually-hidden;
+      }
+    }
+    &[data-view="raw"] {
+      .cmp-request-body__x-www-form-urlencoded {
+        @include visually-hidden;
+      }
+      .cmp-request-body__form-data {
+        @include visually-hidden;
+      }
+    }
+  }
+
+  &__input {
+    width: 100%;
+    border: none;
+    border-bottom: $border-primary;
+    font-size: 1.25rem;
+    line-height: 1.5;
+  }
+
+  &__label span {
+    @include visually-hidden;
+  }
+
+  &__form-data,
+  &__x-www-form-urlencoded,
+  &__raw {
+    margin: 1rem 0;
+    overflow: scroll;
+  }
   
+  &__text-area {
+    border: none;
+    font-family: inherit;
+    font-size: 1rem;
+    display: block;
+    width: 100%;
+    height: 8rem;
+    resize: none; 
+    overflow: auto;
+  }
 }
