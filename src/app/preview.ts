@@ -3,6 +3,7 @@ import { getURLSearchParams } from './urlSearchParams';
 import { getURL } from './request';
 import { toggleHiddenWithTimeout } from './utils';
 import { highlight } from './hljs';
+import { getFormData } from './formData';
 
 const getPathName = (urlString: string) => {
   try {
@@ -30,20 +31,57 @@ const stringifyHeaders = (headers:Headers) => {
   return message;
 }
 
-const getHTTPMessageData = () => {
+const stringifyFormData = (formData:FormData) => {
+  let message = '\n--boundary\n';
+  for (const [key, value] of formData.entries()) {
+    message += `Content-Disposition: form-data; name="${key}"\n\n${value}\n--boundary\n`;
+  }
+  return message;
+}
+
+
+type HTTPMessageData = { 
+  path: string;
+  searchParams: string;
+  host: string;
+  headers: string;
+  method: string;
+  body?: string;
+}
+
+const getHTTPMessageData = (): HTTPMessageData => {
   const urlInputValue = getURL(); 
   const headers = getHeaders();
   const urlSearchParams = getURLSearchParams();
-
-  return {
+  // @ts-ignore
+  const method = document.querySelector('#method-select').value;
+  const HTTPMessageData =  {
     host: getHost(urlInputValue),
     path: getPathName(urlInputValue),
     headers: stringifyHeaders(headers),
     searchParams: urlSearchParams.toString(),
+    method: method,
   }
+  // if can have a body 
+  if(method === 'POST') {
+    return Object.assign({}, HTTPMessageData, { body: getBody() })
+  }
+  return HTTPMessageData;
 }
 
-const formatHTTPMessage = (HTTPMessageData: { path: string; searchParams: string; host: string; headers: string; }) => `GET ${HTTPMessageData.path}${HTTPMessageData.searchParams ? `?${HTTPMessageData.searchParams}`: ''} HTTP/1.1\nHost: ${HTTPMessageData.host}\n${HTTPMessageData.headers}`;
+const hasFormData = (formData: FormData) => !formData.entries().next().done;
+
+const getBody = () => {
+  const bodyInputTabs = document.querySelector('.cmp-request-body__input-area')
+  const currentBodyType =  bodyInputTabs?.getAttribute('data-view') ?? 'form-data';
+  if(currentBodyType === 'form-data'){
+    const formData = getFormData();
+    return hasFormData(formData) ? stringifyFormData(formData) : '';
+  }
+  return '';
+}
+
+const formatHTTPMessage = ({ path, searchParams, host, headers, method, body }:HTTPMessageData) => `${method} ${path}${searchParams ? `?${searchParams}`: ''} HTTP/1.1\nHost: ${host}\n${headers}${body ? body : ''}`;
 
 
 const printPreview = () => {

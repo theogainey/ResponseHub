@@ -1,3 +1,4 @@
+import { printPreview } from "./preview";
 
 const isTabSelectedHidden = (HTTPMethod: string) => {
   const requestOptionsLayoutDiv = document.querySelector('.obj-options-layout') as Element;
@@ -21,6 +22,7 @@ const addURLListeners = () => {
       selectDefaultTab();
     }  
   });
+  methodSelect.addEventListener('change', printPreview);
 }
 
 export { addURLListeners };

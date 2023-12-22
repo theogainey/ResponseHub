@@ -1,5 +1,30 @@
 import { printPreview } from "./preview";
 
+const getFormDataKey = (component:Element): string => {
+  const  { value } = component.querySelector('.cmp-request-body__input--key') as HTMLInputElement;
+  return value ?? ''
+}  
+
+const getFormDataValue = (component:Element): string => {
+  const  { value } = component.querySelector('.cmp-request-body__input--value') as HTMLInputElement;
+  return value ?? ''
+}  
+
+const getFormDataKeyValuePair = (component:Element):[string, string] => [getFormDataKey(component), getFormDataValue(component)]; 
+
+const isValidFormData = ([key, value]: [string, string]) =>  !!key && !!value;
+
+const getFormData = (): FormData => {
+  const formDataInputComponents = document.querySelectorAll('.cmp-form-data__input-pair');
+  const formDataKeyValuePairs = [];
+  for (const value of formDataInputComponents.values()) {
+    formDataKeyValuePairs.push(getFormDataKeyValuePair(value));
+  }
+  const formData = new FormData();
+  formDataKeyValuePairs.filter(isValidFormData).forEach(([key, value]) => formData.append(key, value));
+  return formData;
+} 
+
 const doesHaveInputWithValue = (element: Element) => {
   const inputs = element.querySelectorAll('.cmp-request-body__form-data .cmp-request-body__input');
   if(inputs.length === 0) {
@@ -39,6 +64,13 @@ const addFormDataInput = () => {
   formDataInputsContainer?.append(newFormDataInputElement);
 }
 
+const hasFormData = () => {
+  const formDataInputs = document.querySelectorAll('.cmp-request-body__form-data .cmp-form-data__input-pair');
+  for (const formDataInput of formDataInputs.values()) {
+     console.log(formDataInput);
+  }
+
+}
 const handleNewFormDataInput = () => {
   const formDataInputs = document.querySelectorAll('.cmp-request-body__form-data .cmp-form-data__input-pair');
   if(formDataInputs.length === 0) {
@@ -47,7 +79,6 @@ const handleNewFormDataInput = () => {
   }
   const lastFormDataInput = formDataInputs[formDataInputs.length -1];
   if(doesHaveInputWithValue(lastFormDataInput)) addFormDataInput();
-
 }
 
 const getMatchingInputQuerySelector = (input: HTMLInputElement) => 
@@ -87,4 +118,4 @@ const addFormDataListeners = () =>{
   formDataInputContainer?.addEventListener('keydown', removeFormDataInputsHandler);
 }
 
-export { addFormDataListeners };
+export { getFormData, addFormDataListeners };
