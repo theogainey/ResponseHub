@@ -1,7 +1,7 @@
 import { printPreview } from "./preview";
 
 const doesHaveInputWithValue = (element: Element) => {
-  const inputs = element.querySelectorAll('.cmp-request-body__input');
+  const inputs = element.querySelectorAll('.cmp-request-body__form-data .cmp-request-body__input');
   if(inputs.length === 0) {
     return false;
   }
@@ -40,7 +40,7 @@ const addFormDataInput = () => {
 }
 
 const handleNewFormDataInput = () => {
-  const formDataInputs = document.querySelectorAll('.cmp-form-data__input-pair');
+  const formDataInputs = document.querySelectorAll('.cmp-request-body__form-data .cmp-form-data__input-pair');
   if(formDataInputs.length === 0) {
     addFormDataInput();
     return;
