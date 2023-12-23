@@ -1,4 +1,5 @@
 import { handleRequestError } from "./errors";
+import { getFormData } from "./formData";
 import { getHeaders } from "./headers";
 import { handleResponse } from "./response";
 import { getURLSearchParams } from "./urlSearchParams";
@@ -38,8 +39,13 @@ const sendRequest = () => {
   const sendButton = document.querySelector('#send-button div') as Element;
   toggleHidden(sendButton);
   const requestURL = `${value}?${getURLSearchParams()}`;
+    // @ts-ignore
+  const requestMethod = document.querySelector('#method-select').value;
   const requestHeaders = getHeaders();
-  const requestOptions = Object.assign({}, defaultRequestOptions, { headers: requestHeaders})
+  const formData = getFormData();
+  const requestOptions = requestMethod === 'POST' 
+    ? Object.assign({}, defaultRequestOptions, { headers: requestHeaders, method: requestMethod, body: formData })
+    : Object.assign({}, defaultRequestOptions, { headers: requestHeaders, method: requestMethod});
   const userRequest = new Request(requestURL, requestOptions);
   const startTime = Date.now();
   fetch(userRequest)

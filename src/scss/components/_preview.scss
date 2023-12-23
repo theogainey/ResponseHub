@@ -4,7 +4,7 @@
   margin: 1rem 0;
 
   pre {
-    height: calc($options-area-height - 1rem);
+    height: $options-area-height;
     overflow: scroll;
   }
 
