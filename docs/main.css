@@ -250,7 +250,7 @@ a {
 
 .cmp-headers {
   margin: 1rem 0;
-  height: 10rem;
+  height: 12rem;
   overflow: scroll;
 }
 .cmp-headers__input {
@@ -401,7 +401,7 @@ a {
 
 .cmp-url-search-params {
   margin: 1rem 0;
-  height: 10rem;
+  height: 12rem;
   overflow: scroll;
 }
 .cmp-url-search-params__input {
@@ -456,11 +456,11 @@ a {
 
 .cmp-preview {
   position: relative;
-  height: 10rem;
+  height: 12rem;
   margin: 1rem 0;
 }
 .cmp-preview pre {
-  height: 9rem;
+  height: 12rem;
   overflow: scroll;
 }
 .cmp-preview code {
@@ -503,7 +503,7 @@ a {
 
 .cmp-request-body {
   margin: 1rem 0;
-  height: 10rem;
+  height: 12rem;
 }
 .cmp-request-body__tabs {
   display: flex;

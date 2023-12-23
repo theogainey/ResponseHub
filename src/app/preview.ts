@@ -81,7 +81,7 @@ const getBody = () => {
   return '';
 }
 
-const formatHTTPMessage = ({ path, searchParams, host, headers, method, body }:HTTPMessageData) => `${method} ${path}${searchParams ? `?${searchParams}`: ''} HTTP/1.1\nHost: ${host}\n${headers}${body ? body : ''}`;
+const formatHTTPMessage = ({ path, searchParams, host, headers, method, body }: HTTPMessageData) => `${method} ${path}${searchParams ? `?${searchParams}`: ''} HTTP/1.1\nHost: ${host}\n${headers}${body ? body : ''}`;
 
 
 const printPreview = () => {
