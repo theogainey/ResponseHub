@@ -1,3 +1,4 @@
+import { printPreview } from "./preview";
 
 const addTabChangeHandler = (layoutDiv: Element) => (tabSelector: string) =>(tab:Element) =>{
   const tabInput = tab.querySelector('input');
@@ -6,6 +7,7 @@ const addTabChangeHandler = (layoutDiv: Element) => (tabSelector: string) =>(tab
     tabs.forEach((e) => e.classList.remove('cmp-options-tabs__tab--active'))
     tab.classList.add('cmp-options-tabs__tab--active')
     layoutDiv?.setAttribute('data-view', tabInput.getAttribute('value') ?? '');
+    printPreview();
   });
 }
 

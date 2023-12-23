@@ -1,5 +1,7 @@
+import { getSelectedBodyDataType } from "./body";
 import { handleRequestError } from "./errors";
 import { getFormData } from "./formData";
+import { getFormURLEncodedData } from "./formURLEncoded";
 import { getHeaders } from "./headers";
 import { handleResponse } from "./response";
 import { getURLSearchParams } from "./urlSearchParams";
@@ -28,25 +30,58 @@ const printResponseTime = (time: number) => {
 };
 
 
+const getRequestBody = (bodyType: string) => {
+  switch (bodyType) {
+    case 'form-data':
+      const formData = getFormData();
+      return { body: formData}  
+    case 'x-www-form-urlencoded':
+      const formURLEncodedData = getFormURLEncodedData();
+      return { body: formURLEncodedData};
+    default:
+      return {}
+  }
+}
+
+const getPOSTRequest = (url: string) => {
+  const requestHeaders = getHeaders();
+  const currentBodyType = getSelectedBodyDataType();
+  if(currentBodyType === 'x-www-form-urlencoded'){
+    requestHeaders.append('Content-Type', 'application/x-www-form-urlencoded');
+  }
+  return new Request(url, Object.assign({}, defaultRequestOptions, { headers: requestHeaders, method: 'POST'}, getRequestBody(currentBodyType)));
+}
+
+const getGETRequest = (url: string) => {
+  const requestHeaders = getHeaders();
+  return new Request(url, Object.assign({}, defaultRequestOptions, { headers: requestHeaders, method: 'GET'}))
+}
+
+const getRequest = (url: string) => {
+  const requestURL = `${url}?${getURLSearchParams()}`;
+  // @ts-ignore
+  const requestMethod = document.querySelector('#method-select').value;
+  switch (requestMethod) {
+    case 'GET':
+      return getGETRequest(requestURL);
+    case 'POST':
+      return getPOSTRequest(requestURL);
+    default:
+      return new Request(requestURL);
+  }
+};
+
 const sendRequest = () => {
-  const value  = getURL();
+  const url  = getURL();
   // TO DO BUILD REQUEST AND VALIDATE WHILE USER IS TYPING IT IN 
-  if(!isValidURL(value)){
+  if(!isValidURL(url)){
     // TODO: Visual Error State
     console.log('invalid url');
     return;
   }
   const sendButton = document.querySelector('#send-button div') as Element;
   toggleHidden(sendButton);
-  const requestURL = `${value}?${getURLSearchParams()}`;
-    // @ts-ignore
-  const requestMethod = document.querySelector('#method-select').value;
-  const requestHeaders = getHeaders();
-  const formData = getFormData();
-  const requestOptions = requestMethod === 'POST' 
-    ? Object.assign({}, defaultRequestOptions, { headers: requestHeaders, method: requestMethod, body: formData })
-    : Object.assign({}, defaultRequestOptions, { headers: requestHeaders, method: requestMethod});
-  const userRequest = new Request(requestURL, requestOptions);
+  const userRequest = getRequest(url);
   const startTime = Date.now();
   fetch(userRequest)
   .then((response)=> {

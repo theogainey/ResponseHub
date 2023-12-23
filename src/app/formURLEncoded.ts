@@ -1,5 +1,28 @@
 import { printPreview } from "./preview";
 
+const getFormURLEncodedDataKey = (component:Element): string => {
+  const  { value } = component.querySelector('.cmp-request-body__input--key') as HTMLInputElement;
+  return value ?? ''
+}  
+
+const getFormURLEncodedDataValue = (component:Element): string => {
+  const  { value } = component.querySelector('.cmp-request-body__input--value') as HTMLInputElement;
+  return value ?? ''
+}  
+
+const getFormURLEncodedDataKeyValuePair = (component:Element):[string, string] => [getFormURLEncodedDataKey(component), getFormURLEncodedDataValue(component)]; 
+
+const isValidFormData = ([key, value]: [string, string]) =>  !!key && !!value;
+
+const getFormURLEncodedData = () => {
+  const formURLEncodedInputs = document.querySelectorAll('.cmp-x-www-form-urlencoded__input-pair');
+  const formURLEncodedKeyValuePairs = [];
+  for (const value of formURLEncodedInputs.values()) {
+    formURLEncodedKeyValuePairs.push(getFormURLEncodedDataKeyValuePair(value));
+  }
+  return new URLSearchParams(formURLEncodedKeyValuePairs.filter(isValidFormData)).toString();
+}
+
 const doesHaveInputWithValue = (element: Element) => {
   const inputs = element.querySelectorAll('.cmp-x-www-form-urlencoded__input-pair .cmp-request-body__input');
   if(inputs.length === 0) {
@@ -11,7 +34,6 @@ const doesHaveInputWithValue = (element: Element) => {
   }
   return false;
 }
-
 
 const createFormURLEncodedInput = () => {
   const newFormURLEncodedContainer = document.createElement('div');
@@ -87,4 +109,4 @@ const addFormURLEncodedListeners = () =>{
   formURLEncodedInputContainer?.addEventListener('keydown', removeFormURLEncodedInputsHandler);
 }
 
-export { addFormURLEncodedListeners };
+export { getFormURLEncodedData,  addFormURLEncodedListeners };

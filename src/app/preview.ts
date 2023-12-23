@@ -4,6 +4,8 @@ import { getURL } from './request';
 import { toggleHiddenWithTimeout } from './utils';
 import { highlight } from './hljs';
 import { getFormData } from './formData';
+import { getSelectedBodyDataType } from './body';
+import { getFormURLEncodedData } from './formURLEncoded';
 
 const getPathName = (urlString: string) => {
   try {
@@ -51,10 +53,13 @@ type HTTPMessageData = {
 
 const getHTTPMessageData = (): HTTPMessageData => {
   const urlInputValue = getURL(); 
-  const headers = getHeaders();
-  const urlSearchParams = getURLSearchParams();
   // @ts-ignore
   const method = document.querySelector('#method-select').value;
+  const headers = getHeaders();
+  if(method === 'POST' && getSelectedBodyDataType() === 'x-www-form-urlencoded' && getFormURLEncodedData()){
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+  }
+  const urlSearchParams = getURLSearchParams();
   const HTTPMessageData =  {
     host: getHost(urlInputValue),
     path: getPathName(urlInputValue),
@@ -72,13 +77,17 @@ const getHTTPMessageData = (): HTTPMessageData => {
 const hasFormData = (formData: FormData) => !formData.entries().next().done;
 
 const getBody = () => {
-  const bodyInputTabs = document.querySelector('.cmp-request-body__input-area')
-  const currentBodyType =  bodyInputTabs?.getAttribute('data-view') ?? 'form-data';
-  if(currentBodyType === 'form-data'){
-    const formData = getFormData();
-    return hasFormData(formData) ? stringifyFormData(formData) : '';
+  const currentBodyType = getSelectedBodyDataType();
+  switch (currentBodyType) {
+    case 'form-data':
+      const formData = getFormData();
+      return hasFormData(formData) ? stringifyFormData(formData) : '';
+    case 'x-www-form-urlencoded':
+       const formURLEncodedData = getFormURLEncodedData();
+       return `\n${formURLEncodedData}`;
+    default:
+      return '';
   }
-  return '';
 }
 
 const formatHTTPMessage = ({ path, searchParams, host, headers, method, body }: HTTPMessageData) => `${method} ${path}${searchParams ? `?${searchParams}`: ''} HTTP/1.1\nHost: ${host}\n${headers}${body ? body : ''}`;
