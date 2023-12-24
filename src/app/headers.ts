@@ -33,13 +33,13 @@ const createNewHeaderInput = () => {
     <div class="obj-grid__half util-margin-right">
       <label class="cmp-headers__label">
         <span>Header</span>
-        <input class="cmp-headers__input cmp-headers__input--header" type="text" name="header" placeholder="header"/>
+        <input class="cmp-headers__input cmp-headers__input--header" type="text" name="header" placeholder="Header"/>
       </label>
     </div>
     <div class="obj-grid__half">
       <label class="cmp-headers__label">
         <span>Value</span>
-        <input class="cmp-headers__input cmp-headers__input--value" type="text" name="value" placeholder="value"/>
+        <input class="cmp-headers__input cmp-headers__input--value" type="text" name="value" placeholder="Value"/>
       </label>
     </div> 
   `;

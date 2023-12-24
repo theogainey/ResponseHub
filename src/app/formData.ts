@@ -51,7 +51,7 @@ const createFormDataInput = () => {
     <div class="obj-grid__half">
       <label class="cmp-request-body__label">
         <span>Value</span>
-        <input class="cmp-request-body__input cmp-request-body__input--value" type="text" name="form-data-value" placeholder="value"/>
+        <input class="cmp-request-body__input cmp-request-body__input--value" type="text" name="form-data-value" placeholder="Value"/>
       </label>
     </div>    
   `;
