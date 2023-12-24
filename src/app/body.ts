@@ -10,4 +10,9 @@ const getSelectedBodyDataType = (): BodyDataType => {
   return 'form-data';
 }
 
-export { getSelectedBodyDataType };
+const getRawBody = () => {
+  const rawBodyInput = document.querySelector('.cmp-request-body__text-area') as HTMLTextAreaElement;
+  return rawBodyInput.value;
+}
+
+export { getSelectedBodyDataType, getRawBody };

@@ -1,4 +1,4 @@
-import { getSelectedBodyDataType } from "./body";
+import { getRawBody, getSelectedBodyDataType } from "./body";
 import { handleRequestError } from "./errors";
 import { getFormData } from "./formData";
 import { getFormURLEncodedData } from "./formURLEncoded";
@@ -38,6 +38,8 @@ const getRequestBody = (bodyType: string) => {
     case 'x-www-form-urlencoded':
       const formURLEncodedData = getFormURLEncodedData();
       return { body: formURLEncodedData};
+    case 'raw':
+      return { body: getRawBody() };
     default:
       return {}
   }

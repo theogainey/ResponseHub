@@ -4,7 +4,7 @@ import { getURL } from './request';
 import { toggleHiddenWithTimeout } from './utils';
 import { highlight } from './hljs';
 import { getFormData } from './formData';
-import { getSelectedBodyDataType } from './body';
+import { getRawBody, getSelectedBodyDataType } from './body';
 import { getFormURLEncodedData } from './formURLEncoded';
 
 const getPathName = (urlString: string) => {
@@ -85,6 +85,8 @@ const getBody = () => {
     case 'x-www-form-urlencoded':
        const formURLEncodedData = getFormURLEncodedData();
        return `\n${formURLEncodedData}`;
+    case 'raw':
+      return `\n${getRawBody()}`;
     default:
       return '';
   }
