@@ -64,6 +64,15 @@ const getPOSTRequest = (url: string) => {
   return new Request(url, Object.assign({}, defaultRequestOptions, { headers: requestHeaders, method: 'POST'}, getRequestBody(currentBodyType)));
 }
 
+const getPATCHRequest = (url: string) => {
+  const requestHeaders = getHeaders();
+  const currentBodyType = getSelectedBodyDataType();
+  if(currentBodyType === 'x-www-form-urlencoded'){
+    requestHeaders.append('Content-Type', 'application/x-www-form-urlencoded');
+  }
+  return new Request(url, Object.assign({}, defaultRequestOptions, { headers: requestHeaders, method: 'PATCH'}, getRequestBody(currentBodyType)));
+}
+
 const getGETRequest = (url: string) => {
   const requestHeaders = getHeaders();
   return new Request(url, Object.assign({}, defaultRequestOptions, { headers: requestHeaders, method: 'GET'}))
@@ -80,6 +89,8 @@ const getRequest = (url: string) => {
       return getPOSTRequest(requestURL);
     case 'PUT':
       return getPUTRequest(requestURL);
+    case 'PATCH':
+      return getPATCHRequest(requestURL);  
     default:
       return new Request(requestURL);
   }

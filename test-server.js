@@ -14,11 +14,18 @@ app.post('/', (req, res) => {
   res.status(200).send('POST Request received successfully');
 });
 
+app.patch('/', (req, res) => {
+  console.log('Received PATCH Request:');
+  console.log(req.body);
+  res.status(200).send('PATCH Request received successfully');
+});
+
 app.put('/', (req, res) => {
   console.log('Received PUT Request:');
   console.log(req.body);
   res.status(200).send('PUT Request received successfully');
 });
+
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
