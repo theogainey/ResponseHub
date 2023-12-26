@@ -51,12 +51,14 @@ type HTTPMessageData = {
   body?: string;
 }
 
+const messageCanHaveBody = (method: string) => method !== 'GET';
+
 const getHTTPMessageData = (): HTTPMessageData => {
   const urlInputValue = getURL(); 
   // @ts-ignore
   const method = document.querySelector('#method-select').value;
   const headers = getHeaders();
-  if(method === 'POST' && getSelectedBodyDataType() === 'x-www-form-urlencoded' && getFormURLEncodedData()){
+  if(messageCanHaveBody(method) && getSelectedBodyDataType() === 'x-www-form-urlencoded' && getFormURLEncodedData()){
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
   }
   const urlSearchParams = getURLSearchParams();
@@ -67,8 +69,7 @@ const getHTTPMessageData = (): HTTPMessageData => {
     searchParams: urlSearchParams.toString(),
     method: method,
   }
-  // if can have a body 
-  if(method === 'POST') {
+  if(messageCanHaveBody(method)) {
     return Object.assign({}, HTTPMessageData, { body: getBody() })
   }
   return HTTPMessageData;

@@ -45,6 +45,16 @@ const getRequestBody = (bodyType: string) => {
   }
 }
 
+const getPUTRequest = (url: string) => {
+  const requestHeaders = getHeaders();
+  const currentBodyType = getSelectedBodyDataType();
+  if(currentBodyType === 'x-www-form-urlencoded'){
+    requestHeaders.append('Content-Type', 'application/x-www-form-urlencoded');
+  }
+  return new Request(url, Object.assign({}, defaultRequestOptions, { headers: requestHeaders, method: 'PUT'}, getRequestBody(currentBodyType)));
+}
+
+
 const getPOSTRequest = (url: string) => {
   const requestHeaders = getHeaders();
   const currentBodyType = getSelectedBodyDataType();
@@ -68,6 +78,8 @@ const getRequest = (url: string) => {
       return getGETRequest(requestURL);
     case 'POST':
       return getPOSTRequest(requestURL);
+    case 'PUT':
+      return getPUTRequest(requestURL);
     default:
       return new Request(requestURL);
   }
