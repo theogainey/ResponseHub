@@ -7,7 +7,8 @@ const isTabSelectedHidden = (HTTPMethod: string) => {
 }
 
 const selectDefaultTab = () => {
-  const previewTab = document.querySelector('#preview-tab input') as Element
+  const previewTab = document.querySelector('#preview-tab input') as HTMLInputElement;
+  previewTab.checked = true;
   previewTab.dispatchEvent(new Event('change'));
 };
 
