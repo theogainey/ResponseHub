@@ -108,7 +108,13 @@
           <ul class="cmp-request-body__tabs" data-method="GET">
             <li class="cmp-request-body__tab cmp-options-tabs__tab--active">
               <label>
-                <input class="util-visually-hidden" checked type="radio" value="form-data" name="body-tab" />
+                <input class="util-visually-hidden" checked type="radio" value="none" name="body-tab" />
+                none
+              </label>
+            </li>
+            <li class="cmp-request-body__tab">
+              <label>
+                <input class="util-visually-hidden" type="radio" value="form-data" name="body-tab" />
                 form-data
               </label>
             </li>
@@ -125,7 +131,7 @@
               </label>
             </li>
           </ul> 
-          <div class="cmp-request-body__input-area" data-view="form-data">
+          <div class="cmp-request-body__input-area" data-view="none">
             <div class="cmp-request-body__form-data">
               <div class="obj-grid cmp-form-data__input-pair">
                 <div class="obj-grid__half util-margin-right">

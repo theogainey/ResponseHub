@@ -230,10 +230,9 @@ a {
   font-family: "Noto Sans Mono", monospace;
   appearance: none;
   text-align: center;
-  width: 8ch;
   height: 2.5rem;
   font-size: 1rem;
-  padding: 0.5rem 0;
+  padding: 0.5rem 1ch;
   border: 1px solid #e5e7eb;
   border-right: none;
 }
@@ -533,6 +532,30 @@ a {
 .cmp-request-body__tab--active label {
   background-color: black;
   color: white;
+}
+.cmp-request-body__input-area[data-view=none] .cmp-request-body__form-data {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.cmp-request-body__input-area[data-view=none] .cmp-request-body__x-www-form-urlencoded {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.cmp-request-body__input-area[data-view=none] .cmp-request-body__raw {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 .cmp-request-body__input-area[data-view=form-data] .cmp-request-body__x-www-form-urlencoded {
   position: absolute;

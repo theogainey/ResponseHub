@@ -1,5 +1,5 @@
 
-type BodyDataType = 'form-data' | 'x-www-form-urlencoded' | 'raw';
+type BodyDataType = 'form-data' | 'x-www-form-urlencoded' | 'raw' | 'none';
 
 const getSelectedBodyDataType = (): BodyDataType => {
   const bodyInputTabs = document.querySelector('.cmp-request-body__input-area');
@@ -7,7 +7,7 @@ const getSelectedBodyDataType = (): BodyDataType => {
   if (currentBodyType === 'form-data' || currentBodyType === 'x-www-form-urlencoded' || currentBodyType === 'raw'){
     return currentBodyType;
   } 
-  return 'form-data';
+  return 'none';
 }
 
 const getRawBody = () => {
