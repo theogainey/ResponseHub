@@ -34,7 +34,8 @@
   }
 
   &[data-method="GET"],
-  &[data-method="HEAD"] {
+  &[data-method="HEAD"], 
+  &[data-method="OPTIONS"]{
     #body-tab {
       @include visually-hidden;
     }

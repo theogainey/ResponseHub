@@ -1,9 +1,10 @@
+import { requestCanHaveBody } from "./body";
 import { printPreview } from "./preview";
 
 const isTabSelectedHidden = (HTTPMethod: string) => {
   const requestOptionsLayoutDiv = document.querySelector('.obj-options-layout') as Element;
   const currentSelected = requestOptionsLayoutDiv?.getAttribute('data-view');
-  return currentSelected === 'body' && HTTPMethod === 'GET';
+  return currentSelected === 'body' && !requestCanHaveBody(HTTPMethod);
 }
 
 const selectDefaultTab = () => {

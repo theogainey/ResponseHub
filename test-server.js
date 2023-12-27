@@ -8,7 +8,6 @@ app.head('/', (req, res) => {
   res.status(200).send('THIS SHOULD BE IGNORED IF YOU ARE SEEING THIS IN A RESPONSE SOMETHING IS WRONGxs');
 });
 
-
 app.get('/', (req, res) => {
   console.log('Received GET Request:');
   res.status(200).send('GET Request received successfully');
@@ -36,6 +35,11 @@ app.delete('/', (req, res) => {
   console.log('Received DELETE Request:');
   console.log(req.body);
   res.status(200).send('DELETE Request received successfully');
+});
+
+app.options('/', (req, res) => {
+  console.log('Received OPTIONS Request:');
+  res.status(200).send('OPTIONS Request received successfully');
 });
 
 app.listen(port, () => {
