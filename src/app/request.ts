@@ -1,4 +1,4 @@
-import { getRawBody, getSelectedBodyDataType } from "./body";
+import { getRawBody, getSelectedBodyDataType, requestCanHaveBody } from "./body";
 import { handleRequestError } from "./errors";
 import { getFormData } from "./formData";
 import { getFormURLEncodedData } from "./formURLEncoded";
@@ -29,7 +29,6 @@ const printResponseTime = (time: number) => {
   timeElement.innerHTML = `${time}ms`
 };
 
-
 const getRequestBody = (bodyType: string) => {
   switch (bodyType) {
     case 'form-data':
@@ -45,35 +44,16 @@ const getRequestBody = (bodyType: string) => {
   }
 }
 
-const getPUTRequest = (url: string) => {
+const getRequestWithBody = (url: string, method: string) => {
   const requestHeaders = getHeaders();
   const currentBodyType = getSelectedBodyDataType();
   if(currentBodyType === 'x-www-form-urlencoded'){
     requestHeaders.append('Content-Type', 'application/x-www-form-urlencoded');
   }
-  return new Request(url, Object.assign({}, defaultRequestOptions, { headers: requestHeaders, method: 'PUT'}, getRequestBody(currentBodyType)));
+  return new Request(url, Object.assign({}, defaultRequestOptions, { headers: requestHeaders, method: method}, getRequestBody(currentBodyType)));
 }
 
-
-const getPOSTRequest = (url: string) => {
-  const requestHeaders = getHeaders();
-  const currentBodyType = getSelectedBodyDataType();
-  if(currentBodyType === 'x-www-form-urlencoded'){
-    requestHeaders.append('Content-Type', 'application/x-www-form-urlencoded');
-  }
-  return new Request(url, Object.assign({}, defaultRequestOptions, { headers: requestHeaders, method: 'POST'}, getRequestBody(currentBodyType)));
-}
-
-const getPATCHRequest = (url: string) => {
-  const requestHeaders = getHeaders();
-  const currentBodyType = getSelectedBodyDataType();
-  if(currentBodyType === 'x-www-form-urlencoded'){
-    requestHeaders.append('Content-Type', 'application/x-www-form-urlencoded');
-  }
-  return new Request(url, Object.assign({}, defaultRequestOptions, { headers: requestHeaders, method: 'PATCH'}, getRequestBody(currentBodyType)));
-}
-
-const getGETRequest = (url: string) => {
+const getRequestWithoutBody = (url: string, method: string) => {
   const requestHeaders = getHeaders();
   return new Request(url, Object.assign({}, defaultRequestOptions, { headers: requestHeaders, method: 'GET'}))
 }
@@ -82,18 +62,7 @@ const getRequest = (url: string) => {
   const requestURL = `${url}?${getURLSearchParams()}`;
   // @ts-ignore
   const requestMethod = document.querySelector('#method-select').value;
-  switch (requestMethod) {
-    case 'GET':
-      return getGETRequest(requestURL);
-    case 'POST':
-      return getPOSTRequest(requestURL);
-    case 'PUT':
-      return getPUTRequest(requestURL);
-    case 'PATCH':
-      return getPATCHRequest(requestURL);  
-    default:
-      return new Request(requestURL);
-  }
+  return requestCanHaveBody(requestMethod) ? getRequestWithBody(requestURL, requestMethod) :  getRequestWithoutBody(requestURL, requestMethod);
 };
 
 const sendRequest = () => {

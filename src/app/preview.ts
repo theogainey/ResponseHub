@@ -4,7 +4,7 @@ import { getURL } from './request';
 import { toggleHiddenWithTimeout } from './utils';
 import { highlight } from './hljs';
 import { getFormData } from './formData';
-import { getRawBody, getSelectedBodyDataType } from './body';
+import { getRawBody, getSelectedBodyDataType, requestCanHaveBody } from './body';
 import { getFormURLEncodedData } from './formURLEncoded';
 
 const getPathName = (urlString: string) => {
@@ -51,14 +51,13 @@ type HTTPMessageData = {
   body?: string;
 }
 
-const messageCanHaveBody = (method: string) => method !== 'GET';
 
 const getHTTPMessageData = (): HTTPMessageData => {
   const urlInputValue = getURL(); 
   // @ts-ignore
   const method = document.querySelector('#method-select').value;
   const headers = getHeaders();
-  if(messageCanHaveBody(method) && getSelectedBodyDataType() === 'x-www-form-urlencoded' && getFormURLEncodedData()){
+  if(requestCanHaveBody(method) && getSelectedBodyDataType() === 'x-www-form-urlencoded' && getFormURLEncodedData()){
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
   }
   const urlSearchParams = getURLSearchParams();
@@ -69,7 +68,7 @@ const getHTTPMessageData = (): HTTPMessageData => {
     searchParams: urlSearchParams.toString(),
     method: method,
   }
-  if(messageCanHaveBody(method)) {
+  if(requestCanHaveBody(method)) {
     return Object.assign({}, HTTPMessageData, { body: getBody() })
   }
   return HTTPMessageData;

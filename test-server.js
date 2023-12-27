@@ -26,6 +26,11 @@ app.put('/', (req, res) => {
   res.status(200).send('PUT Request received successfully');
 });
 
+app.delete('/', (req, res) => {
+  console.log('Received DELETE Request:');
+  console.log(req.body);
+  res.status(200).send('DELETE Request received successfully');
+});
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
