@@ -15,7 +15,7 @@ const getRawBody = () => {
   return rawBodyInput.value;
 }
 
-const requestCanHaveBody = (method: string) => method !== 'GET';
+const requestCanHaveBody = (method: string) => method !== 'GET' && method !== 'HEAD';
 
 
 export { getSelectedBodyDataType, getRawBody, requestCanHaveBody };

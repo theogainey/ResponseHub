@@ -55,7 +55,7 @@ const getRequestWithBody = (url: string, method: string) => {
 
 const getRequestWithoutBody = (url: string, method: string) => {
   const requestHeaders = getHeaders();
-  return new Request(url, Object.assign({}, defaultRequestOptions, { headers: requestHeaders, method: 'GET'}))
+  return new Request(url, Object.assign({}, defaultRequestOptions, { headers: requestHeaders, method: method}))
 }
 
 const getRequest = (url: string) => {

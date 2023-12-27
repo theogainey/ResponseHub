@@ -2,9 +2,15 @@ const express = require('express');
 const app = express();
 const port = 8000;
 
+// must come before app.get()
+app.head('/', (req, res) => {
+  console.log('Received HEAD Request:');
+  res.status(200).send('THIS SHOULD BE IGNORED IF YOU ARE SEEING THIS IN A RESPONSE SOMETHING IS WRONGxs');
+});
+
+
 app.get('/', (req, res) => {
   console.log('Received GET Request:');
-  console.log(req.body);
   res.status(200).send('GET Request received successfully');
 });
 

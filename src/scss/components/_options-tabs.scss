@@ -33,7 +33,8 @@
     }
   }
 
-  &[data-method="GET"] {
+  &[data-method="GET"],
+  &[data-method="HEAD"] {
     #body-tab {
       @include visually-hidden;
     }
