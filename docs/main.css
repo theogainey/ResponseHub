@@ -374,6 +374,47 @@ a {
   height: 1px;
   overflow: hidden;
 }
+.cmp-auth__tabs {
+  display: flex;
+  gap: 0.5rem;
+}
+.cmp-auth__tabs[data-method=GET] {
+  display: none;
+}
+.cmp-auth__tab {
+  display: flex;
+  font-size: 1rem;
+  border: 1px solid black;
+}
+.cmp-auth__tab:focus-within label {
+  background-color: black;
+  color: white;
+}
+.cmp-auth__tab label {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  transition: all 250ms ease-in-out;
+}
+.cmp-auth__tab label:focus, .cmp-auth__tab label:hover, .cmp-auth__tab label:active {
+  background-color: black;
+  color: white;
+}
+.cmp-auth__tab--active label {
+  background-color: black;
+  color: white;
+}
+.cmp-auth__input-area[data-view=none] .cmp-auth__basic-auth {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.cmp-auth__basic-auth {
+  margin: 1rem 0;
+  overflow: scroll;
+}
 
 .cmp-response {
   margin-top: 1rem;

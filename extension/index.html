@@ -97,19 +97,37 @@
           </div>
         </div>
         <div class="cmp-auth">
-          <div class="obj-grid">
-            <div class="obj-grid__half util-margin-right">
-              <label class="cmp-auth__label">
-                <span>Username</span>
-                <input class="cmp-auth__input" id="basic-auth-username" type="text" name="username" placeholder="Username"/>
+          <ul class="cmp-auth__tabs">
+            <li class="cmp-auth__tab cmp-options-tabs__tab--active">
+              <label>
+                <input class="util-visually-hidden" checked type="radio" value="none" name="auth-tab" />
+                none
               </label>
+            </li>
+            <li class="cmp-auth__tab">
+              <label>
+                <input class="util-visually-hidden" type="radio" value="basic-auth" name="auth-tab" />
+                Basic Auth
+              </label>
+            </li>
+          </ul> 
+          <div class="cmp-auth__input-area" data-view="none">
+            <div class="cmp-auth__basic-auth">
+              <div class="obj-grid">
+                <div class="obj-grid__half util-margin-right">
+                  <label class="cmp-auth__label">
+                    <span>Username</span>
+                    <input class="cmp-auth__input" id="basic-auth-username" type="text" name="username" placeholder="Username"/>
+                  </label>
+                </div>
+                <div class="obj-grid__half">
+                  <label class="cmp-auth__label">
+                    <span>Password</span>
+                    <input class="cmp-auth__input" id="basic-auth-password" type="text" name="password" placeholder="Password"/>
+                  </label>
+                </div>
+              </div>
             </div>
-            <div class="obj-grid__half">
-              <label class="cmp-auth__label">
-                <span>Password</span>
-                <input class="cmp-auth__input" id="basic-auth-password" type="text" name="password" placeholder="Password"/>
-              </label>
-            </div>  
           </div>
         </div>
         <div class="cmp-url-search-params">

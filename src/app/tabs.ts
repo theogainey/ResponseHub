@@ -23,6 +23,11 @@ const addTabListeners = () => {
   const requestBodyLayoutDiv = document.querySelector('.cmp-request-body__input-area') as Element;
   const requestBodyOptionsTabs = document.querySelectorAll('.cmp-request-body__tab');
   requestBodyOptionsTabs.forEach(addTabChangeHandler(requestBodyLayoutDiv)('.cmp-request-body__tab'));
+
+  const authLayoutDiv = document.querySelector('.cmp-auth__input-area') as Element;
+  const authOptionsTabs = document.querySelectorAll('.cmp-auth__tab');
+  authOptionsTabs.forEach(addTabChangeHandler(authLayoutDiv)('.cmp-auth__tab'));
+
 }
 
 export { addTabListeners };

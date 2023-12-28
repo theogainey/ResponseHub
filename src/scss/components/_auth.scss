@@ -14,4 +14,58 @@
   &__label span {
     @include visually-hidden;
   }
+
+  &__tabs {
+    display: flex;
+    gap: 0.5rem;
+
+    &[data-method="GET"]{
+      display: none;
+    }
+  }
+
+  &__tab {
+    display: flex;
+    font-size: 1rem;
+    border: 1px solid black;
+
+    &:focus-within {
+      label {
+        background-color: black;
+        color: white;
+      }
+    }
+
+    label {
+      padding: 0.25rem 0.5rem;
+      font-size: 0.875rem;
+      transition: all 250ms ease-in-out;
+
+      &:focus, &:hover, &:active {
+        background-color: black;
+        color: white;
+      }
+    }
+
+    
+    &--active {
+      label {
+        background-color: black;
+        color: white;
+      }
+    }
+  }
+  &__input-area {
+
+    &[data-view="none"] {
+      .cmp-auth__basic-auth {
+        @include visually-hidden;
+      }
+    }
+  }
+
+  &__basic-auth {
+    margin: 1rem 0;
+    overflow: scroll;
+  }
 }
