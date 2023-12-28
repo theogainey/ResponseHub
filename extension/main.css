@@ -226,7 +226,7 @@ a {
   display: flex;
   margin-bottom: 1.5rem;
 }
-.cmp-url-input--method {
+.cmp-url-input__method {
   font-family: "Noto Sans Mono", monospace;
   appearance: none;
   text-align: center;
@@ -235,6 +235,28 @@ a {
   padding: 0.5rem 1ch;
   border: 1px solid #e5e7eb;
   border-right: none;
+  font-weight: 600;
+}
+.cmp-url-input__method--GET {
+  color: #006e51;
+}
+.cmp-url-input__method--POST {
+  color: #b22956;
+}
+.cmp-url-input__method--PUT {
+  color: #a6491d;
+}
+.cmp-url-input__method--PATCH {
+  color: #4b02ff;
+}
+.cmp-url-input__method--DELETE {
+  color: #e42422;
+}
+.cmp-url-input__method--HEAD {
+  color: #417c90;
+}
+.cmp-url-input__method--OPTIONS {
+  color: #a327c4;
 }
 .cmp-url-input--url {
   border: none;
@@ -457,6 +479,27 @@ a {
   position: relative;
   height: 12rem;
   margin: 1rem 0;
+}
+.cmp-preview--GET span:first-child {
+  color: #006e51;
+}
+.cmp-preview--POST span:first-child {
+  color: #b22956;
+}
+.cmp-preview--PUT span:first-child {
+  color: #a6491d;
+}
+.cmp-preview--PATCH span:first-child {
+  color: #4b02ff;
+}
+.cmp-preview--DELETE span:first-child {
+  color: #e42422;
+}
+.cmp-preview--HEAD span:first-child {
+  color: #417c90;
+}
+.cmp-preview--OPTIONS span:first-child {
+  color: #a327c4;
 }
 .cmp-preview pre {
   height: 12rem;

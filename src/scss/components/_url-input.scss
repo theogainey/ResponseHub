@@ -2,7 +2,7 @@
   display: flex;
   margin-bottom: 1.5rem;
   
-  &--method {
+  &__method {
     font-family: 'Noto Sans Mono', monospace;
     appearance: none;
     text-align: center;
@@ -11,6 +11,35 @@
     padding: 0.5rem 1ch; 
     border: $border-primary;
     border-right: none;
+    font-weight: 600;
+
+    &--GET {
+      color: $GET-color;
+    }
+
+    &--POST {
+      color: $POST-color;
+    }
+
+    &--PUT {
+      color: $PUT-color;
+    }
+
+    &--PATCH {
+     color: $PATCH-color;
+    }
+
+    &--DELETE {
+      color: $DELETE-color;;
+    }
+
+    &--HEAD {
+      color: $HEAD-color;
+    }
+
+    &--OPTIONS {
+      color: $OPTIONS-color;
+    }
   }
  
   &--url {

@@ -3,7 +3,7 @@
   <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400;600&display=swap" rel="stylesheet">
     <link href="main.css" rel="stylesheet">
     <script src="index.js"></script>
     <title>ResponseHub</title>
@@ -13,7 +13,7 @@
       <div class="cmp-url-input">
         <!-- TODO BUTTON ACCESSIBILITY -->
         <label class="util-visually-hidden" for="method-select">HTTP method</label>
-        <select id="method-select" class="cmp-url-input--method">
+        <select id="method-select" class="cmp-url-input__method cmp-url-input__method--GET">
           <option value="GET" selected>GET</option>
           <option value="POST">POST</option>
           <option value="PUT">PUT</option>
@@ -59,7 +59,7 @@
         </ul>
       </div>
       <div class="obj-options-layout" data-view="preview">
-        <div class="cmp-preview response-hub">
+        <div class="cmp-preview response-hub cmp-preview--GET">
           <pre class="hljs">
             <code></code>
           </pre>

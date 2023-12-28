@@ -3,6 +3,48 @@
   height: $options-area-height;
   margin: 1rem 0;
 
+  &--GET {
+    span:first-child {
+      color: $GET-color;
+    }
+  }
+
+  &--POST {
+    span:first-child {
+      color: $POST-color;
+    }
+  }
+
+  &--PUT {
+    span:first-child {
+      color: $PUT-color;
+    }
+  }
+
+  &--PATCH {
+    span:first-child {
+      color: $PATCH-color;
+    }
+  }
+
+  &--DELETE {
+    span:first-child {
+      color: $DELETE-color;
+    }
+  }
+
+  &--HEAD {
+    span:first-child {
+      color: $HEAD-color;
+    }
+  }
+
+  &--OPTIONS {
+    span:first-child {
+      color: $OPTIONS-color;
+    }
+  }
+
   pre {
     height: $options-area-height;
     overflow: scroll;

@@ -13,8 +13,13 @@ const selectDefaultTab = () => {
   previewTab.dispatchEvent(new Event('change'));
 };
 
+const changeMethodSelectColor = () => {
+
+}
+
 const addURLListeners = () => {
-  const methodSelect = document.querySelector('.cmp-url-input--method') as HTMLSelectElement;
+  const methodSelect = document.querySelector('.cmp-url-input__method') as HTMLSelectElement;
+  const previewElement = document.querySelector('.cmp-preview') as HTMLElement;
   const optionsTabs = document.querySelector('.cmp-options-tabs');
   const bodyTabs = document.querySelector('.cmp-request-body__tabs');
   methodSelect.addEventListener('change', () => {
@@ -25,6 +30,12 @@ const addURLListeners = () => {
     }  
   });
   methodSelect.addEventListener('change', printPreview);
+  methodSelect.addEventListener('change', () => {
+    previewElement.classList.remove('cmp-preview--GET', 'cmp-preview--POST', 'cmp-preview--PUT', 'cmp-preview--PATCH', 'cmp-preview--DELETE', 'cmp-preview--HEAD', 'cmp-preview--OPTIONS');
+    previewElement.classList.add(`cmp-preview--${methodSelect.value}`);
+    methodSelect.classList.remove('cmp-url-input__method--GET', 'cmp-url-input__method--POST', 'cmp-url-input__method--PUT', 'cmp-url-input__method--PATCH', 'cmp-url-input__method--DELETE', 'cmp-url-input__method--HEAD', 'cmp-url-input__method--OPTIONS');
+    methodSelect.classList.add(`cmp-url-input__method--${methodSelect.value}`)
+  })
 }
 
 export { addURLListeners };
