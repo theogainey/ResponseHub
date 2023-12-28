@@ -1,3 +1,4 @@
+import { getBasicAuth, hasAuth } from "./auth";
 import { printPreview } from "./preview";
 
 // TODO: A USERS NEEDS TO BE ABLE TURN HEADERS ON AND OFF WITHOUT DELETING THEM
@@ -23,7 +24,11 @@ const getHeaders = (): Headers => {
   for (const value of headerInputComponents.values()) {
     headerKeyValuePairs.push(getHeaderKeyValuePair(value));
   }
-  return new Headers(headerKeyValuePairs.filter(isValidHeader));
+  const headers = new Headers(headerKeyValuePairs.filter(isValidHeader));
+  if(hasAuth()){
+    headers.append('Authorization', getBasicAuth());
+  }
+  return headers;
 } 
 
 const createNewHeaderInput = () => {

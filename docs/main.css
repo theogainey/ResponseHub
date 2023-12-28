@@ -90,6 +90,14 @@ a {
   grid-column: span 9;
 }
 
+.obj-options-layout[data-view=preview] .cmp-auth {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
 .obj-options-layout[data-view=preview] .cmp-headers {
   position: absolute;
   left: -10000px;
@@ -107,6 +115,14 @@ a {
   overflow: hidden;
 }
 .obj-options-layout[data-view=preview] .cmp-request-body {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.obj-options-layout[data-view=headers] .cmp-auth {
   position: absolute;
   left: -10000px;
   top: auto;
@@ -138,6 +154,14 @@ a {
   height: 1px;
   overflow: hidden;
 }
+.obj-options-layout[data-view=url-search-params] .cmp-auth {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
 .obj-options-layout[data-view=url-search-params] .cmp-headers {
   position: absolute;
   left: -10000px;
@@ -162,6 +186,14 @@ a {
   height: 1px;
   overflow: hidden;
 }
+.obj-options-layout[data-view=body] .cmp-auth {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
 .obj-options-layout[data-view=body] .cmp-headers {
   position: absolute;
   left: -10000px;
@@ -179,6 +211,38 @@ a {
   overflow: hidden;
 }
 .obj-options-layout[data-view=body] .cmp-url-search-params {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.obj-options-layout[data-view=auth] .cmp-request-body {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.obj-options-layout[data-view=auth] .cmp-headers {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.obj-options-layout[data-view=auth] .cmp-preview {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.obj-options-layout[data-view=auth] .cmp-url-search-params {
   position: absolute;
   left: -10000px;
   top: auto;
@@ -282,6 +346,27 @@ a {
   line-height: 1.5;
 }
 .cmp-headers__label span {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.cmp-auth {
+  margin: 1rem 0;
+  height: 12rem;
+  overflow: scroll;
+}
+.cmp-auth__input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+.cmp-auth__label span {
   position: absolute;
   left: -10000px;
   top: auto;
@@ -526,6 +611,7 @@ a {
   position: absolute;
   top: 0;
   right: 0;
+  background-color: white;
   border: 1px solid black;
   padding: 0.5rem;
   transition: background-color 250ms, color 250ms ease-in-out;

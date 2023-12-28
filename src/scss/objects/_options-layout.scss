@@ -1,6 +1,9 @@
 .obj-options-layout {
 
   &[data-view="preview"]{
+    .cmp-auth {
+      @include visually-hidden;
+    }
     .cmp-headers {
       @include visually-hidden;
     }
@@ -13,6 +16,9 @@
   }
 
   &[data-view="headers"]{
+    .cmp-auth {
+      @include visually-hidden;
+    }
     .cmp-preview {
       @include visually-hidden;
     }
@@ -25,6 +31,9 @@
   }
 
   &[data-view="url-search-params"]{
+    .cmp-auth {
+      @include visually-hidden;
+    }
     .cmp-headers {
       @include visually-hidden;
     }
@@ -37,6 +46,24 @@
   }
 
   &[data-view="body"]{
+    .cmp-auth {
+      @include visually-hidden;
+    }
+    .cmp-headers {
+      @include visually-hidden;
+    }
+    .cmp-preview {
+      @include visually-hidden;
+    }
+    .cmp-url-search-params {
+      @include visually-hidden;
+    }
+  }
+
+  &[data-view="auth"]{
+    .cmp-request-body {
+      @include visually-hidden;
+    }
     .cmp-headers {
       @include visually-hidden;
     }

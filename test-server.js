@@ -8,6 +8,17 @@ app.head('/', (req, res) => {
   res.status(200).send('THIS SHOULD BE IGNORED IF YOU ARE SEEING THIS IN A RESPONSE SOMETHING IS WRONGxs');
 });
 
+app.get('/basic-auth', (req, res) => {
+  console.log('Received GET Request With Basic Auth:');
+  if(req.headers.authorization === `Basic ${btoa('username:password')}`){
+    res.status(200).send('Success:  \nIf request was sent including username: username + password: password Basic Auth is working correctly');
+    return;
+  }
+  console.log(`Received ${req.headers.authorization}`);
+  console.log(`Expected Basic ${btoa('username:password')}`)
+  res.status(403).send('Access Forbidden: \nIf request was sent including username: username + password: password Basic Auth is not working correctly');
+});
+
 app.get('/', (req, res) => {
   console.log('Received GET Request:');
   res.status(200).send('GET Request received successfully');

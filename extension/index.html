@@ -46,6 +46,12 @@
           </li>
           <li class="cmp-options-tabs__tab">
             <label>
+              <input class="util-visually-hidden"  type="radio" value="auth" name="view-tab" />
+              Auth
+            </label>
+          </li>
+          <li class="cmp-options-tabs__tab">
+            <label>
               <input class="util-visually-hidden" type="radio" value="url-search-params" name="view-tab" />
               URL Search Params
             </label>
@@ -86,6 +92,22 @@
               <label class="cmp-headers__label">
                 <span>Value</span>
                 <input class="cmp-headers__input cmp-headers__input--value" type="text" name="value" placeholder="Value"/>
+              </label>
+            </div>  
+          </div>
+        </div>
+        <div class="cmp-auth">
+          <div class="obj-grid">
+            <div class="obj-grid__half util-margin-right">
+              <label class="cmp-auth__label">
+                <span>Username</span>
+                <input class="cmp-auth__input" id="basic-auth-username" type="text" name="username" placeholder="Username"/>
+              </label>
+            </div>
+            <div class="obj-grid__half">
+              <label class="cmp-auth__label">
+                <span>Password</span>
+                <input class="cmp-auth__input" id="basic-auth-password" type="text" name="password" placeholder="Password"/>
               </label>
             </div>  
           </div>
