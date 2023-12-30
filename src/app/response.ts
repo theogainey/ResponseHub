@@ -61,6 +61,12 @@ const copyToResponseToClipBoard = (data: string) => () => {
   navigator.clipboard.writeText(data)
 };
 
+const setBodyTabActive = () => {
+  const bodyTab = document.querySelector('#response-body-tab') as HTMLInputElement;
+  bodyTab.checked = true;
+  bodyTab.dispatchEvent(new Event('change'));
+}
+
 const showResponseFormattingButtons = (data:string) => {
   const copyButton = document.querySelector('.cmp-response .cmp-copy-button');
   // const responseLanguageDiv = document.querySelector('.cmp-response__languages');
@@ -68,6 +74,7 @@ const showResponseFormattingButtons = (data:string) => {
   [copyButton, responseDetailsDiv].forEach((e) => {
     e?.classList.remove('util-visually-hidden');
   });
+  setBodyTabActive();
   copyButton?.addEventListener('click', copyToResponseToClipBoard(data));
 }
 
