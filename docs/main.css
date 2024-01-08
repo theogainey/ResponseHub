@@ -836,8 +836,43 @@ a {
   min-height: 100vh;
   width: 100%;
   background-color: #e5e7eb;
-  padding: 0 1rem;
-  overflow: scroll;
+  padding-top: 3rem;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.cmp-history__list-item {
+  margin-bottom: 0.5rem;
+  text-wrap: nowrap;
+  padding: 0.25rem 0.5rem;
+  padding-left: 1rem;
+}
+.cmp-history__list-item:hover {
+  background-color: #d1d5db;
+}
+.cmp-history__method {
+  color: #fff;
+  padding: 0 0.25rem;
+}
+.cmp-history__method--GET {
+  background-color: #006e51;
+}
+.cmp-history__method--POST {
+  background-color: #b22956;
+}
+.cmp-history__method--PUT {
+  background-color: #a6491d;
+}
+.cmp-history__method--PATCH {
+  background-color: #4b02ff;
+}
+.cmp-history__method--DELETE {
+  background-color: #e42422;
+}
+.cmp-history__method--HEAD {
+  background-color: #417c90;
+}
+.cmp-history__method--OPTIONS {
+  background-color: #a327c4;
 }
 
 .cmp-site-preview {

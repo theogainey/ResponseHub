@@ -1,9 +1,11 @@
 type RequestHistoryEntry = {
   method: string;
   url: string;
+  timeStamp: number;
+  id?: number; 
 }
 
-class RequestHistory {
+class RequestHistoryDB {
   private db: IDBDatabase | null = null;
   readonly dbName = "ResponseHub";
   readonly version = 1;
@@ -24,8 +26,8 @@ class RequestHistory {
 
       request.onupgradeneeded = (event) => {
         this.db = (event.target as IDBOpenDBRequest).result as IDBDatabase;
-        this.db.createObjectStore("requests", { autoIncrement: true });
-        resolve();
+        const objectStore = this.db.createObjectStore("requests", { autoIncrement: true });
+        objectStore.createIndex('id', 'id', { unique: true }); 
       };
 
       request.onsuccess = (event) => {
@@ -35,7 +37,7 @@ class RequestHistory {
     });
   }
 
-  async getRequestPreviews(): Promise<RequestHistoryEntry[] | void> {
+  async getRequests(): Promise<RequestHistoryEntry[]> {
     await this.initPromise;
     return await new Promise((resolve, reject) => {
       if (!this.db) {
@@ -47,6 +49,10 @@ class RequestHistory {
 
       transaction.onsuccess = (event) => {
         const allData = (event.target as IDBRequest).result;
+        if(!Array.isArray(allData)){
+          resolve([]);
+          return;
+        };
         resolve(allData);
       };
 
@@ -63,20 +69,65 @@ class RequestHistory {
         reject("Database connection not established");
         return;
       }
-
-      const transaction = this.db.transaction(['requests'], 'readwrite')
-        .objectStore('requests')
-        .add(requestHistoryEntry)
-
-      transaction.onsuccess = (_event) => {
-        resolve();
+  
+      const transaction = this.db.transaction(['requests'], 'readwrite').objectStore('requests');
+  
+      const getKeyRequest = transaction.getAllKeys();
+      
+      getKeyRequest.onsuccess = (event) => {
+        const keys = (event.target as IDBRequest).result as number[];
+        const maxId = keys.length > 0 ? Math.max(...keys) : 0;
+        const newId = maxId + 1;
+        requestHistoryEntry.id = newId;
+        const addRequest = transaction.add(requestHistoryEntry);
+  
+        addRequest.onsuccess = () => {
+          resolve();
+        };
+  
+        addRequest.onerror = (_event) => {
+          reject("Error adding data to object store");
+        };
       };
-
-      transaction.onerror = (_event) => {
-        reject("Error add data to object store");
+  
+      getKeyRequest.onerror = (_event) => {
+        reject("Error retrieving keys from object store");
       };
     });
   }
+  
 }
 
-export { RequestHistory };
+const createHistoryEntryElement = (request: RequestHistoryEntry) => {
+  const newHistoryEntryElement = document.createElement('div');
+  newHistoryEntryElement.classList.add('cmp-history__list-item');
+  newHistoryEntryElement.innerHTML = `<span class="cmp-history__method cmp-history__method--${request.method}">${request.method}</span> <span>${request.url}</span>`;
+  return newHistoryEntryElement;
+}
+
+const printHistory = (requests: RequestHistoryEntry[]) => {
+  const historyContainer = document.querySelector('.cmp-history');
+  requests.forEach((request) => {
+    console.log(request);
+    historyContainer?.prepend(createHistoryEntryElement(request));
+  });
+};
+
+const printNewHistoryEntry = (request:RequestHistoryEntry) => {
+  const historyContainer = document.querySelector('.cmp-history');
+  historyContainer?.prepend(createHistoryEntryElement(request));
+};
+
+const requestHistoryDB = new RequestHistoryDB();
+
+const initHistory = async () => {
+  const requests = await requestHistoryDB.getRequests();
+  printHistory(requests);
+};
+
+const addRequestToHistory = async (request: RequestHistoryEntry) => {
+  await requestHistoryDB.addRequest(request);
+  printNewHistoryEntry(request);
+};
+
+export { initHistory, addRequestToHistory };

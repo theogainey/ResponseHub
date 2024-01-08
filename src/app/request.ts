@@ -3,6 +3,7 @@ import { handleRequestError } from "./errors";
 import { getFormData } from "./formData";
 import { getFormURLEncodedData } from "./formURLEncoded";
 import { getHeaders } from "./headers";
+import { addRequestToHistory } from "./requestHistory";
 import { handleResponse } from "./response";
 import { getURLSearchParams } from "./urlSearchParams";
 import { toggleHidden } from "./utils";
@@ -58,14 +59,14 @@ const getRequestWithoutBody = (url: string, method: string) => {
   return new Request(url, Object.assign({}, defaultRequestOptions, { headers: requestHeaders, method: method}))
 }
 
-const getRequest = (url: string) => {
+const getRequest = (url: string, method: string) => {
   const requestURL = `${url}?${getURLSearchParams()}`;
-  // @ts-ignore
-  const requestMethod = document.querySelector('#method-select').value;
-  return requestCanHaveBody(requestMethod) ? getRequestWithBody(requestURL, requestMethod) :  getRequestWithoutBody(requestURL, requestMethod);
+  return requestCanHaveBody(method) ? getRequestWithBody(requestURL, method) :  getRequestWithoutBody(requestURL, method);
 };
 
 const sendRequest = () => {
+  // @ts-ignore
+  const requestMethod = document.querySelector('#method-select').value;
   const url  = getURL();
   // TO DO BUILD REQUEST AND VALIDATE WHILE USER IS TYPING IT IN 
   if(!isValidURL(url)){
@@ -75,7 +76,7 @@ const sendRequest = () => {
   }
   const sendButton = document.querySelector('#send-button div') as Element;
   toggleHidden(sendButton);
-  const userRequest = getRequest(url);
+  const userRequest = getRequest(url, requestMethod);
   const startTime = Date.now();
   fetch(userRequest)
   .then((response)=> {
@@ -83,7 +84,10 @@ const sendRequest = () => {
     printResponseTime(endTime - startTime);
     return response;
   })
-  .then((response)=> handleResponse(response))
+  .then((response)=> {
+    handleResponse(response);
+    addRequestToHistory({url: url, method: requestMethod, timeStamp: Date.now()});
+  })
   .catch((_err)=>{
     handleRequestError();
   })

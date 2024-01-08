@@ -2,6 +2,44 @@
   min-height: 100vh;
   width: 100%;
   background-color: #e5e7eb;
-  padding: 0 1rem;
-  overflow: scroll;
+  padding-top: 3rem;
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  &__list-item {
+    margin-bottom: 0.5rem;
+    text-wrap: nowrap;
+    padding: 0.25rem 0.5rem;
+    padding-left: 1rem;
+    &:hover {
+      background-color: #d1d5db;
+    }
+  }
+
+  &__method {
+    color: #fff;
+    padding: 0 0.25rem;
+
+    &--GET {
+      background-color: $GET-color;
+    }
+    &--POST {
+      background-color: $POST-color;
+    }
+    &--PUT {
+      background-color: $PUT-color;
+    }
+    &--PATCH {
+      background-color: $PATCH-color;
+    }
+    &--DELETE {
+      background-color: $DELETE-color;
+    }
+    &--HEAD {
+      background-color: $HEAD-color;
+    }
+    &--OPTIONS {
+      background-color: $OPTIONS-color;
+    }
+  }
 }
