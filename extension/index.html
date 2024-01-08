@@ -10,263 +10,272 @@
   </head>
   <body>
     <div class="obj-layout">
-      <div class="cmp-url-input">
-        <!-- TODO BUTTON ACCESSIBILITY -->
-        <label class="util-visually-hidden" for="method-select">HTTP method</label>
-        <select id="method-select" class="cmp-url-input__method cmp-url-input__method--GET">
-          <option value="GET" selected>GET</option>
-          <option value="POST">POST</option>
-          <option value="PUT">PUT</option>
-          <option value="PATCH">PATCH</option>
-          <option value="DELETE">DELETE</option>
-          <option value="HEAD">HEAD</option>
-          <option value="OPTIONS">OPTIONS</option>
-        </select>
-        <label for="url-input" class="util-visually-hidden">url input</label>
-        <input id="url-input" class="cmp-url-input--url" type="text" id="url-input" name="url" required placeholder="URL"/>
-        <button class="cmp-send-button" id="send-button">
-          Send
-          <div class="cmp-send-button__loader util-visually-hidden"></div>
-        </button>
-      </div>  
-      <div id="request-options">
-        <!-- TODO: Keyboard accessibility on the tabs -->
-        <ul class="cmp-options-tabs" data-method="GET">
-          <li class="cmp-options-tabs__tab cmp-options-tabs__tab--active" id="preview-tab"> 
-            <label>
-              <input class="util-visually-hidden" checked type="radio" value="preview" name="view-tab" />
-              Preview
-            </label>
-          </li>
-          <li class="cmp-options-tabs__tab">
-            <label>
-              <input class="util-visually-hidden"  type="radio" value="headers" name="view-tab" />
-              Headers
-            </label>
-          </li>
-          <li class="cmp-options-tabs__tab">
-            <label>
-              <input class="util-visually-hidden"  type="radio" value="auth" name="view-tab" />
-              Auth
-            </label>
-          </li>
-          <li class="cmp-options-tabs__tab">
-            <label>
-              <input class="util-visually-hidden" type="radio" value="url-search-params" name="view-tab" />
-              URL Search Params
-            </label>
-          </li>
-          <li class="cmp-options-tabs__tab" id="body-tab">
-            <label>
-              <input class="util-visually-hidden" type="radio" value="body" name="view-tab" />
-              Body
-            </label>
-          </li>
-        </ul>
+      <div class="obj-side-layout">
+        <div class="cmp-history">
+        
+        </div>  
       </div>
-      <div class="obj-options-layout" data-view="preview">
-        <div class="cmp-preview response-hub cmp-preview--GET">
-          <pre class="hljs">
-            <code></code>
-          </pre>
-          <button class="cmp-copy-button">
-            <span class="util-visually-hidden">copy to clipboard</span>
-            <svg class="cmp-copy-button__icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M20 9H11C9.89543 9 9 9.89543 9 11V20C9 21.1046 9.89543 22 11 22H20C21.1046 22 22 21.1046 22 20V11C22 9.89543 21.1046 9 20 9Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M5 15H4C3.46957 15 2.96086 14.7893 2.58579 14.4142C2.21071 14.0391 2 13.5304 2 13V4C2 3.46957 2.21071 2.96086 2.58579 2.58579C2.96086 2.21071 3.46957 2 4 2H13C13.5304 2 14.0391 2.21071 14.4142 2.58579C14.7893 2.96086 15 3.46957 15 4V5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <svg class="cmp-copy-button__icon util-visually-hidden" width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M20 6L9 17L4 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-        </div>
-        <div class="cmp-headers">
-          <div class="obj-grid cmp-headers__header-pair">
-            <div class="obj-grid__half util-margin-right">
-              <label class="cmp-headers__label">
-                <span>Header</span>
-                <input class="cmp-headers__input cmp-headers__input--header" type="text" name="header" placeholder="Header"/>
-              </label>
-            </div>
-            <div class="obj-grid__half">
-              <label class="cmp-headers__label">
-                <span>Value</span>
-                <input class="cmp-headers__input cmp-headers__input--value" type="text" name="value" placeholder="Value"/>
-              </label>
-            </div>  
-          </div>
-        </div>
-        <div class="cmp-auth">
-          <ul class="cmp-auth__tabs">
-            <li class="cmp-auth__tab cmp-options-tabs__tab--active">
-              <label>
-                <input class="util-visually-hidden" checked type="radio" value="none" name="auth-tab" />
-                none
-              </label>
-            </li>
-            <li class="cmp-auth__tab">
-              <label>
-                <input class="util-visually-hidden" type="radio" value="basic-auth" name="auth-tab" />
-                Basic Auth
-              </label>
-            </li>
-          </ul> 
-          <div class="cmp-auth__input-area" data-view="none">
-            <div class="cmp-auth__basic-auth">
-              <div class="obj-grid">
-                <div class="obj-grid__half util-margin-right">
-                  <label class="cmp-auth__label">
-                    <span>Username</span>
-                    <input class="cmp-auth__input" id="basic-auth-username" type="text" name="username" placeholder="Username"/>
-                  </label>
-                </div>
-                <div class="obj-grid__half">
-                  <label class="cmp-auth__label">
-                    <span>Password</span>
-                    <input class="cmp-auth__input" id="basic-auth-password" type="text" name="password" placeholder="Password"/>
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="cmp-url-search-params">
-          <div class="obj-grid cmp-url-search-params__params-pair">
-            <div class="obj-grid__half util-margin-right">
-              <label class="cmp-url-search-params__label">
-                <span>URL Search Parameter Key</span>
-                <input class="cmp-url-search-params__input cmp-url-search-params__input--key" type="text" name="header" placeholder="URL Search Parameter Key"/>
-              </label>
-            </div>
-            <div class="obj-grid__half">
-              <label class="cmp-url-search-params__label">
-                <span>Value</span>
-                <input class="cmp-url-search-params__input cmp-url-search-params__input--value" type="text" name="value" placeholder="Value"/>
-              </label>
-            </div>  
-          </div>
-        </div>
-        <div class="cmp-request-body">
-          <ul class="cmp-request-body__tabs" data-method="GET">
-            <li class="cmp-request-body__tab cmp-options-tabs__tab--active">
-              <label>
-                <input class="util-visually-hidden" checked type="radio" value="none" name="body-tab" />
-                none
-              </label>
-            </li>
-            <li class="cmp-request-body__tab">
-              <label>
-                <input class="util-visually-hidden" type="radio" value="form-data" name="body-tab" />
-                form-data
-              </label>
-            </li>
-            <li class="cmp-request-body__tab">
-              <label>
-                <input class="util-visually-hidden" type="radio" value="x-www-form-urlencoded" name="body-tab" />
-                x-www-form-urlencoded
-              </label>
-            </li>
-            <li class="cmp-request-body__tab">
-              <label>
-                <input class="util-visually-hidden" type="radio" value="raw" name="body-tab" />
-                raw
-              </label>
-            </li>
-          </ul> 
-          <div class="cmp-request-body__input-area" data-view="none">
-            <div class="cmp-request-body__form-data">
-              <div class="obj-grid cmp-form-data__input-pair">
-                <div class="obj-grid__half util-margin-right">
-                  <label class="cmp-request-body__label">
-                    <span>Key</span>
-                    <input class="cmp-request-body__input cmp-request-body__input--key" type="text" name="form-data-key" placeholder="Key"/>
-                  </label>
-                </div>
-                <div class="obj-grid__half">
-                  <label class="cmp-request-body__label">
-                    <span>Value</span>
-                    <input class="cmp-request-body__input cmp-request-body__input--value" type="text" name="form-data-value" placeholder="Value"/>
-                  </label>
-                </div>    
-              </div>
-            </div>
-            <div class="cmp-request-body__x-www-form-urlencoded">
-              <div class="obj-grid cmp-x-www-form-urlencoded__input-pair">
-                <div class="obj-grid__half util-margin-right">
-                  <label class="cmp-request-body__label">
-                    <span>Key</span>
-                    <input class="cmp-request-body__input cmp-request-body__input--key" type="text" name="x-www-form-urlencoded-key" placeholder="Key"/>
-                  </label>
-                </div>
-                <div class="obj-grid__half">
-                  <label class="cmp-request-body__label">
-                    <span>Value</span>
-                    <input class="cmp-request-body__input cmp-request-body__input--value" type="text" name="x-www-form-urlencoded-value" placeholder="Value"/>
-                  </label>
-                </div>      
-              </div>
-            </div>
-            <div class="cmp-request-body__raw">
-              <textarea name="raw-text-body" class="cmp-request-body__text-area" placeholder="Raw Text Body"></textarea>
-            </div>
+      <div class="obj-main-layout">
+        <div class="obj-max-width">
+          <div class="cmp-url-input">
+            <!-- TODO BUTTON ACCESSIBILITY -->
+            <label class="util-visually-hidden" for="method-select">HTTP method</label>
+            <select id="method-select" class="cmp-url-input__method cmp-url-input__method--GET">
+              <option value="GET" selected>GET</option>
+              <option value="POST">POST</option>
+              <option value="PUT">PUT</option>
+              <option value="PATCH">PATCH</option>
+              <option value="DELETE">DELETE</option>
+              <option value="HEAD">HEAD</option>
+              <option value="OPTIONS">OPTIONS</option>
+            </select>
+            <label for="url-input" class="util-visually-hidden">url input</label>
+            <input id="url-input" class="cmp-url-input--url" type="text" id="url-input" name="url" required placeholder="URL"/>
+            <button class="cmp-send-button" id="send-button">
+              Send
+              <div class="cmp-send-button__loader util-visually-hidden"></div>
+            </button>
           </div>  
-        </div>
-      </div>
-      <div class="cmp-response response-hub" data-view="body">
-        <div class="cmp-response__error">
-          <span class="cmp-response__error-message">Unable to get any response. Please try again</span>
-        </div>
-        <div class="cmp-response__details cmp-response-details util-visually-hidden">
-          <ul class="cmp-options-tabs">
-            <li class="cmp-options-tabs__tab cmp-options-tabs__tab--active">
-              <label>
-                <input class="util-visually-hidden" id="response-body-tab" checked type="radio" value="body" name="view-tab" />
-                Body
-              </label>
-            </li>  
-            <li class="cmp-options-tabs__tab">
-              <label>
-                <input class="util-visually-hidden" type="radio" value="headers" name="view-tab" />
-                Headers
-              </label>
-            </li>      
-          </ul>
-          <div>
-            <span class="cmp-response-details__status-code">status</span>
-            <span class="cmp-response-details__time"></span>
+          <div id="request-options">
+            <!-- TODO: Keyboard accessibility on the tabs -->
+            <ul class="cmp-options-tabs" data-method="GET">
+              <li class="cmp-options-tabs__tab cmp-options-tabs__tab--active" id="preview-tab"> 
+                <label>
+                  <input class="util-visually-hidden" checked type="radio" value="preview" name="view-tab" />
+                  Preview
+                </label>
+              </li>
+              <li class="cmp-options-tabs__tab">
+                <label>
+                  <input class="util-visually-hidden"  type="radio" value="headers" name="view-tab" />
+                  Headers
+                </label>
+              </li>
+              <li class="cmp-options-tabs__tab">
+                <label>
+                  <input class="util-visually-hidden"  type="radio" value="auth" name="view-tab" />
+                  Auth
+                </label>
+              </li>
+              <li class="cmp-options-tabs__tab">
+                <label>
+                  <input class="util-visually-hidden" type="radio" value="url-search-params" name="view-tab" />
+                  URL Search Params
+                </label>
+              </li>
+              <li class="cmp-options-tabs__tab" id="body-tab">
+                <label>
+                  <input class="util-visually-hidden" type="radio" value="body" name="view-tab" />
+                  Body
+                </label>
+              </li>
+            </ul>
           </div>
-        </div>
-        <div class="cmp-response__body">
-          <!-- <div class="cmp-response__button-container">
-            <div class="cmp-response__languages util-visually-hidden">
-              <label class="cmp-response__languages-button" id="json-button">
-                <input class="util-visually-hidden" type="radio" name="formatting-language" />
-                JSON
-              </label>
-              <label class="cmp-response__languages-button" id="xml-button">
-                <input class="util-visually-hidden" type="radio" name="formatting-language" />
-                XML
-              </label>
-            </div> -->
-            <button class="cmp-copy-button cmp-response__copy-button util-visually-hidden">
-              <span class="util-visually-hidden">copy to clipboard</span>
-              <svg class="cmp-copy-button__icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M20 9H11C9.89543 9 9 9.89543 9 11V20C9 21.1046 9.89543 22 11 22H20C21.1046 22 22 21.1046 22 20V11C22 9.89543 21.1046 9 20 9Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M5 15H4C3.46957 15 2.96086 14.7893 2.58579 14.4142C2.21071 14.0391 2 13.5304 2 13V4C2 3.46957 2.21071 2.96086 2.58579 2.58579C2.96086 2.21071 3.46957 2 4 2H13C13.5304 2 14.0391 2.21071 14.4142 2.58579C14.7893 2.96086 15 3.46957 15 4V5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              <svg class="cmp-copy-button__icon util-visually-hidden" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M20 6L9 17L4 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>  
-          <!-- </div> -->
-          <pre class="hljs">
-            <code class="cmp-response__text"></code> 
-          </pre>
-        </div>
-        <div class="cmp-response__headers">
-          <pre class="hljs">
-            <code></code> 
-          </pre>
+          <div class="obj-options-layout" data-view="preview">
+            <div class="cmp-preview response-hub cmp-preview--GET">
+              <pre class="hljs">
+                <code></code>
+              </pre>
+              <button class="cmp-copy-button">
+                <span class="util-visually-hidden">copy to clipboard</span>
+                <svg class="cmp-copy-button__icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M20 9H11C9.89543 9 9 9.89543 9 11V20C9 21.1046 9.89543 22 11 22H20C21.1046 22 22 21.1046 22 20V11C22 9.89543 21.1046 9 20 9Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M5 15H4C3.46957 15 2.96086 14.7893 2.58579 14.4142C2.21071 14.0391 2 13.5304 2 13V4C2 3.46957 2.21071 2.96086 2.58579 2.58579C2.96086 2.21071 3.46957 2 4 2H13C13.5304 2 14.0391 2.21071 14.4142 2.58579C14.7893 2.96086 15 3.46957 15 4V5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <svg class="cmp-copy-button__icon util-visually-hidden" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M20 6L9 17L4 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+            <div class="cmp-headers">
+              <div class="obj-grid cmp-headers__header-pair">
+                <div class="obj-grid__half util-margin-right">
+                  <label class="cmp-headers__label">
+                    <span>Header</span>
+                    <input class="cmp-headers__input cmp-headers__input--header" type="text" name="header" placeholder="Header"/>
+                  </label>
+                </div>
+                <div class="obj-grid__half">
+                  <label class="cmp-headers__label">
+                    <span>Value</span>
+                    <input class="cmp-headers__input cmp-headers__input--value" type="text" name="value" placeholder="Value"/>
+                  </label>
+                </div>  
+              </div>
+            </div>
+            <div class="cmp-auth">
+              <ul class="cmp-auth__tabs">
+                <li class="cmp-auth__tab cmp-options-tabs__tab--active">
+                  <label>
+                    <input class="util-visually-hidden" checked type="radio" value="none" name="auth-tab" />
+                    none
+                  </label>
+                </li>
+                <li class="cmp-auth__tab">
+                  <label>
+                    <input class="util-visually-hidden" type="radio" value="basic-auth" name="auth-tab" />
+                    Basic Auth
+                  </label>
+                </li>
+              </ul> 
+              <div class="cmp-auth__input-area" data-view="none">
+                <div class="cmp-auth__basic-auth">
+                  <div class="obj-grid">
+                    <div class="obj-grid__half util-margin-right">
+                      <label class="cmp-auth__label">
+                        <span>Username</span>
+                        <input class="cmp-auth__input" id="basic-auth-username" type="text" name="username" placeholder="Username"/>
+                      </label>
+                    </div>
+                    <div class="obj-grid__half">
+                      <label class="cmp-auth__label">
+                        <span>Password</span>
+                        <input class="cmp-auth__input" id="basic-auth-password" type="text" name="password" placeholder="Password"/>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="cmp-url-search-params">
+              <div class="obj-grid cmp-url-search-params__params-pair">
+                <div class="obj-grid__half util-margin-right">
+                  <label class="cmp-url-search-params__label">
+                    <span>URL Search Parameter Key</span>
+                    <input class="cmp-url-search-params__input cmp-url-search-params__input--key" type="text" name="header" placeholder="URL Search Parameter Key"/>
+                  </label>
+                </div>
+                <div class="obj-grid__half">
+                  <label class="cmp-url-search-params__label">
+                    <span>Value</span>
+                    <input class="cmp-url-search-params__input cmp-url-search-params__input--value" type="text" name="value" placeholder="Value"/>
+                  </label>
+                </div>  
+              </div>
+            </div>
+            <div class="cmp-request-body">
+              <ul class="cmp-request-body__tabs" data-method="GET">
+                <li class="cmp-request-body__tab cmp-options-tabs__tab--active">
+                  <label>
+                    <input class="util-visually-hidden" checked type="radio" value="none" name="body-tab" />
+                    none
+                  </label>
+                </li>
+                <li class="cmp-request-body__tab">
+                  <label>
+                    <input class="util-visually-hidden" type="radio" value="form-data" name="body-tab" />
+                    form-data
+                  </label>
+                </li>
+                <li class="cmp-request-body__tab">
+                  <label>
+                    <input class="util-visually-hidden" type="radio" value="x-www-form-urlencoded" name="body-tab" />
+                    x-www-form-urlencoded
+                  </label>
+                </li>
+                <li class="cmp-request-body__tab">
+                  <label>
+                    <input class="util-visually-hidden" type="radio" value="raw" name="body-tab" />
+                    raw
+                  </label>
+                </li>
+              </ul> 
+              <div class="cmp-request-body__input-area" data-view="none">
+                <div class="cmp-request-body__form-data">
+                  <div class="obj-grid cmp-form-data__input-pair">
+                    <div class="obj-grid__half util-margin-right">
+                      <label class="cmp-request-body__label">
+                        <span>Key</span>
+                        <input class="cmp-request-body__input cmp-request-body__input--key" type="text" name="form-data-key" placeholder="Key"/>
+                      </label>
+                    </div>
+                    <div class="obj-grid__half">
+                      <label class="cmp-request-body__label">
+                        <span>Value</span>
+                        <input class="cmp-request-body__input cmp-request-body__input--value" type="text" name="form-data-value" placeholder="Value"/>
+                      </label>
+                    </div>    
+                  </div>
+                </div>
+                <div class="cmp-request-body__x-www-form-urlencoded">
+                  <div class="obj-grid cmp-x-www-form-urlencoded__input-pair">
+                    <div class="obj-grid__half util-margin-right">
+                      <label class="cmp-request-body__label">
+                        <span>Key</span>
+                        <input class="cmp-request-body__input cmp-request-body__input--key" type="text" name="x-www-form-urlencoded-key" placeholder="Key"/>
+                      </label>
+                    </div>
+                    <div class="obj-grid__half">
+                      <label class="cmp-request-body__label">
+                        <span>Value</span>
+                        <input class="cmp-request-body__input cmp-request-body__input--value" type="text" name="x-www-form-urlencoded-value" placeholder="Value"/>
+                      </label>
+                    </div>      
+                  </div>
+                </div>
+                <div class="cmp-request-body__raw">
+                  <textarea name="raw-text-body" class="cmp-request-body__text-area" placeholder="Raw Text Body"></textarea>
+                </div>
+              </div>  
+            </div>
+          </div>
+          <div class="cmp-response response-hub" data-view="body">
+            <div class="cmp-response__error">
+              <span class="cmp-response__error-message">Unable to get any response. Please try again</span>
+            </div>
+            <div class="cmp-response__details cmp-response-details util-visually-hidden">
+              <ul class="cmp-options-tabs">
+                <li class="cmp-options-tabs__tab cmp-options-tabs__tab--active">
+                  <label>
+                    <input class="util-visually-hidden" id="response-body-tab" checked type="radio" value="body" name="view-tab" />
+                    Body
+                  </label>
+                </li>  
+                <li class="cmp-options-tabs__tab">
+                  <label>
+                    <input class="util-visually-hidden" type="radio" value="headers" name="view-tab" />
+                    Headers
+                  </label>
+                </li>      
+              </ul>
+              <div>
+                <span class="cmp-response-details__status-code">status</span>
+                <span class="cmp-response-details__time"></span>
+              </div>
+            </div>
+            <div class="cmp-response__body">
+              <!-- <div class="cmp-response__button-container">
+                <div class="cmp-response__languages util-visually-hidden">
+                  <label class="cmp-response__languages-button" id="json-button">
+                    <input class="util-visually-hidden" type="radio" name="formatting-language" />
+                    JSON
+                  </label>
+                  <label class="cmp-response__languages-button" id="xml-button">
+                    <input class="util-visually-hidden" type="radio" name="formatting-language" />
+                    XML
+                  </label>
+                </div> -->
+                <button class="cmp-copy-button cmp-response__copy-button util-visually-hidden">
+                  <span class="util-visually-hidden">copy to clipboard</span>
+                  <svg class="cmp-copy-button__icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M20 9H11C9.89543 9 9 9.89543 9 11V20C9 21.1046 9.89543 22 11 22H20C21.1046 22 22 21.1046 22 20V11C22 9.89543 21.1046 9 20 9Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M5 15H4C3.46957 15 2.96086 14.7893 2.58579 14.4142C2.21071 14.0391 2 13.5304 2 13V4C2 3.46957 2.21071 2.96086 2.58579 2.58579C2.96086 2.21071 3.46957 2 4 2H13C13.5304 2 14.0391 2.21071 14.4142 2.58579C14.7893 2.96086 15 3.46957 15 4V5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <svg class="cmp-copy-button__icon util-visually-hidden" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M20 6L9 17L4 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>  
+              <!-- </div> -->
+              <pre class="hljs">
+                <code class="cmp-response__text"></code> 
+              </pre>
+            </div>
+            <div class="cmp-response__headers">
+              <pre class="hljs">
+                <code></code> 
+              </pre>
+            </div>
+          </div>
         </div>
       </div>
     </div>

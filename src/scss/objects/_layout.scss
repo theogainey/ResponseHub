@@ -1,8 +1,29 @@
 .obj-layout {
-  margin: 0 auto;
-  margin-top: 3rem;
-  width: calc(100% - 4rem);
-  max-width: 100ch; 
+  display: flex;
 }
 
+.obj-main-layout {
+  margin: 0 auto;
+  margin-top: 3rem;
+  width: calc(100% - 2rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media(min-width: calc($max-main-layout-width +  $min-history-layout-width - 4rem)){
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+}
 
+.obj-side-layout {
+  display: none;
+  @media(min-width: calc($max-main-layout-width +  $min-history-layout-width - 4rem)){
+    display: flex;
+    width: $min-history-layout-width;
+  }
+}
+
+.obj-max-width{
+  width: 100%;
+  max-width: $max-main-layout-width; 
+}
