@@ -1,18 +1,19 @@
 .cmp-history {
   min-height: 100vh;
   width: 100%;
-  background-color: #e5e7eb;
+  // background-color: #e5e7eb;
+  border-right: $border-primary;
   padding-top: 3rem;
   overflow-y: scroll;
   overflow-x: hidden;
 
   &__list-item {
-    margin-bottom: 0.5rem;
     text-wrap: nowrap;
-    padding: 0.25rem 0.5rem;
+    padding: 0.5rem;
     padding-left: 1rem;
     &:hover {
-      background-color: #d1d5db;
+      background-color: #000;
+      color: #fff;
     }
   }
 

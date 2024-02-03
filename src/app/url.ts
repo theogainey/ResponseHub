@@ -13,8 +13,14 @@ const selectDefaultTab = () => {
   previewTab.dispatchEvent(new Event('change'));
 };
 
-const changeMethodSelectColor = () => {
+const setURL = (url: string) => {
+  const URLInput = document.querySelector('#url-input') as HTMLInputElement;
+  URLInput.value = url;
+}
 
+const setMethod = (method: string) => {
+  const MethodInput = document.querySelector('#method-select') as HTMLInputElement;
+  MethodInput.value = method;
 }
 
 const addURLListeners = () => {
@@ -38,4 +44,4 @@ const addURLListeners = () => {
   })
 }
 
-export { addURLListeners };
+export { addURLListeners, setURL, setMethod };

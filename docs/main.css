@@ -52,10 +52,15 @@ a {
   flex-direction: column;
   align-items: center;
 }
-@media (min-width: calc(100ch + 20rem - 4rem)) {
+@media (min-width: calc(100ch + 20rem - 2rem)) {
   .obj-main-layout {
+    align-items: flex-start;
     margin-left: 2rem;
-    margin-right: 2rem;
+  }
+}
+@media (min-width: calc(100ch + 20rem)) {
+  .obj-main-layout {
+    margin-left: 4rem;
   }
 }
 
@@ -835,19 +840,19 @@ a {
 .cmp-history {
   min-height: 100vh;
   width: 100%;
-  background-color: #e5e7eb;
+  border-right: 1px solid #e5e7eb;
   padding-top: 3rem;
   overflow-y: scroll;
   overflow-x: hidden;
 }
 .cmp-history__list-item {
-  margin-bottom: 0.5rem;
   text-wrap: nowrap;
-  padding: 0.25rem 0.5rem;
+  padding: 0.5rem;
   padding-left: 1rem;
 }
 .cmp-history__list-item:hover {
-  background-color: #d1d5db;
+  background-color: #000;
+  color: #fff;
 }
 .cmp-history__method {
   color: #fff;

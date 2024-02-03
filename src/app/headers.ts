@@ -31,20 +31,20 @@ const getHeaders = (): Headers => {
   return headers;
 } 
 
-const createNewHeaderInput = () => {
+const createNewHeaderInput = (key?:string, value?: string) => {
   const newHeaderInputContainer = document.createElement('div');
   newHeaderInputContainer.classList.add('obj-grid', 'cmp-headers__header-pair');
   newHeaderInputContainer.innerHTML = `
     <div class="obj-grid__half util-margin-right">
       <label class="cmp-headers__label">
         <span>Header</span>
-        <input class="cmp-headers__input cmp-headers__input--header" type="text" name="header" placeholder="Header"/>
+        <input ${key ? `value="${key}"` : ''} class="cmp-headers__input cmp-headers__input--header" type="text" name="header" placeholder="Header"/>
       </label>
     </div>
     <div class="obj-grid__half">
       <label class="cmp-headers__label">
         <span>Value</span>
-        <input class="cmp-headers__input cmp-headers__input--value" type="text" name="value" placeholder="Value"/>
+        <input ${value ? `value="${value}"` : ''}  class="cmp-headers__input cmp-headers__input--value" type="text" name="value" placeholder="Value"/>
       </label>
     </div> 
   `;
@@ -107,11 +107,30 @@ const removeHeaderInputsHandler = (e: Event) => {
   }
 }
 
-const addHeaderListeners = () =>{
+const addHeaderListeners = () => {
   const headerInputContainer = document.querySelector('.cmp-headers');
   headerInputContainer?.addEventListener('input', handleNewHeaderInput); 
   headerInputContainer?.addEventListener('input', printPreview); 
   headerInputContainer?.addEventListener('keydown', removeHeaderInputsHandler);
 }
 
-export { getHeaders, addHeaderListeners };
+const formatHeadersForHistory = (headers: Headers) => {
+  const formattedHeaders = [];
+  for(const pair of headers.entries()){
+    formattedHeaders.push(pair);
+  }
+  return formattedHeaders;
+};
+
+const setHeaders = (headers: [string, string][]) => {
+  const headerInputsContainer = document.querySelector('.cmp-headers') as Element;
+  headerInputsContainer.innerHTML = '';
+  for (const pair of headers) {
+    const newHeaderInputElement = createNewHeaderInput(pair[0], pair[1]);
+    headerInputsContainer?.append(newHeaderInputElement);
+  }
+  const newHeaderInputElement = createNewHeaderInput();
+  headerInputsContainer?.append(newHeaderInputElement);
+}
+
+export { getHeaders, addHeaderListeners, setHeaders, formatHeadersForHistory };

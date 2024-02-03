@@ -2,10 +2,10 @@ import { getRawBody, getSelectedBodyDataType, requestCanHaveBody } from "./body"
 import { handleRequestError } from "./errors";
 import { getFormData } from "./formData";
 import { getFormURLEncodedData } from "./formURLEncoded";
-import { getHeaders } from "./headers";
+import { getHeaders, formatHeadersForHistory } from "./headers";
 import { addRequestToHistory } from "./requestHistory";
 import { handleResponse } from "./response";
-import { getURLSearchParams } from "./urlSearchParams";
+import { formatURLSearchParamsForHistory, getURLSearchParams } from "./urlSearchParams";
 import { toggleHidden } from "./utils";
 
 const defaultRequestOptions = {
@@ -86,7 +86,7 @@ const sendRequest = () => {
   })
   .then((response)=> {
     handleResponse(response);
-    addRequestToHistory({url: url, method: requestMethod, timeStamp: Date.now()});
+    addRequestToHistory({url: url, method: requestMethod, headers: formatHeadersForHistory(userRequest.headers), urlSearchParams: formatURLSearchParamsForHistory(getURLSearchParams()), timeStamp: Date.now()});
   })
   .catch((_err)=>{
     handleRequestError();

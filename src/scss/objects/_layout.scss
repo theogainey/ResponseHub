@@ -9,10 +9,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  @media(min-width: calc($max-main-layout-width +  $min-history-layout-width - 4rem)){
+  @media(min-width: calc($max-main-layout-width +  $min-history-layout-width - 2rem)){
+    align-items: flex-start;
     margin-left: 2rem;
-    margin-right: 2rem;
   }
+  @media(min-width: calc($max-main-layout-width +  $min-history-layout-width )){
+    margin-left: 4rem;
+  }
+
 }
 
 .obj-side-layout {

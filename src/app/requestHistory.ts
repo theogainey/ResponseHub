@@ -1,6 +1,13 @@
+import { setMethod, setURL } from "./url";
+import { setHeaders } from "./headers";
+import { setURLSearchParams } from "./urlSearchParams";
+import { printPreview } from "./preview";
+
 type RequestHistoryEntry = {
   method: string;
   url: string;
+  headers: [string, string][];
+  urlSearchParams: [string, string][];
   timeStamp: number;
   id?: number; 
 }
@@ -69,7 +76,6 @@ class RequestHistoryDB {
         reject("Database connection not established");
         return;
       }
-  
       const transaction = this.db.transaction(['requests'], 'readwrite').objectStore('requests');
   
       const getKeyRequest = transaction.getAllKeys();
@@ -95,20 +101,53 @@ class RequestHistoryDB {
       };
     });
   }
-  
-}
+
+  async getRequestById(id: number): Promise<RequestHistoryEntry | null> {
+    await this.initPromise;
+    return new Promise((resolve, reject) => {
+      if (!this.db) {
+        reject("Database connection not established");
+        return;
+      }
+
+      const transaction = this.db.transaction(['requests'], 'readonly');
+      const objectStore = transaction.objectStore('requests');
+      const getRequest = objectStore.get(id);
+
+      getRequest.onsuccess = (event) => {
+        const result = (event.target as IDBRequest).result;
+        resolve(result ? result : null);
+      };
+
+      getRequest.onerror = (_event) => {
+        reject("Error retrieving data by ID from object store");
+      };
+    });
+  }
+};
+
+const historyEntryClickHandler = (id: number) => async ()=> {
+  const request = await requestHistoryDB.getRequestById(id);
+  console.log(request);
+  setURL(request?.url ?? '');
+  setMethod(request?.method ?? 'GET');
+  setHeaders(request?.headers ?? []);
+  setURLSearchParams(request?.urlSearchParams ?? []);
+  printPreview();
+} 
 
 const createHistoryEntryElement = (request: RequestHistoryEntry) => {
   const newHistoryEntryElement = document.createElement('div');
   newHistoryEntryElement.classList.add('cmp-history__list-item');
+  newHistoryEntryElement.setAttribute('data-request-id', request.id?.toString() ?? '0');
   newHistoryEntryElement.innerHTML = `<span class="cmp-history__method cmp-history__method--${request.method}">${request.method}</span> <span>${request.url}</span>`;
+  newHistoryEntryElement.addEventListener('click', historyEntryClickHandler(request.id ?? 0));
   return newHistoryEntryElement;
 }
 
 const printHistory = (requests: RequestHistoryEntry[]) => {
   const historyContainer = document.querySelector('.cmp-history');
   requests.forEach((request) => {
-    console.log(request);
     historyContainer?.prepend(createHistoryEntryElement(request));
   });
 };

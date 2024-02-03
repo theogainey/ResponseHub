@@ -24,20 +24,20 @@ const getURLSearchParams = (): URLSearchParams => {
   return new URLSearchParams(urlSearchParamsPairs.filter(isValidURLSearchParam));
 }
 
-const createNewURLSearchParamInput = () => {
+const createNewURLSearchParamInput = (key?:string, value?: string) => {
   const newURLSearchParamInputContainer = document.createElement('div');
   newURLSearchParamInputContainer.classList.add('obj-grid', 'cmp-url-search-params__params-pair');
   newURLSearchParamInputContainer.innerHTML = `
     <div class="obj-grid__half util-margin-right">
       <label class="cmp-url-search-params__label">
         <span>URL Search Parameter Key</span>
-        <input class="cmp-url-search-params__input cmp-url-search-params__input--key" type="text" name="header" placeholder="URL Search Parameter Key"/>
+        <input ${key ? `value="${key}"` : ''} class="cmp-url-search-params__input cmp-url-search-params__input--key" type="text" name="header" placeholder="URL Search Parameter Key"/>
       </label>
     </div>
     <div class="obj-grid__half">
       <label class="cmp-url-search-params__label">
         <span>Value</span>
-        <input class="cmp-url-search-params__input cmp-url-search-params__input--value" type="text" name="value" placeholder="value"/>
+        <input ${value ? `value="${value}"` : ''} class="cmp-url-search-params__input cmp-url-search-params__input--value" type="text" name="value" placeholder="value"/>
       </label>
     </div>  
   `;
@@ -100,6 +100,25 @@ const removeURLSearchInputsHandler = (e: Event) => {
   }
 }
 
+const formatURLSearchParamsForHistory = (urlSearchParams: URLSearchParams) => {
+  const formattedURLSearchParams = [];
+  for(const pair of urlSearchParams.entries()){
+    formattedURLSearchParams.push(pair);
+  }
+  return formattedURLSearchParams;
+};
+
+const setURLSearchParams = (urlSearchParams: [string, string][]) => {
+  const urlSearchParamsInputsContainer = document.querySelector('.cmp-url-search-params') as Element;
+  urlSearchParamsInputsContainer.innerHTML = '';
+  for (const pair of urlSearchParams) {
+    const newURLSearchParamsInputElement = createNewURLSearchParamInput(pair[0], pair[1]);
+    urlSearchParamsInputsContainer?.append(newURLSearchParamsInputElement);
+  }
+  const newURLSearchParamsInputElement = createNewURLSearchParamInput();
+  urlSearchParamsInputsContainer?.append(newURLSearchParamsInputElement);
+}
+
 const addURLSearchParamsListeners = () =>{
   const urlSearchParamInputContainer = document.querySelector('.cmp-url-search-params');
   urlSearchParamInputContainer?.addEventListener('input', handleNewURLSearchParamInput); 
@@ -107,4 +126,4 @@ const addURLSearchParamsListeners = () =>{
   urlSearchParamInputContainer?.addEventListener('keydown', removeURLSearchInputsHandler);
 }
 
-export { getURLSearchParams, addURLSearchParamsListeners };
+export { getURLSearchParams, addURLSearchParamsListeners, formatURLSearchParamsForHistory, setURLSearchParams };
