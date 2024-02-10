@@ -140,7 +140,7 @@ const createHistoryEntryElement = (request: RequestHistoryEntry) => {
   const newHistoryEntryElement = document.createElement('div');
   newHistoryEntryElement.classList.add('cmp-history__list-item');
   newHistoryEntryElement.setAttribute('data-request-id', request.id?.toString() ?? '0');
-  newHistoryEntryElement.innerHTML = `<span class="cmp-history__method cmp-history__method--${request.method}">${request.method}</span> <span>${request.url}</span>`;
+  newHistoryEntryElement.innerHTML = `<span class="wrap"><span class="cmp-history__method cmp-history__method--${request.method}">${request.method}</span> <span>${request.url}</span></span>`;
   newHistoryEntryElement.addEventListener('click', historyEntryClickHandler(request.id ?? 0));
   return newHistoryEntryElement;
 }

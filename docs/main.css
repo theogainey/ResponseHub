@@ -850,9 +850,18 @@ a {
   padding: 0.5rem;
   padding-left: 1rem;
 }
-.cmp-history__list-item:hover {
-  background-color: #000;
-  color: #fff;
+.cmp-history__list-item:hover, .cmp-history__list-item:focus, .cmp-history__list-item:focus-within {
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  background: radial-gradient(rgb(159, 159, 159) 1px, transparent 0);
+  background-size: 4px 4px;
+  background-position: 4px 4px;
+}
+.cmp-history__list-item:hover .wrap, .cmp-history__list-item:focus .wrap, .cmp-history__list-item:focus-within .wrap {
+  background: white;
+  padding-right: 1ch;
 }
 .cmp-history__method {
   color: #fff;
