@@ -1,11 +1,73 @@
 .cmp-history {
   min-height: 100vh;
-  width: 100%;
-  // background-color: #e5e7eb;
+  width: 20rem;
   border-right: $border-primary;
   padding-top: 3rem;
   overflow-y: scroll;
   overflow-x: hidden;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 1.25rem;
+  }
+
+  &__options-button {
+    display: flex;
+    padding: 0.25rem;
+    svg {
+      height: 1.25rem;
+    }
+    &:hover {
+      background-color: #e5e7eb;
+    }
+  }
+
+  &__options-modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // gap: 0.5rem;
+    $modalWidth: 10rem;
+    font-size: 1rem;
+    width: $modalWidth;
+    left: calc(19rem - $modalWidth);
+    position: absolute;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    padding: 0.5rem 0;
+  }
+  &__options-modal-buttons{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0.5rem 0;
+    gap: 0.5rem;
+  }
+  &__modal-button {
+    display: flex;
+    justify-content: center;
+    font-size: 1rem;
+    border: 1px solid black;
+    width: 5ch;
+    text-transform: uppercase;
+    &:focus, &:hover, &:active {
+      background-color: black;
+      color: white;
+    }
+    &--delete {
+      background-color: #dc2626;
+      color: white;
+      border: none;
+      &:focus, &:hover, &:active {
+        background-color: #dc2626e6;
+      }
+    }
+}
 
   &__list-item {
     text-wrap: nowrap;
@@ -14,17 +76,7 @@
     &:hover,
     &:focus,
     &:focus-within {
-      .wrap {
-        background: white;
-        padding-right: 1ch;
-      }
-      padding-top: 0;
-      padding-bottom: 0;
-      margin-top: 0.5rem;
-      margin-bottom: 0.5rem;
-      background: radial-gradient(rgb(159,159,159) 1px, transparent 0);
-      background-size: 4px 4px;
-      background-position: 4px 4px;
+      background-color: #e5e7eb;
     }
   }
 

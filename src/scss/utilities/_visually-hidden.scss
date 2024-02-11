@@ -1,3 +1,7 @@
 .util-visually-hidden {
   @include visually-hidden;
 };
+
+.util-display-none {
+  display: none;
+}

@@ -839,11 +839,69 @@ a {
 
 .cmp-history {
   min-height: 100vh;
-  width: 100%;
+  width: 20rem;
   border-right: 1px solid #e5e7eb;
   padding-top: 3rem;
   overflow-y: scroll;
   overflow-x: hidden;
+}
+.cmp-history__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 1.25rem;
+}
+.cmp-history__options-button {
+  display: flex;
+  padding: 0.25rem;
+}
+.cmp-history__options-button svg {
+  height: 1.25rem;
+}
+.cmp-history__options-button:hover {
+  background-color: #e5e7eb;
+}
+.cmp-history__options-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1rem;
+  width: 10rem;
+  left: 9rem;
+  position: absolute;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 0;
+}
+.cmp-history__options-modal-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0.5rem 0;
+  gap: 0.5rem;
+}
+.cmp-history__modal-button {
+  display: flex;
+  justify-content: center;
+  font-size: 1rem;
+  border: 1px solid black;
+  width: 5ch;
+  text-transform: uppercase;
+}
+.cmp-history__modal-button:focus, .cmp-history__modal-button:hover, .cmp-history__modal-button:active {
+  background-color: black;
+  color: white;
+}
+.cmp-history__modal-button--delete {
+  background-color: #dc2626;
+  color: white;
+  border: none;
+}
+.cmp-history__modal-button--delete:focus, .cmp-history__modal-button--delete:hover, .cmp-history__modal-button--delete:active {
+  background-color: rgba(220, 38, 38, 0.9019607843);
 }
 .cmp-history__list-item {
   text-wrap: nowrap;
@@ -851,17 +909,7 @@ a {
   padding-left: 1rem;
 }
 .cmp-history__list-item:hover, .cmp-history__list-item:focus, .cmp-history__list-item:focus-within {
-  padding-top: 0;
-  padding-bottom: 0;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-  background: radial-gradient(rgb(159, 159, 159) 1px, transparent 0);
-  background-size: 4px 4px;
-  background-position: 4px 4px;
-}
-.cmp-history__list-item:hover .wrap, .cmp-history__list-item:focus .wrap, .cmp-history__list-item:focus-within .wrap {
-  background: white;
-  padding-right: 1ch;
+  background-color: #e5e7eb;
 }
 .cmp-history__method {
   color: #fff;
@@ -1258,6 +1306,10 @@ a {
   width: 1px;
   height: 1px;
   overflow: hidden;
+}
+
+.util-display-none {
+  display: none;
 }
 
 .util-color-green {
