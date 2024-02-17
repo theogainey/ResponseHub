@@ -77,9 +77,7 @@ class RequestHistoryDB {
         return;
       }
       const transaction = this.db.transaction(['requests'], 'readwrite').objectStore('requests');
-  
       const getKeyRequest = transaction.getAllKeys();
-      
       getKeyRequest.onsuccess = (event) => {
         const keys = (event.target as IDBRequest).result as number[];
         const maxId = keys.length > 0 ? Math.max(...keys) : 0;
@@ -112,7 +110,8 @@ class RequestHistoryDB {
 
       const transaction = this.db.transaction(['requests'], 'readonly');
       const objectStore = transaction.objectStore('requests');
-      const getRequest = objectStore.get(id);
+      const index = objectStore.index('id');
+      const getRequest = index.get(id);
 
       getRequest.onsuccess = (event) => {
         const result = (event.target as IDBRequest).result;
@@ -205,6 +204,7 @@ const requestHistoryDB = new RequestHistoryDB();
 
 const initHistory = async () => {
   const requests = await requestHistoryDB.getRequests();
+  console.log(requests);
   printHistory(requests);
   const historyOptionsButton = document.querySelector('.cmp-history__options-button');
   historyOptionsButton?.addEventListener('click', historyOptionsHandler);
