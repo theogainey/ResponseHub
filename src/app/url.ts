@@ -21,6 +21,35 @@ const setURL = (url: string) => {
 const setMethod = (method: string) => {
   const MethodInput = document.querySelector('#method-select') as HTMLInputElement;
   MethodInput.value = method;
+  const classes = MethodInput.classList.values();
+  for (const value of classes) {
+    if( value !== 'cmp-url-input__method'){
+      MethodInput.classList.remove(value);
+    } 
+  }
+  switch (MethodInput.value.toUpperCase()) {
+    case 'GET':
+      MethodInput.classList.add('cmp-url-input__method--GET');
+      break;
+    case 'POST':
+      MethodInput.classList.add('cmp-url-input__method--POST');
+      break;
+    case 'PUT':
+      MethodInput.classList.add('cmp-url-input__method--PUT');
+      break;
+    case 'PATCH':
+      MethodInput.classList.add('cmp-url-input__method--PATCH');
+      break;
+    case 'OPTIONS':
+      MethodInput.classList.add('cmp-url-input__method--OPTIONS');
+      break;
+    case 'DELETE':
+      MethodInput.classList.add('cmp-url-input__method--DELETE');
+      break;
+    case 'HEAD':
+      MethodInput.classList.add('cmp-url-input__method--HEAD');
+      break;
+  }
 }
 
 const addURLListeners = () => {
