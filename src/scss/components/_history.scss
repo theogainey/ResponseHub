@@ -11,18 +11,30 @@
     justify-content: space-between;
     align-items: center;
     padding: 0.5rem 1rem;
+    padding-top: 0;
+    height: 2.5rem;
     border-bottom: 1px solid #e5e7eb;
     font-size: 1.25rem;
   }
 
   &__options-button {
     display: flex;
+    justify-content: center;
+    width: 2rem;
     padding: 0.25rem;
+    transition: background-color 250ms, color 250ms ease-in-out;
+    background-color: white;
+    border: 1px solid black;
+
     svg {
       height: 1.25rem;
     }
-    &:hover {
-      background-color: #e5e7eb;
+    &:hover,
+    &--active {
+      background-color:  black;
+      path {
+        stroke: white;
+      }
     }
   }
 
@@ -31,7 +43,7 @@
     flex-direction: column;
     align-items: center;
     // gap: 0.5rem;
-    $modalWidth: 10rem;
+    $modalWidth: 14rem;
     font-size: 1rem;
     width: $modalWidth;
     left: calc(19rem - $modalWidth);
@@ -67,20 +79,50 @@
         background-color: #dc2626e6;
       }
     }
-}
+  }
+  &__delete-entry-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 99%;
+    color: #fff;
+    height: 1.5rem;
+    width: 1.5rem;
+    svg {
+      height: 1rem;
+      stroke: white;
+    }
+    &:hover {
+      background-color: #c6cbd4;
+    }
+  }
 
   &__list-item {
-    text-wrap: nowrap;
-    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    padding: 0.25rem;
     padding-left: 1rem;
     &:hover,
     &:focus,
     &:focus-within {
       background-color: #e5e7eb;
+      .cmp-history__delete-entry-button-svg {
+        stroke: black;
+      }
+    }
+
+    span:not(.cmp-history__method) {
+      height: 1rem;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: pre;
+      margin-right: 0.5rem;
+      max-width: 14rem;
     }
   }
 
   &__method {
+    margin-right: 0.5rem;
     color: #fff;
     padding: 0 0.25rem;
 

@@ -850,26 +850,36 @@ a {
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 1rem;
+  padding-top: 0;
+  height: 2.5rem;
   border-bottom: 1px solid #e5e7eb;
   font-size: 1.25rem;
 }
 .cmp-history__options-button {
   display: flex;
+  justify-content: center;
+  width: 2rem;
   padding: 0.25rem;
+  transition: background-color 250ms, color 250ms ease-in-out;
+  background-color: white;
+  border: 1px solid black;
 }
 .cmp-history__options-button svg {
   height: 1.25rem;
 }
-.cmp-history__options-button:hover {
-  background-color: #e5e7eb;
+.cmp-history__options-button:hover, .cmp-history__options-button--active {
+  background-color: black;
+}
+.cmp-history__options-button:hover path, .cmp-history__options-button--active path {
+  stroke: white;
 }
 .cmp-history__options-modal {
   display: flex;
   flex-direction: column;
   align-items: center;
   font-size: 1rem;
-  width: 10rem;
-  left: 9rem;
+  width: 14rem;
+  left: 5rem;
   position: absolute;
   background-color: #ffffff;
   border: 1px solid #e5e7eb;
@@ -903,15 +913,44 @@ a {
 .cmp-history__modal-button--delete:focus, .cmp-history__modal-button--delete:hover, .cmp-history__modal-button--delete:active {
   background-color: rgba(220, 38, 38, 0.9019607843);
 }
+.cmp-history__delete-entry-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 99%;
+  color: #fff;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+.cmp-history__delete-entry-button svg {
+  height: 1rem;
+  stroke: white;
+}
+.cmp-history__delete-entry-button:hover {
+  background-color: #c6cbd4;
+}
 .cmp-history__list-item {
-  text-wrap: nowrap;
-  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  padding: 0.25rem;
   padding-left: 1rem;
 }
 .cmp-history__list-item:hover, .cmp-history__list-item:focus, .cmp-history__list-item:focus-within {
   background-color: #e5e7eb;
 }
+.cmp-history__list-item:hover .cmp-history__delete-entry-button-svg, .cmp-history__list-item:focus .cmp-history__delete-entry-button-svg, .cmp-history__list-item:focus-within .cmp-history__delete-entry-button-svg {
+  stroke: black;
+}
+.cmp-history__list-item span:not(.cmp-history__method) {
+  height: 1rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: pre;
+  margin-right: 0.5rem;
+  max-width: 14rem;
+}
 .cmp-history__method {
+  margin-right: 0.5rem;
   color: #fff;
   padding: 0 0.25rem;
 }
