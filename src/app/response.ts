@@ -159,4 +159,9 @@ const handleResponse = async (response: Response) => {
   }  
 }
 
-export { handleResponse, reHighlightCode };
+const clearResponse = () => {
+  const responseArea = document.querySelector('.cmp-response__text') as Element;
+  responseArea.innerHTML = '';
+}
+
+export { handleResponse, reHighlightCode, clearResponse };
