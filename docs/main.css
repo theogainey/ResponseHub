@@ -374,6 +374,9 @@ a {
   display: flex;
   gap: 0.5rem;
 }
+.cmp-headers__header-pair input[type=checkbox] {
+  width: 1rem;
+}
 .cmp-headers__input {
   width: 100%;
   border: none;

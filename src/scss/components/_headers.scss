@@ -6,6 +6,10 @@
   &__header-pair{
     display: flex;
     gap: 0.5rem;
+
+    input[type="checkbox"]{
+      width: 1rem;
+    }
   }
 
   &__input {
@@ -19,7 +23,6 @@
       text-decoration: line-through;
     }
   }
-
   &__label span {
     @include visually-hidden;
   }
