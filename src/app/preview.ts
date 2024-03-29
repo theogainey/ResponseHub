@@ -1,4 +1,4 @@
-import { getHeaders } from './headers';
+import { getActiveHeaders } from './headers';
 import { getURLSearchParams } from './urlSearchParams';
 import { getURL } from './request';
 import { toggleHiddenWithTimeout } from './utils';
@@ -56,7 +56,7 @@ const getHTTPMessageData = (): HTTPMessageData => {
   const urlInputValue = getURL(); 
   // @ts-ignore
   const method = document.querySelector('#method-select').value;
-  const headers = getHeaders();
+  const headers = getActiveHeaders();
   if(requestCanHaveBody(method) && getSelectedBodyDataType() === 'x-www-form-urlencoded' && getFormURLEncodedData()){
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
   }

@@ -2,7 +2,7 @@ import { getRawBody, getSelectedBodyDataType, requestCanHaveBody } from "./body"
 import { handleRequestError } from "./errors";
 import { getFormData } from "./formData";
 import { getFormURLEncodedData } from "./formURLEncoded";
-import { getHeaders, formatHeadersForHistory } from "./headers";
+import { getHeadersForHistory, getActiveHeaders } from "./headers";
 import { addRequestToHistory } from "./requestHistory";
 import { handleResponse } from "./response";
 import { formatURLSearchParamsForHistory, getURLSearchParams } from "./urlSearchParams";
@@ -46,7 +46,7 @@ const getRequestBody = (bodyType: string) => {
 }
 
 const getRequestWithBody = (url: string, method: string) => {
-  const requestHeaders = getHeaders();
+  const requestHeaders = getActiveHeaders();
   const currentBodyType = getSelectedBodyDataType();
   if(currentBodyType === 'x-www-form-urlencoded'){
     requestHeaders.append('Content-Type', 'application/x-www-form-urlencoded');
@@ -55,7 +55,7 @@ const getRequestWithBody = (url: string, method: string) => {
 }
 
 const getRequestWithoutBody = (url: string, method: string) => {
-  const requestHeaders = getHeaders();
+  const requestHeaders = getActiveHeaders();
   return new Request(url, Object.assign({}, defaultRequestOptions, { headers: requestHeaders, method: method}))
 }
 
@@ -86,7 +86,7 @@ const sendRequest = () => {
   })
   .then((response)=> {
     handleResponse(response);
-    addRequestToHistory({url: url, method: requestMethod, headers: formatHeadersForHistory(userRequest.headers), urlSearchParams: formatURLSearchParamsForHistory(getURLSearchParams()), timeStamp: Date.now()});
+    addRequestToHistory({url: url, method: requestMethod, headers: getHeadersForHistory(), urlSearchParams: formatURLSearchParamsForHistory(getURLSearchParams()), timeStamp: Date.now()});
   })
   .catch((_err)=>{
     handleRequestError();

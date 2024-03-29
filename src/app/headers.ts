@@ -15,13 +15,32 @@ const getHeaderValue = (component:Element): string => {
 }  
 
 const getHeaderKeyValuePair = (component:Element):[string, string] => [getHeaderKey(component), getHeaderValue(component)]; 
+const getHeaderKeyValuePairWithActive = (component:Element):[string, string, string] =>  [getHeaderKey(component), getHeaderValue(component), isActiveHeader(component).toString()];
 
-const isValidHeader = ([key, value]: [string, string]) =>  !!key && !!value;
+const isValidHeader = ([key, value]: string[]) =>  !!key && !!value;
 
-const getHeaders = (): Headers => {
+const isActiveHeader = (component:Element): boolean => !!(component.querySelector('input[type=checkbox') as HTMLInputElement).checked;
+
+const getHeadersForHistory = ():[string, string, string][] => {
   const headerInputComponents = document.querySelectorAll('.cmp-headers__header-pair');
   const headerKeyValuePairs = [];
   for (const value of headerInputComponents.values()) {
+    headerKeyValuePairs.push(getHeaderKeyValuePairWithActive(value));
+  }
+  const headers = headerKeyValuePairs.filter(isValidHeader);
+  if(hasAuth()){
+    headers.push(['Authorization', getBasicAuth(), "true"]);
+  }
+  return headers;
+} 
+
+const getActiveHeaders  = (): Headers => {
+  const headerInputComponents = document.querySelectorAll('.cmp-headers__header-pair');
+  const headerKeyValuePairs = [];
+  for (const value of headerInputComponents.values()) {
+    if(!isActiveHeader(value)){
+      continue;
+    }
     headerKeyValuePairs.push(getHeaderKeyValuePair(value));
   }
   const headers = new Headers(headerKeyValuePairs.filter(isValidHeader));
@@ -31,23 +50,38 @@ const getHeaders = (): Headers => {
   return headers;
 } 
 
-const createNewHeaderInput = (key?:string, value?: string) => {
+const handleHeaderInputCheckbox = (parentDiv: Element) => () =>{
+  const inputs = parentDiv.querySelectorAll('.cmp-headers__input');
+  inputs.forEach((input)=> {
+    input.classList.toggle('cmp-headers__input--strike-through');
+  })
+}
+
+const createNewHeaderInput = (key?:string, value?: string, isActive?: string) => {
   const newHeaderInputContainer = document.createElement('div');
-  newHeaderInputContainer.classList.add('obj-grid', 'cmp-headers__header-pair');
+  newHeaderInputContainer.classList.add('cmp-headers__header-pair');
   newHeaderInputContainer.innerHTML = `
-    <div class="obj-grid__half util-margin-right">
-      <label class="cmp-headers__label">
-        <span>Header</span>
-        <input ${key ? `value="${key}"` : ''} class="cmp-headers__input cmp-headers__input--header" type="text" name="header" placeholder="Header"/>
-      </label>
+    <input type="checkbox" ${isActive ? `${isActive === "true" ? 'checked': ''}` : 'checked'}/>
+    <div class="obj-grid">
+      <div class="obj-grid__half util-margin-right">
+        <label class="cmp-headers__label">
+          <span>Header</span>
+          <input ${key ? `value="${key}"` : ''} class="cmp-headers__input cmp-headers__input--header" type="text" name="header" placeholder="Header"/>
+        </label>
+      </div>
+      <div class="obj-grid__half">
+        <label class="cmp-headers__label">
+          <span>Value</span>
+          <input ${value ? `value="${value}"` : ''}  class="cmp-headers__input cmp-headers__input--value" type="text" name="value" placeholder="Value"/>
+        </label>
+      </div> 
     </div>
-    <div class="obj-grid__half">
-      <label class="cmp-headers__label">
-        <span>Value</span>
-        <input ${value ? `value="${value}"` : ''}  class="cmp-headers__input cmp-headers__input--value" type="text" name="value" placeholder="Value"/>
-      </label>
-    </div> 
   `;
+  const newHeaderInputCheckbox = newHeaderInputContainer.querySelector('input[type="checkbox');
+  if(isActive === "false"){
+    handleHeaderInputCheckbox(newHeaderInputContainer)();
+  }
+  newHeaderInputCheckbox?.addEventListener('change', handleHeaderInputCheckbox(newHeaderInputContainer));
   return newHeaderInputContainer;
 }
 
@@ -112,25 +146,20 @@ const addHeaderListeners = () => {
   headerInputContainer?.addEventListener('input', handleNewHeaderInput); 
   headerInputContainer?.addEventListener('input', printPreview); 
   headerInputContainer?.addEventListener('keydown', removeHeaderInputsHandler);
+  const initialHeaderInput = headerInputContainer?.querySelector('.cmp-headers__header-pair') as Element;
+  const initialHeaderInputCheckbox = initialHeaderInput?.querySelector('input[type="checkbox') as Element;
+  initialHeaderInputCheckbox.addEventListener('change', handleHeaderInputCheckbox(initialHeaderInput));
 }
 
-const formatHeadersForHistory = (headers: Headers) => {
-  const formattedHeaders = [];
-  for(const pair of headers.entries()){
-    formattedHeaders.push(pair);
-  }
-  return formattedHeaders;
-};
-
-const setHeaders = (headers: [string, string][]) => {
+const setHeaders = (headers: [string, string, string][]) => {
   const headerInputsContainer = document.querySelector('.cmp-headers') as Element;
   headerInputsContainer.innerHTML = '';
   for (const pair of headers) {
-    const newHeaderInputElement = createNewHeaderInput(pair[0], pair[1]);
+    const newHeaderInputElement = createNewHeaderInput(...pair);
     headerInputsContainer?.append(newHeaderInputElement);
   }
   const newHeaderInputElement = createNewHeaderInput();
   headerInputsContainer?.append(newHeaderInputElement);
 }
 
-export { getHeaders, addHeaderListeners, setHeaders, formatHeadersForHistory };
+export { getHeadersForHistory, getActiveHeaders, addHeaderListeners, setHeaders };

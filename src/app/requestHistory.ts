@@ -7,7 +7,7 @@ import { clearResponse } from "./response";
 type RequestHistoryEntry = {
   method: string;
   url: string;
-  headers: [string, string][];
+  headers: [string, string, string][];
   urlSearchParams: [string, string][];
   timeStamp: number;
   id?: number; 

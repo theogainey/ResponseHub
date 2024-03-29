@@ -3,12 +3,21 @@
   height: $options-area-height;
   overflow: scroll;
   
+  &__header-pair{
+    display: flex;
+    gap: 0.5rem;
+  }
+
   &__input {
     width: 100%;
     border: none;
     border-bottom: $border-primary;
     font-size: 1.25rem;
     line-height: 1.5;
+
+    &--strike-through{
+      text-decoration: line-through;
+    }
   }
 
   &__label span {

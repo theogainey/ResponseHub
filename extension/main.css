@@ -370,12 +370,19 @@ a {
   height: 12rem;
   overflow: scroll;
 }
+.cmp-headers__header-pair {
+  display: flex;
+  gap: 0.5rem;
+}
 .cmp-headers__input {
   width: 100%;
   border: none;
   border-bottom: 1px solid #e5e7eb;
   font-size: 1.25rem;
   line-height: 1.5;
+}
+.cmp-headers__input--strike-through {
+  text-decoration: line-through;
 }
 .cmp-headers__label span {
   position: absolute;
