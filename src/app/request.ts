@@ -5,7 +5,7 @@ import { getFormURLEncodedData } from "./formURLEncoded";
 import { getHeadersForHistory, getActiveHeaders } from "./headers";
 import { addRequestToHistory } from "./requestHistory";
 import { handleResponse } from "./response";
-import { formatURLSearchParamsForHistory, getURLSearchParams } from "./urlSearchParams";
+import { getURLSearchParamsForHistory, getActiveURLSearchParams } from "./urlSearchParams";
 import { toggleHidden } from "./utils";
 
 const defaultRequestOptions = {
@@ -60,7 +60,7 @@ const getRequestWithoutBody = (url: string, method: string) => {
 }
 
 const getRequest = (url: string, method: string) => {
-  const requestURL = `${url}?${getURLSearchParams()}`;
+  const requestURL = `${url}?${getActiveURLSearchParams()}`;
   return requestCanHaveBody(method) ? getRequestWithBody(requestURL, method) :  getRequestWithoutBody(requestURL, method);
 };
 
@@ -86,7 +86,7 @@ const sendRequest = () => {
   })
   .then((response)=> {
     handleResponse(response);
-    addRequestToHistory({url: url, method: requestMethod, headers: getHeadersForHistory(), urlSearchParams: formatURLSearchParamsForHistory(getURLSearchParams()), timeStamp: Date.now()});
+    addRequestToHistory({url: url, method: requestMethod, headers: getHeadersForHistory(), urlSearchParams: getURLSearchParamsForHistory(), timeStamp: Date.now()});
   })
   .catch((_err)=>{
     handleRequestError();

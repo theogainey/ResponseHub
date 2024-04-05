@@ -8,7 +8,7 @@ type RequestHistoryEntry = {
   method: string;
   url: string;
   headers: [string, string, string][];
-  urlSearchParams: [string, string][];
+  urlSearchParams: [string, string, string][];
   timeStamp: number;
   id?: number; 
 }

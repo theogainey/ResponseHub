@@ -12,22 +12,45 @@ const getURLSearchParamValue = (component:Element): string => {
 
 const getURLSearchParamKeyValuePair = (component:Element):[string, string] => [getURLSearchParamKey(component), getURLSearchParamValue(component)]; 
 
-const isValidURLSearchParam = ([key, _value]: [string, string]) =>  !!key;
+const getURLSearchParamKeyValuePairWithActive  = (component:Element):[string, string, string] => [getURLSearchParamKey(component), getURLSearchParamValue(component), isActiveURLSearchParam(component).toString()]; 
 
+const isValidURLSearchParam = ([key, _value]: string[]) =>  !!key;
 
-const getURLSearchParams = (): URLSearchParams => {
+const isActiveURLSearchParam = (component:Element): boolean => !!(component.querySelector('input[type=checkbox') as HTMLInputElement).checked;
+
+const getURLSearchParamsForHistory = (): [string, string, string][] => {
   const urlSearchParamsInputs = document.querySelectorAll('.cmp-url-search-params__params-pair');
   const urlSearchParamsPairs = [];
   for (const value of urlSearchParamsInputs.values()) {
+    urlSearchParamsPairs.push(getURLSearchParamKeyValuePairWithActive(value));
+  }
+  return urlSearchParamsPairs.filter(isValidURLSearchParam);
+}
+
+const getActiveURLSearchParams = (): URLSearchParams => {
+  const urlSearchParamsInputs = document.querySelectorAll('.cmp-url-search-params__params-pair');
+  const urlSearchParamsPairs = [];
+  for (const value of urlSearchParamsInputs.values()) {
+    if(!isActiveURLSearchParam(value)){
+      continue;
+    }
     urlSearchParamsPairs.push(getURLSearchParamKeyValuePair(value));
   }
   return new URLSearchParams(urlSearchParamsPairs.filter(isValidURLSearchParam));
 }
 
-const createNewURLSearchParamInput = (key?:string, value?: string) => {
+const handleURLSearchParamInputCheckbox = (parentDiv: Element) => () =>{
+  const inputs = parentDiv.querySelectorAll('.cmp-url-search-params__input');
+  inputs.forEach((input)=> {
+    input.classList.toggle('cmp-url-search-params__input--strike-through');
+  })
+}
+
+const createNewURLSearchParamInput = (key?:string, value?: string, isActive?: string) => {
   const newURLSearchParamInputContainer = document.createElement('div');
   newURLSearchParamInputContainer.classList.add('obj-grid', 'cmp-url-search-params__params-pair');
   newURLSearchParamInputContainer.innerHTML = `
+    <input type="checkbox" ${isActive ? `${isActive === "true" ? 'checked': ''}` : 'checked'}/>
     <div class="obj-grid__half util-margin-right">
       <label class="cmp-url-search-params__label">
         <span>URL Search Parameter Key</span>
@@ -41,6 +64,11 @@ const createNewURLSearchParamInput = (key?:string, value?: string) => {
       </label>
     </div>  
   `;
+  const newURLSearchParamInputCheckbox = newURLSearchParamInputContainer.querySelector('input[type="checkbox');
+  if(isActive === "false"){
+    handleURLSearchParamInputCheckbox(newURLSearchParamInputContainer)();
+  }
+  newURLSearchParamInputCheckbox?.addEventListener('change', handleURLSearchParamInputCheckbox(newURLSearchParamInputContainer));
   return newURLSearchParamInputContainer;
 }
 
@@ -100,19 +128,12 @@ const removeURLSearchInputsHandler = (e: Event) => {
   }
 }
 
-const formatURLSearchParamsForHistory = (urlSearchParams: URLSearchParams) => {
-  const formattedURLSearchParams = [];
-  for(const pair of urlSearchParams.entries()){
-    formattedURLSearchParams.push(pair);
-  }
-  return formattedURLSearchParams;
-};
 
-const setURLSearchParams = (urlSearchParams: [string, string][]) => {
+const setURLSearchParams = (urlSearchParams: [string, string, string][]) => {
   const urlSearchParamsInputsContainer = document.querySelector('.cmp-url-search-params') as Element;
   urlSearchParamsInputsContainer.innerHTML = '';
   for (const pair of urlSearchParams) {
-    const newURLSearchParamsInputElement = createNewURLSearchParamInput(pair[0], pair[1]);
+    const newURLSearchParamsInputElement = createNewURLSearchParamInput(...pair);
     urlSearchParamsInputsContainer?.append(newURLSearchParamsInputElement);
   }
   const newURLSearchParamsInputElement = createNewURLSearchParamInput();
@@ -124,6 +145,9 @@ const addURLSearchParamsListeners = () =>{
   urlSearchParamInputContainer?.addEventListener('input', handleNewURLSearchParamInput); 
   urlSearchParamInputContainer?.addEventListener('input', printPreview); 
   urlSearchParamInputContainer?.addEventListener('keydown', removeURLSearchInputsHandler);
+  const initialURLSearchParamInput = urlSearchParamInputContainer?.querySelector('.cmp-url-search-params__params-pair') as Element;
+  const initialURLSearchParamCheckbox = initialURLSearchParamInput?.querySelector('input[type="checkbox') as Element;
+  initialURLSearchParamCheckbox.addEventListener('change', handleURLSearchParamInputCheckbox(initialURLSearchParamInput));
 }
 
-export { getURLSearchParams, addURLSearchParamsListeners, formatURLSearchParamsForHistory, setURLSearchParams };
+export { getActiveURLSearchParams,getURLSearchParamsForHistory, addURLSearchParamsListeners, setURLSearchParams };

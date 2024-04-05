@@ -601,12 +601,22 @@ a {
   height: 12rem;
   overflow: scroll;
 }
+.cmp-url-search-params__params-pair {
+  display: flex;
+  gap: 0.5rem;
+}
+.cmp-url-search-params__params-pair input[type=checkbox] {
+  width: 1rem;
+}
 .cmp-url-search-params__input {
   width: 100%;
   border: none;
   border-bottom: 1px solid #e5e7eb;
   font-size: 1.25rem;
   line-height: 1.5;
+}
+.cmp-url-search-params__input--strike-through {
+  text-decoration: line-through;
 }
 .cmp-url-search-params__label span {
   position: absolute;

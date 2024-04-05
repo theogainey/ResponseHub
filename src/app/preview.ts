@@ -1,5 +1,5 @@
 import { getActiveHeaders } from './headers';
-import { getURLSearchParams } from './urlSearchParams';
+import { getActiveURLSearchParams } from './urlSearchParams';
 import { getURL } from './request';
 import { toggleHiddenWithTimeout } from './utils';
 import { highlight } from './hljs';
@@ -60,7 +60,7 @@ const getHTTPMessageData = (): HTTPMessageData => {
   if(requestCanHaveBody(method) && getSelectedBodyDataType() === 'x-www-form-urlencoded' && getFormURLEncodedData()){
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
   }
-  const urlSearchParams = getURLSearchParams();
+  const urlSearchParams = getActiveURLSearchParams();
   const HTTPMessageData =  {
     host: getHost(urlInputValue),
     path: getPathName(urlInputValue),
