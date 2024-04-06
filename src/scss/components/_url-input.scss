@@ -1,4 +1,5 @@
 .cmp-url-input {
+  position: relative;
   display: flex;
   margin-bottom: 1.5rem;
   
@@ -30,7 +31,7 @@
     }
 
     &--DELETE {
-      color: $DELETE-color;;
+      color: $DELETE-color;
     }
 
     &--HEAD {
@@ -51,5 +52,12 @@
     border: $border-primary;
     border-left: none;
     border-right: none;
+  }
+  &__error-message{
+    color: $DELETE-color;
+    text-transform: uppercase;
+    position: absolute;
+    top: -1.25rem;
+    left: calc(12ch + 1px + 1.5rem);
   }
 }

@@ -52,7 +52,21 @@ const setMethod = (method: string) => {
   }
 }
 
+const isValidURL = (url:string) => url.startsWith('http://') || url.startsWith('https://');
+
+const handleURLInputValidation = (e:Event)=>{
+  const urlInput = e.target as HTMLInputElement;
+  const errorMessageSpan = document.querySelector('.cmp-url-input__error-message') as HTMLElement;
+    console.log(isValidURL(urlInput.value))
+  if(!isValidURL(urlInput.value) && urlInput.value !== ''){
+    errorMessageSpan.classList.remove('util-display-none');
+    return
+  }
+  errorMessageSpan.classList.add('util-display-none');
+}
+
 const addURLListeners = () => {
+  const URLInput = document.querySelector('#url-input') as HTMLInputElement;
   const methodSelect = document.querySelector('.cmp-url-input__method') as HTMLSelectElement;
   const previewElement = document.querySelector('.cmp-preview') as HTMLElement;
   const optionsTabs = document.querySelector('.cmp-options-tabs');
@@ -70,7 +84,8 @@ const addURLListeners = () => {
     previewElement.classList.add(`cmp-preview--${methodSelect.value}`);
     methodSelect.classList.remove('cmp-url-input__method--GET', 'cmp-url-input__method--POST', 'cmp-url-input__method--PUT', 'cmp-url-input__method--PATCH', 'cmp-url-input__method--DELETE', 'cmp-url-input__method--HEAD', 'cmp-url-input__method--OPTIONS');
     methodSelect.classList.add(`cmp-url-input__method--${methodSelect.value}`)
-  })
+  });
+  URLInput.addEventListener('input', handleURLInputValidation);
 }
 
 export { addURLListeners, setURL, setMethod };

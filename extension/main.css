@@ -319,6 +319,7 @@ a {
   }
 }
 .cmp-url-input {
+  position: relative;
   display: flex;
   margin-bottom: 1.5rem;
 }
@@ -363,6 +364,13 @@ a {
   border: 1px solid #e5e7eb;
   border-left: none;
   border-right: none;
+}
+.cmp-url-input__error-message {
+  color: #e42422;
+  text-transform: uppercase;
+  position: absolute;
+  top: -1.25rem;
+  left: calc(12ch + 1px + 1.5rem);
 }
 
 .cmp-headers {
