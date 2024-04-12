@@ -1,4 +1,4 @@
-import { getBasicAuth, hasAuth } from "./auth";
+import { getBasicAuth, getBearerTokenAuth, getSelectedAuthType, hasAuth } from "./auth";
 import { printPreview } from "./preview";
 
 // TODO: A USERS NEEDS TO BE ABLE TURN HEADERS ON AND OFF WITHOUT DELETING THEM
@@ -44,8 +44,18 @@ const getActiveHeaders  = (): Headers => {
     headerKeyValuePairs.push(getHeaderKeyValuePair(value));
   }
   const headers = new Headers(headerKeyValuePairs.filter(isValidHeader));
-  if(hasAuth()){
-    headers.append('Authorization', getBasicAuth());
+  if(!hasAuth()){
+    return headers;
+  }
+  switch (getSelectedAuthType()) {
+    case 'basic-auth':
+      headers.append('Authorization', getBasicAuth());
+      break;
+    case 'bearer-token':
+      headers.append('Authorization', getBearerTokenAuth());
+      break;
+    default:
+      break;
   }
   return headers;
 } 

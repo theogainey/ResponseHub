@@ -61,10 +61,26 @@
       .cmp-auth__basic-auth {
         @include visually-hidden;
       }
+      .cmp-auth__bearer-token {
+        @include visually-hidden;
+      }
+    }
+
+    &[data-view="basic-auth"] {
+      .cmp-auth__bearer-token {
+        @include visually-hidden;
+      }
+    }
+
+    &[data-view="bearer-token"] {
+      .cmp-auth__basic-auth {
+        @include visually-hidden;
+      }
     }
   }
 
-  &__basic-auth {
+  &__basic-auth,
+  &__bearer-token {
     margin: 1rem 0;
     overflow: scroll;
   }

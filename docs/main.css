@@ -461,7 +461,31 @@ a {
   height: 1px;
   overflow: hidden;
 }
-.cmp-auth__basic-auth {
+.cmp-auth__input-area[data-view=none] .cmp-auth__bearer-token {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.cmp-auth__input-area[data-view=basic-auth] .cmp-auth__bearer-token {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.cmp-auth__input-area[data-view=bearer-token] .cmp-auth__basic-auth {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.cmp-auth__basic-auth, .cmp-auth__bearer-token {
   margin: 1rem 0;
   overflow: scroll;
 }

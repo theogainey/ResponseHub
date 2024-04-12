@@ -148,6 +148,12 @@
                     Basic Auth
                   </label>
                 </li>
+                <li class="cmp-auth__tab">
+                  <label>
+                    <input class="util-visually-hidden" type="radio" value="bearer-token" name="auth-tab" />
+                    Bearer Token
+                  </label>
+                </li>
               </ul> 
               <div class="cmp-auth__input-area" data-view="none">
                 <div class="cmp-auth__basic-auth">
@@ -162,6 +168,16 @@
                       <label class="cmp-auth__label">
                         <span>Password</span>
                         <input class="cmp-auth__input" id="basic-auth-password" type="text" name="password" placeholder="Password"/>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="cmp-auth__bearer-token">
+                  <div class="obj-grid">
+                    <div class="obj-grid__half util-margin-right">
+                      <label class="cmp-auth__label">
+                        <span>Token</span>
+                        <input class="cmp-auth__input" id="bearer-token-auth-token" type="text" name="token" placeholder="Token"/>
                       </label>
                     </div>
                   </div>
