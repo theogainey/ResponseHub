@@ -1,5 +1,6 @@
 import { requestCanHaveBody } from "./body";
 import { printPreview } from "./preview";
+import { handleDirectURLSearchParams } from "./urlSearchParams";
 
 const isTabSelectedHidden = (HTTPMethod: string) => {
   const requestOptionsLayoutDiv = document.querySelector('.obj-options-layout') as Element;
@@ -16,6 +17,11 @@ const selectDefaultTab = () => {
 const setURL = (url: string) => {
   const URLInput = document.querySelector('#url-input') as HTMLInputElement;
   URLInput.value = url;
+}
+
+const getURL = () => {
+  const { value } = document.querySelector('#url-input') as HTMLInputElement;
+  return value;
 }
 
 const setMethod = (method: string) => {
@@ -57,13 +63,13 @@ const isValidURL = (url:string) => url.startsWith('http://') || url.startsWith('
 const handleURLInputValidation = (e:Event)=>{
   const urlInput = e.target as HTMLInputElement;
   const errorMessageSpan = document.querySelector('.cmp-url-input__error-message') as HTMLElement;
-    console.log(isValidURL(urlInput.value))
   if(!isValidURL(urlInput.value) && urlInput.value !== ''){
     errorMessageSpan.classList.remove('util-display-none');
     return
   }
   errorMessageSpan.classList.add('util-display-none');
 }
+
 
 const addURLListeners = () => {
   const URLInput = document.querySelector('#url-input') as HTMLInputElement;
@@ -86,6 +92,7 @@ const addURLListeners = () => {
     methodSelect.classList.add(`cmp-url-input__method--${methodSelect.value}`)
   });
   URLInput.addEventListener('input', handleURLInputValidation);
+  URLInput.addEventListener('input', handleDirectURLSearchParams);
 }
 
-export { addURLListeners, setURL, setMethod };
+export { addURLListeners, setURL, getURL, setMethod };

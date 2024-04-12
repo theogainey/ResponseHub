@@ -1,4 +1,5 @@
 import { printPreview } from "./preview";
+import { getURL, setURL } from "./url";
 
 const getURLSearchParamKey = (component:Element): string => {
   const  { value } = component.querySelector('.cmp-url-search-params__input--key') as HTMLInputElement;
@@ -140,14 +141,49 @@ const setURLSearchParams = (urlSearchParams: [string, string, string][]) => {
   urlSearchParamsInputsContainer?.append(newURLSearchParamsInputElement);
 }
 
+const printURLSearchParamsToURL = () => {
+  try{
+    const activeSearURLSearchParams = getActiveURLSearchParams().toString();
+    const currentURL = getURL();
+    const searchParamIndex = currentURL.indexOf('?');
+    if(!activeSearURLSearchParams && searchParamIndex !==1){
+      setURL(currentURL.slice(0,searchParamIndex))  
+      return;
+    }
+    if(searchParamIndex === -1){
+      setURL(`${currentURL}?${activeSearURLSearchParams}`)
+      return;
+    }
+    setURL(`${currentURL.slice(0,searchParamIndex)}?${activeSearURLSearchParams}`)  
+  }catch(err){ };
+}
+
+const handleDirectURLSearchParams = () => {
+  try{
+    const currentURLSearchInput = [] as [string, string, string][];
+    const currentURL = getURL();
+    const searchParamIndex = currentURL.indexOf('?');
+    if(searchParamIndex !== -1){
+      const url = new URL(`http://placeholder.com${currentURL.slice(searchParamIndex)}`)
+      const searchParams = new URLSearchParams(url.search);
+      for (const [key, value] of searchParams.entries()) {
+        currentURLSearchInput.push([key, value, 'true'])
+      }  
+    }
+    setURLSearchParams(currentURLSearchInput.concat(getURLSearchParamsForHistory().filter(([_key, _value, active]) => active === 'false')));
+  }catch(err){}
+}
+
+
 const addURLSearchParamsListeners = () =>{
   const urlSearchParamInputContainer = document.querySelector('.cmp-url-search-params');
   urlSearchParamInputContainer?.addEventListener('input', handleNewURLSearchParamInput); 
   urlSearchParamInputContainer?.addEventListener('input', printPreview); 
+  urlSearchParamInputContainer?.addEventListener('input', printURLSearchParamsToURL)
   urlSearchParamInputContainer?.addEventListener('keydown', removeURLSearchInputsHandler);
   const initialURLSearchParamInput = urlSearchParamInputContainer?.querySelector('.cmp-url-search-params__params-pair') as Element;
   const initialURLSearchParamCheckbox = initialURLSearchParamInput?.querySelector('input[type="checkbox') as Element;
   initialURLSearchParamCheckbox.addEventListener('change', handleURLSearchParamInputCheckbox(initialURLSearchParamInput));
 }
 
-export { getActiveURLSearchParams,getURLSearchParamsForHistory, addURLSearchParamsListeners, setURLSearchParams };
+export { getActiveURLSearchParams,getURLSearchParamsForHistory, addURLSearchParamsListeners, setURLSearchParams, handleDirectURLSearchParams };

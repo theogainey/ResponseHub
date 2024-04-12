@@ -5,6 +5,7 @@ import { getFormURLEncodedData } from "./formURLEncoded";
 import { getHeadersForHistory, getActiveHeaders } from "./headers";
 import { addRequestToHistory } from "./requestHistory";
 import { handleResponse } from "./response";
+import { getURL } from "./url";
 import { getURLSearchParamsForHistory, getActiveURLSearchParams } from "./urlSearchParams";
 import { toggleHidden } from "./utils";
 
@@ -21,10 +22,6 @@ const isValidURL = (url:string) =>{
   }
 }
 
-const getURL = () => {
-  const { value } = document.querySelector('#url-input') as HTMLInputElement;
-  return value;
-}
 const printResponseTime = (time: number) => {
   const timeElement = document.querySelector('.cmp-response-details__time') as Element;
   timeElement.innerHTML = `${time}ms`
