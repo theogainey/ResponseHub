@@ -11,10 +11,32 @@
     line-height: 1.5;
   }
 
+  &__select {
+    width: 100%;
+    border: none;
+    border-bottom: $border-primary;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    text-transform: capitalize;
+  }
   &__label span {
     @include visually-hidden;
   }
 
+  &__label--row {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 0.5rem;
+
+    span {
+      position: initial;
+      overflow: initial;
+      width: 10ch;
+      font-size: 1.25rem;
+    }  
+  }
+  
   &__tabs {
     display: flex;
     gap: 0.5rem;
@@ -64,10 +86,16 @@
       .cmp-auth__bearer-token {
         @include visually-hidden;
       }
+      .cmp-auth__api-key {
+        @include visually-hidden;
+      }
     }
 
     &[data-view="basic-auth"] {
       .cmp-auth__bearer-token {
+        @include visually-hidden;
+      }
+      .cmp-auth__api-key {
         @include visually-hidden;
       }
     }
@@ -76,11 +104,24 @@
       .cmp-auth__basic-auth {
         @include visually-hidden;
       }
+      .cmp-auth__api-key {
+        @include visually-hidden;
+      }
+    }
+
+    &[data-view="api-key"] {
+      .cmp-auth__basic-auth {
+        @include visually-hidden;
+      }
+      .cmp-auth__bearer-token {
+        @include visually-hidden;
+      }
     }
   }
 
   &__basic-auth,
-  &__bearer-token {
+  &__bearer-token,
+  &__api-key {
     margin: 1rem 0;
     overflow: scroll;
   }

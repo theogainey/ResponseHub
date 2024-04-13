@@ -88,7 +88,7 @@
               <li class="cmp-options-tabs__tab">
                 <label>
                   <input class="util-visually-hidden" type="radio" value="url-search-params" name="view-tab" />
-                  URL Search Params
+                  Params
                 </label>
               </li>
               <li class="cmp-options-tabs__tab" id="body-tab">
@@ -154,6 +154,12 @@
                     Bearer Token
                   </label>
                 </li>
+                <li class="cmp-auth__tab">
+                  <label>
+                    <input class="util-visually-hidden" type="radio" value="api-key" name="auth-tab" />
+                    API Key
+                  </label>
+                </li>
               </ul> 
               <div class="cmp-auth__input-area" data-view="none">
                 <div class="cmp-auth__basic-auth">
@@ -182,6 +188,27 @@
                     </div>
                   </div>
                 </div>
+                <div class="cmp-auth__api-key">
+                  <div class="obj-grid">
+                    <div class="obj-grid__half util-margin-right">
+                      <label class="cmp-auth__label cmp-auth__label--row">
+                        <span>Key:</span>
+                        <input class="cmp-auth__input util-margin-bottom" id="api-token-key" type="text" name="key" placeholder="Key"/>
+                      </label>
+                      <label class="cmp-auth__label cmp-auth__label--row">
+                        <span>Value:</span>
+                        <input class="cmp-auth__input util-margin-bottom" id="api-token-value" type="text" name="key" placeholder="Value"/>
+                      </label>
+                      <label class="cmp-auth__label cmp-auth__label--row">
+                        <span>Add to:</span>
+                        <select id="api-token-add-to" class="cmp-auth__select">
+                          <option value="headers" selected>headers</option>
+                          <option value="params">params</option>
+                        </select>
+                      </label>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="cmp-url-search-params">
@@ -189,8 +216,8 @@
                 <input type="checkbox" checked/>
                 <div class="obj-grid__half util-margin-right">
                   <label class="cmp-url-search-params__label">
-                    <span>URL Search Parameter Key</span>
-                    <input class="cmp-url-search-params__input cmp-url-search-params__input--key" type="text" name="header" placeholder="URL Search Parameter Key"/>
+                    <span>Query Parameter Key</span>
+                    <input class="cmp-url-search-params__input cmp-url-search-params__input--key" type="text" name="header" placeholder="Key"/>
                   </label>
                 </div>
                 <div class="obj-grid__half">

@@ -40,6 +40,10 @@ a {
   color: currentColor;
 }
 
+select {
+  font-family: "Noto Sans Mono", monospace;
+}
+
 .obj-layout {
   display: flex;
 }
@@ -416,6 +420,14 @@ a {
   font-size: 1.25rem;
   line-height: 1.5;
 }
+.cmp-auth__select {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  text-transform: capitalize;
+}
 .cmp-auth__label span {
   position: absolute;
   left: -10000px;
@@ -423,6 +435,18 @@ a {
   width: 1px;
   height: 1px;
   overflow: hidden;
+}
+.cmp-auth__label--row {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+.cmp-auth__label--row span {
+  position: initial;
+  overflow: initial;
+  width: 10ch;
+  font-size: 1.25rem;
 }
 .cmp-auth__tabs {
   display: flex;
@@ -469,7 +493,23 @@ a {
   height: 1px;
   overflow: hidden;
 }
+.cmp-auth__input-area[data-view=none] .cmp-auth__api-key {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
 .cmp-auth__input-area[data-view=basic-auth] .cmp-auth__bearer-token {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.cmp-auth__input-area[data-view=basic-auth] .cmp-auth__api-key {
   position: absolute;
   left: -10000px;
   top: auto;
@@ -485,7 +525,31 @@ a {
   height: 1px;
   overflow: hidden;
 }
-.cmp-auth__basic-auth, .cmp-auth__bearer-token {
+.cmp-auth__input-area[data-view=bearer-token] .cmp-auth__api-key {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.cmp-auth__input-area[data-view=api-key] .cmp-auth__basic-auth {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.cmp-auth__input-area[data-view=api-key] .cmp-auth__bearer-token {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.cmp-auth__basic-auth, .cmp-auth__bearer-token, .cmp-auth__api-key {
   margin: 1rem 0;
   overflow: scroll;
 }
@@ -1388,6 +1452,10 @@ a {
 
 .util-margin-right {
   margin-right: 1rem;
+}
+
+.util-margin-bottom {
+  margin-bottom: 1rem;
 }
 
 .util-visually-hidden {
