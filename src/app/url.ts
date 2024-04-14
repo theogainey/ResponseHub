@@ -60,10 +60,10 @@ const setMethod = (method: string) => {
 
 const isValidURL = (url:string) => url.startsWith('http://') || url.startsWith('https://');
 
-const handleURLInputValidation = (e:Event)=>{
-  const urlInput = e.target as HTMLInputElement;
+const handleURLInputValidation = ()=>{
+  const URLInput = document.querySelector('#url-input') as HTMLInputElement;
   const errorMessageSpan = document.querySelector('.cmp-url-input__error-message') as HTMLElement;
-  if(!isValidURL(urlInput.value) && urlInput.value !== ''){
+  if(!isValidURL(URLInput.value) && URLInput.value !== ''){
     errorMessageSpan.classList.remove('util-display-none');
     return
   }
@@ -95,4 +95,4 @@ const addURLListeners = () => {
   URLInput.addEventListener('input', handleDirectURLSearchParams);
 }
 
-export { addURLListeners, setURL, getURL, setMethod };
+export { addURLListeners, setURL, getURL, setMethod, handleURLInputValidation };

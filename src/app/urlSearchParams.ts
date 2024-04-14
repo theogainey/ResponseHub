@@ -1,3 +1,4 @@
+import { getAPIKeyAuthLocation, getAPIKeyAuthKeyValuePair, getSelectedAuthType, hasAuth } from "./auth";
 import { printPreview } from "./preview";
 import { getURL, setURL } from "./url";
 
@@ -37,6 +38,10 @@ const getActiveURLSearchParams = (): URLSearchParams => {
     }
     urlSearchParamsPairs.push(getURLSearchParamKeyValuePair(value));
   }
+  if(hasAuth() && getSelectedAuthType() ==='api-key' && getAPIKeyAuthLocation() === 'params'){
+    urlSearchParamsPairs.push(getAPIKeyAuthKeyValuePair());
+  }
+
   return new URLSearchParams(urlSearchParamsPairs.filter(isValidURLSearchParam));
 }
 
@@ -186,4 +191,4 @@ const addURLSearchParamsListeners = () =>{
   initialURLSearchParamCheckbox.addEventListener('change', handleURLSearchParamInputCheckbox(initialURLSearchParamInput));
 }
 
-export { getActiveURLSearchParams,getURLSearchParamsForHistory, addURLSearchParamsListeners, setURLSearchParams, handleDirectURLSearchParams };
+export { getActiveURLSearchParams,getURLSearchParamsForHistory, addURLSearchParamsListeners, setURLSearchParams, handleDirectURLSearchParams, printURLSearchParamsToURL };

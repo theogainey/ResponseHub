@@ -138,7 +138,7 @@
               <ul class="cmp-auth__tabs">
                 <li class="cmp-auth__tab cmp-options-tabs__tab--active">
                   <label>
-                    <input class="util-visually-hidden" checked type="radio" value="none" name="auth-tab" />
+                    <input class="util-visually-hidden" id="default-auth-tab" checked type="radio" value="none" name="auth-tab" />
                     none
                   </label>
                 </li>
@@ -201,7 +201,7 @@
                       </label>
                       <label class="cmp-auth__label cmp-auth__label--row">
                         <span>Add to:</span>
-                        <select id="api-token-add-to" class="cmp-auth__select">
+                        <select id="api-token-location" class="cmp-auth__select">
                           <option value="headers" selected>headers</option>
                           <option value="params">params</option>
                         </select>

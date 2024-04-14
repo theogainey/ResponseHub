@@ -1,8 +1,8 @@
-import { getBasicAuth, getBearerTokenAuth, getSelectedAuthType, hasAuth } from "./auth";
+import { getAPIKeyAuthKeyValuePair, getAPIKeyAuthLocation, getBasicAuth, getBearerTokenAuth, getSelectedAuthType, hasAuth } from "./auth";
 import { printPreview } from "./preview";
 
-// TODO: A USERS NEEDS TO BE ABLE TURN HEADERS ON AND OFF WITHOUT DELETING THEM
-// TOD: USER FEEDBACK FOR INVALID HEADERS
+// TODO: USER FEEDBACK FOR INVALID HEADERS
+// TODO: HINTS FOR HEADERS 
 
 const getHeaderKey = (component:Element): string => {
   const  { value } = component.querySelector('.cmp-headers__input--header') as HTMLInputElement;
@@ -28,9 +28,6 @@ const getHeadersForHistory = ():[string, string, string][] => {
     headerKeyValuePairs.push(getHeaderKeyValuePairWithActive(value));
   }
   const headers = headerKeyValuePairs.filter(isValidHeader);
-  if(hasAuth()){
-    headers.push(['Authorization', getBasicAuth(), "true"]);
-  }
   return headers;
 } 
 
@@ -54,6 +51,11 @@ const getActiveHeaders  = (): Headers => {
     case 'bearer-token':
       headers.append('Authorization', getBearerTokenAuth());
       break;
+    case 'api-key':
+      if(getAPIKeyAuthLocation() === 'params'){
+        break;
+      }
+      headers.append(...getAPIKeyAuthKeyValuePair());
     default:
       break;
   }
@@ -165,6 +167,7 @@ const setHeaders = (headers: [string, string, string][]) => {
   const headerInputsContainer = document.querySelector('.cmp-headers') as Element;
   headerInputsContainer.innerHTML = '';
   for (const pair of headers) {
+    // if authorization header handle it differently 
     const newHeaderInputElement = createNewHeaderInput(...pair);
     headerInputsContainer?.append(newHeaderInputElement);
   }

@@ -1,8 +1,9 @@
-import { setMethod, setURL } from "./url";
+import { setMethod, setURL, handleURLInputValidation } from "./url";
 import { setHeaders } from "./headers";
 import { setURLSearchParams } from "./urlSearchParams";
 import { printPreview } from "./preview";
 import { clearResponse } from "./response";
+import { setAuth } from "./auth";
 
 type RequestHistoryEntry = {
   method: string;
@@ -181,7 +182,9 @@ const historyEntryClickHandler = (id: number) => async ()=> {
   setURL(request?.url ?? '');
   setMethod(request?.method ?? 'GET');
   setHeaders(request?.headers ?? []);
+  setAuth();
   setURLSearchParams(request?.urlSearchParams ?? []);
+  handleURLInputValidation();
   clearResponse();
   printPreview();
 } 
