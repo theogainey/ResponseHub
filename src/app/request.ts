@@ -1,3 +1,4 @@
+import { getAuthForHistory } from "./auth";
 import { getRawBody, getSelectedBodyDataType, requestCanHaveBody } from "./body";
 import { handleRequestError } from "./errors";
 import { getFormData } from "./formData";
@@ -83,7 +84,7 @@ const sendRequest = () => {
   })
   .then((response)=> {
     handleResponse(response);
-    addRequestToHistory({url: url, method: requestMethod, headers: getHeadersForHistory(), urlSearchParams: getURLSearchParamsForHistory(), timeStamp: Date.now()});
+    addRequestToHistory({url: url, method: requestMethod, headers: getHeadersForHistory(), urlSearchParams: getURLSearchParamsForHistory(), auth: getAuthForHistory() ,timeStamp: Date.now()});
   })
   .catch((_err)=>{
     handleRequestError();

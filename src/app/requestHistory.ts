@@ -3,7 +3,7 @@ import { setHeaders } from "./headers";
 import { setURLSearchParams } from "./urlSearchParams";
 import { printPreview } from "./preview";
 import { clearResponse } from "./response";
-import { setAuth } from "./auth";
+import { AuthHistoryEntry, setAuth } from "./auth";
 
 type RequestHistoryEntry = {
   method: string;
@@ -11,6 +11,7 @@ type RequestHistoryEntry = {
   headers: [string, string, string][];
   urlSearchParams: [string, string, string][];
   timeStamp: number;
+  auth: AuthHistoryEntry;
   id?: number; 
 }
 
@@ -182,7 +183,7 @@ const historyEntryClickHandler = (id: number) => async ()=> {
   setURL(request?.url ?? '');
   setMethod(request?.method ?? 'GET');
   setHeaders(request?.headers ?? []);
-  setAuth();
+  setAuth(request?.auth ?? {auth: 'none'});
   setURLSearchParams(request?.urlSearchParams ?? []);
   handleURLInputValidation();
   clearResponse();
