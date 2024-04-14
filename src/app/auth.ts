@@ -1,4 +1,5 @@
 import { printURLSearchParamsToURL } from "./urlSearchParams";
+import { selectInputElement } from "./utils";
 
 type AuthType = 'none' | 'basic-auth' | 'bearer-token' | 'api-key';
 
@@ -54,36 +55,36 @@ const hasAuth = ():boolean => {
   const authType = getSelectedAuthType();
   if(authType === 'none') return false;
   if(authType === 'basic-auth'){
-    const username = (document.querySelector('#basic-auth-username') as HTMLInputElement ).value;
-    const password = (document.querySelector('#basic-auth-password') as HTMLInputElement).value;
+    const username = selectInputElement('#basic-auth-username').value;
+    const password = selectInputElement('#basic-auth-password').value;
     return !!(username && password);
   }
   if(authType === 'bearer-token') {
-    const token = (document.querySelector('#bearer-token-auth-token') as HTMLInputElement ).value;
+    const token = selectInputElement('#bearer-token-auth-token').value;
     return !!token;
   }
   if(authType === 'api-key') {
-    const key = (document.querySelector('#api-token-key') as HTMLInputElement ).value;
-    const value = (document.querySelector('#api-token-value') as HTMLInputElement).value;
+    const key = selectInputElement('#api-token-key').value;
+    const value = selectInputElement('#api-token-value').value;
     return !!(key && value);
   }
   return false;
 }
 
 const getBasicAuth = () => {
-  const username = (document.querySelector('#basic-auth-username') as HTMLInputElement ).value;
-  const password = (document.querySelector('#basic-auth-password') as HTMLInputElement).value;
+  const username = selectInputElement('#basic-auth-username').value;
+  const password = selectInputElement('#basic-auth-password').value;
   return `Basic ${btoa(`${username}:${password}`)}`;
 }
 
 const getBearerTokenAuth = () => {
-  const token = (document.querySelector('#bearer-token-auth-token') as HTMLInputElement ).value;
+  const token = selectInputElement('#bearer-token-auth-token').value;
   return `Bearer ${token}`;
 }
 
 type APIKeyAuthLocation = 'headers' | 'params';
 const getAPIKeyAuthLocation = (): APIKeyAuthLocation =>{
-  const location = (document.querySelector('#api-token-location') as HTMLInputElement ).value;
+  const location = selectInputElement('#api-token-location').value;
   if(location === 'params'){
     return location;
   }
@@ -91,8 +92,8 @@ const getAPIKeyAuthLocation = (): APIKeyAuthLocation =>{
 }
 
 const getAPIKeyAuthKeyValuePair = ():[string, string] => {
-  const key = (document.querySelector('#api-token-key') as HTMLInputElement ).value;
-  const value = (document.querySelector('#api-token-value') as HTMLInputElement).value;
+  const key = selectInputElement('#api-token-key').value;
+  const value = selectInputElement('#api-token-value').value;
   return [key, value];
 }
 
@@ -104,24 +105,24 @@ const setAuth = ({ auth }:AuthHistoryEntry) => {
     input.value = '';
   }
   if(auth === 'none'){
-    (document.querySelector('#default-auth-tab') as HTMLInputElement).click();
+    selectInputElement('#default-auth-tab').click();
     return;
   }
   if(isAuthBasicAuth(auth)){
-    (document.querySelector('#basic-auth-tab') as HTMLInputElement).click();
-    (document.querySelector('#basic-auth-username') as HTMLInputElement ).value = auth.username;
-    (document.querySelector('#basic-auth-password') as HTMLInputElement).value = auth.password;    
+    selectInputElement('#basic-auth-tab').click();
+    selectInputElement('#basic-auth-username').value = auth.username;
+    selectInputElement('#basic-auth-password').value = auth.password;    
     return;
   }
   if(isAPIKeyAuth(auth)){
-    (document.querySelector('#api-token-auth-tab') as HTMLInputElement).click();
-    (document.querySelector('#api-token-key') as HTMLInputElement ).value = auth.key;
-    (document.querySelector('#api-token-value') as HTMLInputElement).value = auth.value;
-    (document.querySelector('#api-token-location') as HTMLInputElement ).value = auth.location;
+    selectInputElement('#api-token-auth-tab').click();
+    selectInputElement('#api-token-key').value = auth.key;
+    selectInputElement('#api-token-value').value = auth.value;
+    selectInputElement('#api-token-location').value = auth.location;
   }
   if(isBearerTokenAuth(auth)){
-    (document.querySelector('#bearer-token-auth-tab') as HTMLInputElement).click();
-    (document.querySelector('#bearer-token-auth-token') as HTMLInputElement ).value = auth.token;
+    selectInputElement('#bearer-token-auth-tab').click();
+    selectInputElement('#bearer-token-auth-token').value = auth.token;
   }
 }
 
@@ -133,8 +134,8 @@ const getAuthForHistory = ():AuthHistoryEntry => {
   }
   switch (getSelectedAuthType()) {
     case 'basic-auth':
-      const username = (document.querySelector('#basic-auth-username') as HTMLInputElement ).value;
-      const password = (document.querySelector('#basic-auth-password') as HTMLInputElement).value;    
+      const username = selectInputElement('#basic-auth-username').value;
+      const password = selectInputElement('#basic-auth-password').value;    
       return{
         auth: {
           authType: 'basic-auth',
@@ -143,7 +144,7 @@ const getAuthForHistory = ():AuthHistoryEntry => {
         }
       };
     case 'bearer-token':
-      const token = (document.querySelector('#bearer-token-auth-token') as HTMLInputElement ).value;
+      const token = selectInputElement('#bearer-token-auth-token').value;
       return {
         auth: {
           authType: 'bearer-token',
@@ -151,8 +152,8 @@ const getAuthForHistory = ():AuthHistoryEntry => {
         }
       };
     case 'api-key': 
-      const key = (document.querySelector('#api-token-key') as HTMLInputElement ).value;
-      const value = (document.querySelector('#api-token-value') as HTMLInputElement).value;
+      const key = selectInputElement('#api-token-key').value;
+      const value =selectInputElement('#api-token-value').value;
       const location = getAPIKeyAuthLocation();
       return {
         auth: {
@@ -170,7 +171,7 @@ const getAuthForHistory = ():AuthHistoryEntry => {
 }
 
 const addAuthListeners = () => {
-  const APITokenLocationInput = document.querySelector('#api-token-location') as HTMLInputElement;
+  const APITokenLocationInput = selectInputElement('#api-token-location');
   APITokenLocationInput.addEventListener('change', printURLSearchParamsToURL);
 };
 

@@ -1,12 +1,13 @@
 import { printPreview } from "./preview";
+import { selectInputElementFromComponent } from "./utils";
 
 const getFormURLEncodedDataKey = (component:Element): string => {
-  const  { value } = component.querySelector('.cmp-request-body__input--key') as HTMLInputElement;
+  const  { value } = selectInputElementFromComponent(component, '.cmp-request-body__input--key');
   return value ?? ''
 }  
 
 const getFormURLEncodedDataValue = (component:Element): string => {
-  const  { value } = component.querySelector('.cmp-request-body__input--value') as HTMLInputElement;
+  const  { value } = selectInputElementFromComponent(component, '.cmp-request-body__input--value');
   return value ?? ''
 }  
 
@@ -81,8 +82,8 @@ const shouldRemoveFormURLEncodedInput = (input: HTMLInputElement) => {
   if(input.value){
     return false;
   }
-  const inputContainer = input.closest('.cmp-x-www-form-urlencoded__input-pair');
-  const matchingInput = inputContainer?.querySelector(getMatchingInputQuerySelector(input)) as HTMLInputElement;
+  const inputContainer = input.closest('.cmp-x-www-form-urlencoded__input-pair') as Element;
+  const matchingInput = selectInputElementFromComponent(inputContainer, (getMatchingInputQuerySelector(input)));
   return !matchingInput.value;
 }
 

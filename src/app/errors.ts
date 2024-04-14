@@ -1,8 +1,9 @@
+import { selectElement } from "./utils";
 
 const handleRequestError = () => {
-  const sendButton = document.querySelector('#send-button div') as Element;
+  const sendButton = selectElement('#send-button div');
   sendButton.classList.add('util-visually-hidden');
-  const responseLayoutDiv = document.querySelector('.cmp-response') as Element;
+  const responseLayoutDiv = selectElement('.cmp-response');
   responseLayoutDiv?.setAttribute('data-view', 'error');
 
 }

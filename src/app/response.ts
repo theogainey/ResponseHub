@@ -1,4 +1,4 @@
-import { toggleHiddenWithTimeout, toggleHidden } from './utils';
+import { toggleHiddenWithTimeout, toggleHidden, selectInputElement, selectElement } from './utils';
 import prettier from "prettier/standalone";
 import htmlParser from "prettier/plugins/html";
 import { getLanguage, highLightWithLineNumbers, highlight } from './hljs';
@@ -11,7 +11,7 @@ const RESPONSE_STATE = {
 
 const reHighlightCode = (language: string) => {
   formatCode(RESPONSE_STATE.body).then((code) => {
-    const responseTextElement = document.querySelector('.cmp-response__text') as Element;
+    const responseTextElement = selectElement('.cmp-response__text');
     responseTextElement.innerHTML =  highLightWithLineNumbers(code, language );
   // setResponseLanguage(language);
   });
@@ -23,10 +23,10 @@ const isJSONResponse = (response: Response) => {
 }
 
 const setResponseLanguage = (language:string) => {
-  const jsonButton = document.querySelector('#json-button') as Element;
-  const jsonButtonInput = document.querySelector('#json-button input') as Element
-  const xmlButton = document.querySelector('#xml-button') as Element;
-  const xmlButtonInput = document.querySelector('#xml-button input') as Element
+  const jsonButton = selectElement('#json-button');
+  const jsonButtonInput = selectElement('#json-button input');
+  const xmlButton = selectElement('#xml-button');
+  const xmlButtonInput = selectElement('#xml-button input');
 
   switch (language) {
     case 'json':
@@ -62,7 +62,7 @@ const copyToResponseToClipBoard = (data: string) => () => {
 };
 
 const setBodyTabActive = () => {
-  const bodyTab = document.querySelector('#response-body-tab') as HTMLInputElement;
+  const bodyTab = selectInputElement('#response-body-tab');
   bodyTab.checked = true;
   bodyTab.dispatchEvent(new Event('change'));
 }
@@ -97,7 +97,7 @@ const getStatusCodeClass =  (status: number) => {
 
 
 const printStatusCode = (status: number) => {
-  const statusCodeElement = document.querySelector('.cmp-response-details__status-code') as Element;
+  const statusCodeElement = selectElement('.cmp-response-details__status-code');
   statusCodeElement.innerHTML = `status ${status}`
   statusCodeElement.setAttribute('class', `cmp-response-details__status-code ${getStatusCodeClass(status)}`);
 };
@@ -118,7 +118,7 @@ const formatCode = async (code: string) => {
 }
 
 const printResponse = async (data:string) => {
-  const responseTextElement = document.querySelector('.cmp-response__text') as Element;
+  const responseTextElement = selectElement('.cmp-response__text');
   const formattedCode = await formatCode(data);
   const language = getLanguage(formattedCode)
   const highlightedCode = highLightWithLineNumbers(formattedCode, language);
@@ -128,7 +128,7 @@ const printResponse = async (data:string) => {
 }
 
 const printHeaders = (response: Response) => {
-  const responseHeadersElement = document.querySelector('.cmp-response__headers pre code') as Element;
+  const responseHeadersElement = selectElement('.cmp-response__headers pre code');
   let headers = '' 
   for (const pair of response.headers.entries()) {
     headers += `${pair[0]}: ${pair[1]}\n`
@@ -138,12 +138,12 @@ const printHeaders = (response: Response) => {
 }
 
 const setBodyView = () => {
-  const responseLayoutDiv = document.querySelector('.cmp-response') as Element;
+  const responseLayoutDiv = selectElement('.cmp-response');
   responseLayoutDiv?.setAttribute('data-view', 'body');
 }
 
 const handleResponse = async (response: Response) => {
-  const sendButton = document.querySelector('#send-button div') as Element;
+  const sendButton = selectElement('#send-button div');
   toggleHidden(sendButton);
   setBodyView();
   printStatusCode(response.status);
@@ -160,7 +160,7 @@ const handleResponse = async (response: Response) => {
 }
 
 const clearResponse = () => {
-  const responseArea = document.querySelector('.cmp-response__text') as Element;
+  const responseArea = selectElement('.cmp-response__text');
   responseArea.innerHTML = '';
 }
 

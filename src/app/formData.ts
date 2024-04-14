@@ -1,12 +1,13 @@
 import { printPreview } from "./preview";
+import { selectInputElementFromComponent } from "./utils";
 
 const getFormDataKey = (component:Element): string => {
-  const  { value } = component.querySelector('.cmp-request-body__input--key') as HTMLInputElement;
+  const  { value } = selectInputElementFromComponent(component, '.cmp-request-body__input--key');
   return value ?? ''
 }  
 
 const getFormDataValue = (component:Element): string => {
-  const  { value } = component.querySelector('.cmp-request-body__input--value') as HTMLInputElement;
+  const  { value } = selectInputElementFromComponent(component, '.cmp-request-body__input--value');
   return value ?? ''
 }  
 
@@ -64,13 +65,6 @@ const addFormDataInput = () => {
   formDataInputsContainer?.append(newFormDataInputElement);
 }
 
-const hasFormData = () => {
-  const formDataInputs = document.querySelectorAll('.cmp-request-body__form-data .cmp-form-data__input-pair');
-  for (const formDataInput of formDataInputs.values()) {
-     console.log(formDataInput);
-  }
-
-}
 const handleNewFormDataInput = () => {
   const formDataInputs = document.querySelectorAll('.cmp-request-body__form-data .cmp-form-data__input-pair');
   if(formDataInputs.length === 0) {
@@ -90,8 +84,8 @@ const shouldRemoveFormDataInput = (input: HTMLInputElement) => {
   if(input.value){
     return false;
   }
-  const inputContainer = input.closest('.cmp-form-data__input-pair');
-  const matchingInput = inputContainer?.querySelector(getMatchingInputQuerySelector(input)) as HTMLInputElement;
+  const inputContainer = input.closest('.cmp-form-data__input-pair') as Element;
+  const matchingInput = selectInputElementFromComponent(inputContainer, getMatchingInputQuerySelector(input));
   return !matchingInput.value;
 }
 

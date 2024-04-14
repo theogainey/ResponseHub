@@ -1,14 +1,15 @@
 import { getAPIKeyAuthLocation, getAPIKeyAuthKeyValuePair, getSelectedAuthType, hasAuth } from "./auth";
 import { printPreview } from "./preview";
 import { getURL, setURL } from "./url";
+import { selectElement, selectInputElementFromComponent } from "./utils";
 
 const getURLSearchParamKey = (component:Element): string => {
-  const  { value } = component.querySelector('.cmp-url-search-params__input--key') as HTMLInputElement;
+  const  { value } = selectInputElementFromComponent(component, '.cmp-url-search-params__input--key');
   return value ?? ''
 }  
 
 const getURLSearchParamValue = (component:Element): string => {
-  const  { value } = component.querySelector('.cmp-url-search-params__input--value') as HTMLInputElement;
+  const  { value } = selectInputElementFromComponent(component, '.cmp-url-search-params__input--value');
   return value ?? ''
 }  
 
@@ -18,7 +19,7 @@ const getURLSearchParamKeyValuePairWithActive  = (component:Element):[string, st
 
 const isValidURLSearchParam = ([key, _value]: string[]) =>  !!key;
 
-const isActiveURLSearchParam = (component:Element): boolean => !!(component.querySelector('input[type=checkbox') as HTMLInputElement).checked;
+const isActiveURLSearchParam = (component:Element): boolean => !!selectInputElementFromComponent(component, 'input[type=checkbox').checked;
 
 const getURLSearchParamsForHistory = (): [string, string, string][] => {
   const urlSearchParamsInputs = document.querySelectorAll('.cmp-url-search-params__params-pair');
@@ -120,8 +121,8 @@ const shouldRemoveURLSearchParamInput = (input: HTMLInputElement) => {
   if(input.value){
     return false;
   }
-  const inputContainer = input.closest('.cmp-url-search-params__params-pair');
-  const matchingInput = inputContainer?.querySelector(getMatchingInputQuerySelector(input)) as HTMLInputElement;
+  const inputContainer = input.closest('.cmp-url-search-params__params-pair') as Element;
+  const matchingInput = selectInputElementFromComponent(inputContainer, getMatchingInputQuerySelector(input));
   return !matchingInput.value;
 }
 const removeURLSearchInputsHandler = (e: Event) => {
@@ -136,7 +137,7 @@ const removeURLSearchInputsHandler = (e: Event) => {
 
 
 const setURLSearchParams = (urlSearchParams: [string, string, string][]) => {
-  const urlSearchParamsInputsContainer = document.querySelector('.cmp-url-search-params') as Element;
+  const urlSearchParamsInputsContainer = selectElement('.cmp-url-search-params');
   urlSearchParamsInputsContainer.innerHTML = '';
   for (const pair of urlSearchParams) {
     const newURLSearchParamsInputElement = createNewURLSearchParamInput(...pair);

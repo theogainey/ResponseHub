@@ -1,31 +1,32 @@
 import { requestCanHaveBody } from "./body";
 import { printPreview } from "./preview";
 import { handleDirectURLSearchParams } from "./urlSearchParams";
+import { selectInputElement, selectElement } from "./utils";
 
 const isTabSelectedHidden = (HTTPMethod: string) => {
-  const requestOptionsLayoutDiv = document.querySelector('.obj-options-layout') as Element;
+  const requestOptionsLayoutDiv = selectElement('.obj-options-layout');
   const currentSelected = requestOptionsLayoutDiv?.getAttribute('data-view');
   return currentSelected === 'body' && !requestCanHaveBody(HTTPMethod);
 }
 
 const selectDefaultTab = () => {
-  const previewTab = document.querySelector('#preview-tab input') as HTMLInputElement;
+  const previewTab = selectInputElement('#preview-tab input');
   previewTab.checked = true;
   previewTab.dispatchEvent(new Event('change'));
 };
 
 const setURL = (url: string) => {
-  const URLInput = document.querySelector('#url-input') as HTMLInputElement;
+  const URLInput = selectInputElement('#url-input');
   URLInput.value = url;
 }
 
 const getURL = () => {
-  const { value } = document.querySelector('#url-input') as HTMLInputElement;
+  const { value } = selectInputElement('#url-input');
   return value;
 }
 
 const setMethod = (method: string) => {
-  const MethodInput = document.querySelector('#method-select') as HTMLInputElement;
+  const MethodInput = selectInputElement('#method-select');
   MethodInput.value = method;
   const classes = MethodInput.classList.values();
   for (const value of classes) {
@@ -61,8 +62,8 @@ const setMethod = (method: string) => {
 const isValidURL = (url:string) => url.startsWith('http://') || url.startsWith('https://');
 
 const handleURLInputValidation = ()=>{
-  const URLInput = document.querySelector('#url-input') as HTMLInputElement;
-  const errorMessageSpan = document.querySelector('.cmp-url-input__error-message') as HTMLElement;
+  const URLInput = selectInputElement('#url-input');
+  const errorMessageSpan = selectElement('.cmp-url-input__error-message');
   if(!isValidURL(URLInput.value) && URLInput.value !== ''){
     errorMessageSpan.classList.remove('util-display-none');
     return
@@ -72,9 +73,9 @@ const handleURLInputValidation = ()=>{
 
 
 const addURLListeners = () => {
-  const URLInput = document.querySelector('#url-input') as HTMLInputElement;
+  const URLInput = selectInputElement('#url-input');
   const methodSelect = document.querySelector('.cmp-url-input__method') as HTMLSelectElement;
-  const previewElement = document.querySelector('.cmp-preview') as HTMLElement;
+  const previewElement = selectElement('.cmp-preview');
   const optionsTabs = document.querySelector('.cmp-options-tabs');
   const bodyTabs = document.querySelector('.cmp-request-body__tabs');
   methodSelect.addEventListener('change', () => {

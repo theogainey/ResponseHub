@@ -8,7 +8,7 @@ import { addRequestToHistory } from "./requestHistory";
 import { handleResponse } from "./response";
 import { getURL } from "./url";
 import { getURLSearchParamsForHistory, getActiveURLSearchParams } from "./urlSearchParams";
-import { toggleHidden } from "./utils";
+import { selectElement, toggleHidden } from "./utils";
 
 const defaultRequestOptions = {
   method: "GET",
@@ -24,7 +24,7 @@ const isValidURL = (url:string) =>{
 }
 
 const printResponseTime = (time: number) => {
-  const timeElement = document.querySelector('.cmp-response-details__time') as Element;
+  const timeElement = selectElement('.cmp-response-details__time');
   timeElement.innerHTML = `${time}ms`
 };
 
@@ -72,7 +72,7 @@ const sendRequest = () => {
     console.log('invalid url');
     return;
   }
-  const sendButton = document.querySelector('#send-button div') as Element;
+  const sendButton = selectElement('#send-button div');
   toggleHidden(sendButton);
   const userRequest = getRequest(url, requestMethod);
   const startTime = Date.now();

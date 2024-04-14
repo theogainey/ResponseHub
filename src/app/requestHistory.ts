@@ -4,6 +4,7 @@ import { setURLSearchParams } from "./urlSearchParams";
 import { printPreview } from "./preview";
 import { clearResponse } from "./response";
 import { AuthHistoryEntry, setAuth } from "./auth";
+import { selectElement } from "./utils";
 
 type RequestHistoryEntry = {
   method: string;
@@ -257,7 +258,7 @@ const addRequestToHistory = async (request: RequestHistoryEntry) => {
 
 const clearRequestHistory = async () => {
   await requestHistoryDB.deleteAllRequests();
-  const historyContainer = document.querySelector('.cmp-history__entry-area') as HTMLElement;
+  const historyContainer = selectElement('.cmp-history__entry-area');
   historyContainer.innerHTML = '';
   historyOptionsHandler();
 }
@@ -265,7 +266,7 @@ const clearRequestHistory = async () => {
 // TODO make it so when the modal is open when you click off a modal it closes
 const historyOptionsHandler = () => {
   const historyOptionsModal = document.querySelector('.cmp-history__options-modal');
-  const historyOptionsButton = document.querySelector('.cmp-history__options-button') as Element;
+  const historyOptionsButton = selectElement('.cmp-history__options-button');
   historyOptionsButton.classList.toggle('cmp-history__options-button--active');
   if(historyOptionsModal?.classList.contains('util-display-none')){
     historyOptionsButton.innerHTML = `

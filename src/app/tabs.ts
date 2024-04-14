@@ -1,4 +1,5 @@
 import { printPreview } from "./preview";
+import { selectElement } from "./utils";
 
 const addTabChangeHandler = (layoutDiv: Element) => (tabSelector: string) =>(tab:Element) =>{
   const tabInput = tab.querySelector('input');
@@ -12,19 +13,19 @@ const addTabChangeHandler = (layoutDiv: Element) => (tabSelector: string) =>(tab
 }
 
 const addTabListeners = () => {
-  const requestOptionsLayoutDiv = document.querySelector('.obj-options-layout') as Element;
+  const requestOptionsLayoutDiv = selectElement('.obj-options-layout');
   const requestOptionsTabs = document.querySelectorAll('#request-options .cmp-options-tabs__tab');
   requestOptionsTabs.forEach(addTabChangeHandler(requestOptionsLayoutDiv)('#request-options .cmp-options-tabs__tab'));
 
-  const responseLayoutDiv = document.querySelector('.cmp-response') as Element;
+  const responseLayoutDiv = selectElement('.cmp-response');
   const responseOptionsTabs = document.querySelectorAll('.cmp-response__details .cmp-options-tabs__tab');
   responseOptionsTabs.forEach(addTabChangeHandler(responseLayoutDiv)('.cmp-response__details .cmp-options-tabs__tab'));
 
-  const requestBodyLayoutDiv = document.querySelector('.cmp-request-body__input-area') as Element;
+  const requestBodyLayoutDiv = selectElement('.cmp-request-body__input-area');
   const requestBodyOptionsTabs = document.querySelectorAll('.cmp-request-body__tab');
   requestBodyOptionsTabs.forEach(addTabChangeHandler(requestBodyLayoutDiv)('.cmp-request-body__tab'));
 
-  const authLayoutDiv = document.querySelector('.cmp-auth__input-area') as Element;
+  const authLayoutDiv = selectElement('.cmp-auth__input-area');
   const authOptionsTabs = document.querySelectorAll('.cmp-auth__tab');
   authOptionsTabs.forEach(addTabChangeHandler(authLayoutDiv)('.cmp-auth__tab'));
 

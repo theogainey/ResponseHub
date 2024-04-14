@@ -1,3 +1,15 @@
+const selectElement = (selector: string) => {
+  return document.querySelector(selector) as Element;
+}
+
+const selectInputElement = (selector: string) => {
+  return document.querySelector(selector) as HTMLInputElement;
+}
+
+const selectInputElementFromComponent = (component:Element, selector: string) => {
+  return component.querySelector(selector) as HTMLInputElement;
+}
+
 const toggleHidden = (...elements: Array<Element | null>) => {
   elements.forEach((e) => {
     e?.classList.toggle('util-visually-hidden');
@@ -13,4 +25,4 @@ const toggleHiddenWithTimeout = (...elements: Array<Element | null>) => {
   });
 }
 
-export { toggleHidden, toggleHiddenWithTimeout };
+export { toggleHidden, toggleHiddenWithTimeout, selectInputElement, selectInputElementFromComponent, selectElement };

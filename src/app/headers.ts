@@ -1,16 +1,17 @@
 import { getAPIKeyAuthKeyValuePair, getAPIKeyAuthLocation, getBasicAuth, getBearerTokenAuth, getSelectedAuthType, hasAuth } from "./auth";
 import { printPreview } from "./preview";
+import { selectElement, selectInputElementFromComponent } from "./utils";
 
 // TODO: USER FEEDBACK FOR INVALID HEADERS
 // TODO: HINTS FOR HEADERS 
 
 const getHeaderKey = (component:Element): string => {
-  const  { value } = component.querySelector('.cmp-headers__input--header') as HTMLInputElement;
+  const  { value } = selectInputElementFromComponent(component, '.cmp-headers__input--header');
   return value ?? ''
 }  
 
 const getHeaderValue = (component:Element): string => {
-  const  { value } = component.querySelector('.cmp-headers__input--value') as HTMLInputElement;
+  const  { value } = selectInputElementFromComponent(component, '.cmp-headers__input--value');
   return value ?? ''
 }  
 
@@ -19,7 +20,7 @@ const getHeaderKeyValuePairWithActive = (component:Element):[string, string, str
 
 const isValidHeader = ([key, value]: string[]) =>  !!key && !!value;
 
-const isActiveHeader = (component:Element): boolean => !!(component.querySelector('input[type=checkbox') as HTMLInputElement).checked;
+const isActiveHeader = (component:Element): boolean => !!(selectInputElementFromComponent(component, 'input[type=checkbox')).checked;
 
 const getHeadersForHistory = ():[string, string, string][] => {
   const headerInputComponents = document.querySelectorAll('.cmp-headers__header-pair');
@@ -139,8 +140,8 @@ const shouldRemoveHeaderInput = (input: HTMLInputElement) => {
   if(input.value){
     return false;
   }
-  const inputContainer = input.closest('.cmp-headers__header-pair');
-  const matchingInput = inputContainer?.querySelector(getMatchingInputQuerySelector(input)) as HTMLInputElement;
+  const inputContainer = input.closest('.cmp-headers__header-pair') as Element;
+  const matchingInput = selectInputElementFromComponent(inputContainer, getMatchingInputQuerySelector(input));
   return !matchingInput.value;
 }
 const removeHeaderInputsHandler = (e: Event) => {
@@ -164,7 +165,7 @@ const addHeaderListeners = () => {
 }
 
 const setHeaders = (headers: [string, string, string][]) => {
-  const headerInputsContainer = document.querySelector('.cmp-headers') as Element;
+  const headerInputsContainer = selectElement('.cmp-headers');
   headerInputsContainer.innerHTML = '';
   for (const pair of headers) {
     // if authorization header handle it differently 
