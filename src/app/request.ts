@@ -58,7 +58,7 @@ const getRequestWithoutBody = (url: string, method: string) => {
 }
 
 const getRequest = (url: string, method: string) => {
-  const requestURL = `${url}?${getActiveURLSearchParams()}`;
+  const requestURL = `${url}?${getActiveURLSearchParams(true)}`;
   return requestCanHaveBody(method) ? getRequestWithBody(requestURL, method) :  getRequestWithoutBody(requestURL, method);
 };
 

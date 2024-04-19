@@ -60,7 +60,7 @@ const getHTTPMessageData = (): HTTPMessageData => {
   if(requestCanHaveBody(method) && getSelectedBodyDataType() === 'x-www-form-urlencoded' && getFormURLEncodedData()){
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
   }
-  const urlSearchParams = getActiveURLSearchParams();
+  const urlSearchParams = getActiveURLSearchParams( true );
   const HTTPMessageData =  {
     host: getHost(urlInputValue),
     path: getPathName(urlInputValue),

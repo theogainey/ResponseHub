@@ -30,7 +30,7 @@ const getURLSearchParamsForHistory = (): [string, string, string][] => {
   return urlSearchParamsPairs.filter(isValidURLSearchParam);
 }
 
-const getActiveURLSearchParams = (): URLSearchParams => {
+const getActiveURLSearchParams = ( includeAuth = false): URLSearchParams => {
   const urlSearchParamsInputs = document.querySelectorAll('.cmp-url-search-params__params-pair');
   const urlSearchParamsPairs = [];
   for (const value of urlSearchParamsInputs.values()) {
@@ -39,7 +39,7 @@ const getActiveURLSearchParams = (): URLSearchParams => {
     }
     urlSearchParamsPairs.push(getURLSearchParamKeyValuePair(value));
   }
-  if(hasAuth() && getSelectedAuthType() ==='api-key' && getAPIKeyAuthLocation() === 'params'){
+  if(includeAuth && hasAuth() && getSelectedAuthType() ==='api-key' && getAPIKeyAuthLocation() === 'params'){
     urlSearchParamsPairs.push(getAPIKeyAuthKeyValuePair());
   }
 

@@ -1,4 +1,3 @@
-import { printURLSearchParamsToURL } from "./urlSearchParams";
 import { selectInputElement } from "./utils";
 
 type AuthType = 'none' | 'basic-auth' | 'bearer-token' | 'api-key';
@@ -170,9 +169,4 @@ const getAuthForHistory = ():AuthHistoryEntry => {
   }
 }
 
-const addAuthListeners = () => {
-  const APITokenLocationInput = selectInputElement('#api-token-location');
-  APITokenLocationInput.addEventListener('change', printURLSearchParamsToURL);
-};
-
-export { addAuthListeners,  setAuth, getAPIKeyAuthLocation, getAPIKeyAuthKeyValuePair, getBasicAuth, hasAuth, getBearerTokenAuth, getSelectedAuthType, getAuthForHistory };
+export { setAuth, getAPIKeyAuthLocation, getAPIKeyAuthKeyValuePair, getBasicAuth, hasAuth, getBearerTokenAuth, getSelectedAuthType, getAuthForHistory };
