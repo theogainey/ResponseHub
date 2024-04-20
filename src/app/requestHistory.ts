@@ -216,7 +216,7 @@ const createDeleteHistoryEntryButton = (request: RequestHistoryEntry) => {
 }
 
 const createHistoryEntryElement = (request: RequestHistoryEntry) => {
-  const newHistoryEntryElement = document.createElement('div');
+  const newHistoryEntryElement = document.createElement('button');
   newHistoryEntryElement.classList.add('cmp-history__list-item');
   newHistoryEntryElement.setAttribute('data-request-id', request.id?.toString() ?? '0');
   newHistoryEntryElement.innerHTML = `<span class="cmp-history__method cmp-history__method--${request.method}">${request.method}</span> <span>${request.url}</span>`;

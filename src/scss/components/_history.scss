@@ -36,6 +36,9 @@
         stroke: white;
       }
     }
+    &:focus {
+      @include focus-styles;
+    }
   }
 
   &__options-modal {
@@ -67,10 +70,15 @@
     border: 1px solid black;
     width: 5ch;
     text-transform: uppercase;
-    &:focus, &:hover, &:active {
+    &:hover, &:active {
       background-color: black;
       color: white;
     }
+
+    &:focus {
+      @include focus-styles;
+    }
+
     &--delete {
       background-color: #dc2626;
       color: white;
@@ -95,9 +103,13 @@
     &:hover {
       background-color: #c6cbd4;
     }
+    &:focus {
+      border: 1px solid black;
+    }
   }
 
   &__list-item {
+    width: 100%;
     display: flex;
     align-items: center;
     padding: 0.25rem;

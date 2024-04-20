@@ -7,6 +7,10 @@
   color: #fff;
   padding: 0.5rem 1rem;
   display: flex;
+  
+  &:focus {
+    @include focus-styles;
+  }
 
   &__loader {
     display: none;

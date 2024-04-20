@@ -58,7 +58,7 @@
             </select>
             <span class="cmp-url-input__error-message util-display-none">http:// or https:// required</span>
             <label for="url-input" class="util-visually-hidden">url input</label>
-            <input id="url-input" class="cmp-url-input--url" type="text" id="url-input" name="url" required placeholder="URL"/>
+            <input id="url-input" class="cmp-url-input__url" type="text" id="url-input" name="url" required placeholder="URL"/>
             <button class="cmp-send-button" id="send-button">
               Send
               <div class="cmp-send-button__loader util-visually-hidden"></div>
@@ -69,31 +69,31 @@
             <ul class="cmp-options-tabs" data-method="GET">
               <li class="cmp-options-tabs__tab cmp-options-tabs__tab--active" id="preview-tab"> 
                 <label>
-                  <input class="util-visually-hidden" checked type="radio" value="preview" name="view-tab" />
+                  <input class="util-visually-hidden" checked type="checkbox" value="preview" name="view-tab" />
                   Preview
                 </label>
               </li>
               <li class="cmp-options-tabs__tab">
                 <label>
-                  <input class="util-visually-hidden"  type="radio" value="headers" name="view-tab" />
+                  <input class="util-visually-hidden"  type="checkbox" value="headers" name="view-tab" />
                   Headers
                 </label>
               </li>
               <li class="cmp-options-tabs__tab">
                 <label>
-                  <input class="util-visually-hidden"  type="radio" value="auth" name="view-tab" />
+                  <input class="util-visually-hidden"  type="checkbox" value="auth" name="view-tab" />
                   Auth
                 </label>
               </li>
               <li class="cmp-options-tabs__tab">
                 <label>
-                  <input class="util-visually-hidden" type="radio" value="url-search-params" name="view-tab" />
+                  <input class="util-visually-hidden" type="checkbox" value="url-search-params" name="view-tab" />
                   Params
                 </label>
               </li>
               <li class="cmp-options-tabs__tab" id="body-tab">
                 <label>
-                  <input class="util-visually-hidden" type="radio" value="body" name="view-tab" />
+                  <input class="util-visually-hidden" type="checkbox" value="body" name="view-tab" />
                   Body
                 </label>
               </li>
@@ -138,25 +138,25 @@
               <ul class="cmp-auth__tabs">
                 <li class="cmp-auth__tab cmp-options-tabs__tab--active">
                   <label>
-                    <input class="util-visually-hidden" id="default-auth-tab" checked type="radio" value="none" name="auth-tab" />
+                    <input class="util-visually-hidden" id="default-auth-tab" checked type="checkbox"  value="none" name="auth-tab" />
                     none
                   </label>
                 </li>
                 <li class="cmp-auth__tab">
                   <label>
-                    <input class="util-visually-hidden" id="basic-auth-tab" type="radio" value="basic-auth" name="auth-tab" />
+                    <input class="util-visually-hidden" id="basic-auth-tab" type="checkbox"  value="basic-auth" name="auth-tab" />
                     Basic Auth
                   </label>
                 </li>
                 <li class="cmp-auth__tab">
                   <label>
-                    <input class="util-visually-hidden" id="bearer-token-auth-tab" type="radio" value="bearer-token" name="auth-tab" />
+                    <input class="util-visually-hidden" id="bearer-token-auth-tab" type="checkbox"  value="bearer-token" name="auth-tab" />
                     Bearer Token
                   </label>
                 </li>
                 <li class="cmp-auth__tab">
                   <label>
-                    <input class="util-visually-hidden" id="api-token-auth-tab" type="radio" value="api-key" name="auth-tab" />
+                    <input class="util-visually-hidden" id="api-token-auth-tab" type="checkbox"  value="api-key" name="auth-tab" />
                     API Key
                   </label>
                 </li>
@@ -232,25 +232,25 @@
               <ul class="cmp-request-body__tabs" data-method="GET">
                 <li class="cmp-request-body__tab cmp-options-tabs__tab--active">
                   <label>
-                    <input class="util-visually-hidden" checked type="radio" value="none" name="body-tab" />
+                    <input class="util-visually-hidden" checked type="checkbox"  value="none" name="body-tab" />
                     none
                   </label>
                 </li>
                 <li class="cmp-request-body__tab">
                   <label>
-                    <input class="util-visually-hidden" type="radio" value="form-data" name="body-tab" />
+                    <input class="util-visually-hidden" type="checkbox"  value="form-data" name="body-tab" />
                     form-data
                   </label>
                 </li>
                 <li class="cmp-request-body__tab">
                   <label>
-                    <input class="util-visually-hidden" type="radio" value="x-www-form-urlencoded" name="body-tab" />
+                    <input class="util-visually-hidden" type="checkbox"  value="x-www-form-urlencoded" name="body-tab" />
                     x-www-form-urlencoded
                   </label>
                 </li>
                 <li class="cmp-request-body__tab">
                   <label>
-                    <input class="util-visually-hidden" type="radio" value="raw" name="body-tab" />
+                    <input class="util-visually-hidden" type="checkbox"  value="raw" name="body-tab" />
                     raw
                   </label>
                 </li>
@@ -299,16 +299,16 @@
               <span class="cmp-response__error-message">Unable to get any response. Please try again</span>
             </div>
             <div class="cmp-response__details cmp-response-details util-visually-hidden">
-              <ul class="cmp-options-tabs">
+              <ul class="cmp-options-tabs cmp-options-tabs--response">
                 <li class="cmp-options-tabs__tab cmp-options-tabs__tab--active">
                   <label>
-                    <input class="util-visually-hidden" id="response-body-tab" checked type="radio" value="body" name="view-tab" />
+                    <input class="util-visually-hidden" id="response-body-tab" checked type="checkbox"  value="body" name="view-tab" />
                     Body
                   </label>
                 </li>  
                 <li class="cmp-options-tabs__tab">
                   <label>
-                    <input class="util-visually-hidden" type="radio" value="headers" name="view-tab" />
+                    <input class="util-visually-hidden" type="checkbox"  value="headers" name="view-tab" />
                     Headers
                   </label>
                 </li>      
@@ -322,11 +322,11 @@
               <!-- <div class="cmp-response__button-container">
                 <div class="cmp-response__languages util-visually-hidden">
                   <label class="cmp-response__languages-button" id="json-button">
-                    <input class="util-visually-hidden" type="radio" name="formatting-language" />
+                    <input class="util-visually-hidden" type="checkbox"  name="formatting-language" />
                     JSON
                   </label>
                   <label class="cmp-response__languages-button" id="xml-button">
-                    <input class="util-visually-hidden" type="radio" name="formatting-language" />
+                    <input class="util-visually-hidden" type="checkbox"  name="formatting-language" />
                     XML
                   </label>
                 </div> -->

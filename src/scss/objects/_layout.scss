@@ -11,12 +11,11 @@
   align-items: center;
   @media(min-width: calc($max-main-layout-width +  $min-history-layout-width - 2rem)){
     align-items: flex-start;
-    margin-left: 2rem;
+    margin-left: 1rem;
   }
   @media(min-width: calc($max-main-layout-width +  $min-history-layout-width )){
-    margin-left: 4rem;
+    margin-left: 3rem;
   }
-
 }
 
 .obj-side-layout {

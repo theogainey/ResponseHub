@@ -1,5 +1,6 @@
 .cmp-response {
   margin-top: 1rem;
+  padding-left: 1rem;
   border-top: $border-primary;
 
   &__body {
@@ -13,6 +14,9 @@
 
   &__copy-button {
     top: 27px !important;
+    &:focus {
+      @include focus-styles;
+    }
   }
 
   code {

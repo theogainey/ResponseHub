@@ -2,7 +2,8 @@
   position: relative;
   display: flex;
   margin-bottom: 1.5rem;
-  
+  padding-left: 1rem;
+
   &__method {
     font-family: 'Noto Sans Mono', monospace;
     appearance: none;
@@ -11,8 +12,16 @@
     font-size: 1rem;
     padding: 0.5rem 1ch; 
     border: $border-primary;
-    border-right: none;
+    border-right: 1px solid transparent;
     font-weight: 600;
+
+    &:focus {
+      border: 2px solid black;
+      padding-top: calc(0.5rem - 1px);
+      padding-bottom: calc(0.5rem - 1px);
+      padding-left: calc(1ch - 1px); 
+      padding-right: calc(1ch - 1px); 
+    }
 
     &--GET {
       color: $GET-color;
@@ -43,7 +52,7 @@
     }
   }
  
-  &--url {
+  &__url {
     border: none;
     height: 2.5rem;
     font-size: 1rem; 
@@ -52,6 +61,14 @@
     border: $border-primary;
     border-left: none;
     border-right: none;
+
+    &:focus {
+      border: 2px solid black;
+      padding-top: calc(0.5rem - 1px);
+      padding-bottom: calc(0.5rem - 1px);
+      padding-left: calc(1.5rem - 2px); 
+      padding-right: calc(1.5rem - 2px); 
+    }
   }
   &__error-message{
     color: $DELETE-color;

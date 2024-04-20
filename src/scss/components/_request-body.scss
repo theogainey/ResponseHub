@@ -1,5 +1,6 @@
 .cmp-request-body {
   margin: 1rem 0;
+  padding-left: 1rem;
   height: $options-area-height;
 
   &__tabs {
@@ -15,21 +16,17 @@
     font-size: 1rem;
     border: 1px solid black;
 
-    &:focus-within {
-      label {
-        background-color: black;
-        color: white;
-      }
-    }
-
     label {
       padding: 0.25rem 0.5rem;
       font-size: 0.875rem;
       transition: all 250ms ease-in-out;
 
-      &:focus, &:hover, &:active {
+      &:hover, &:active {
         background-color: black;
         color: white;
+      }
+      &:focus-within{
+        @include focus-styles;
       }
     }
 

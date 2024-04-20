@@ -59,12 +59,12 @@ select {
 @media (min-width: calc(100ch + 20rem - 2rem)) {
   .obj-main-layout {
     align-items: flex-start;
-    margin-left: 2rem;
+    margin-left: 1rem;
   }
 }
 @media (min-width: calc(100ch + 20rem)) {
   .obj-main-layout {
-    margin-left: 4rem;
+    margin-left: 3rem;
   }
 }
 
@@ -297,6 +297,10 @@ select {
   padding: 0.5rem 1rem;
   display: flex;
 }
+.cmp-send-button:focus {
+  outline: 2px solid black;
+  outline-offset: 2px;
+}
 .cmp-send-button__loader {
   display: none;
 }
@@ -326,6 +330,7 @@ select {
   position: relative;
   display: flex;
   margin-bottom: 1.5rem;
+  padding-left: 1rem;
 }
 .cmp-url-input__method {
   font-family: "Noto Sans Mono", monospace;
@@ -335,8 +340,15 @@ select {
   font-size: 1rem;
   padding: 0.5rem 1ch;
   border: 1px solid #e5e7eb;
-  border-right: none;
+  border-right: 1px solid transparent;
   font-weight: 600;
+}
+.cmp-url-input__method:focus {
+  border: 2px solid black;
+  padding-top: calc(0.5rem - 1px);
+  padding-bottom: calc(0.5rem - 1px);
+  padding-left: calc(1ch - 1px);
+  padding-right: calc(1ch - 1px);
 }
 .cmp-url-input__method--GET {
   color: #006e51;
@@ -359,7 +371,7 @@ select {
 .cmp-url-input__method--OPTIONS {
   color: #a327c4;
 }
-.cmp-url-input--url {
+.cmp-url-input__url {
   border: none;
   height: 2.5rem;
   font-size: 1rem;
@@ -368,6 +380,13 @@ select {
   border: 1px solid #e5e7eb;
   border-left: none;
   border-right: none;
+}
+.cmp-url-input__url:focus {
+  border: 2px solid black;
+  padding-top: calc(0.5rem - 1px);
+  padding-bottom: calc(0.5rem - 1px);
+  padding-left: calc(1.5rem - 2px);
+  padding-right: calc(1.5rem - 2px);
 }
 .cmp-url-input__error-message {
   color: #e42422;
@@ -379,6 +398,7 @@ select {
 
 .cmp-headers {
   margin: 1rem 0;
+  padding-left: 1rem;
   height: 12rem;
   overflow: scroll;
 }
@@ -410,6 +430,8 @@ select {
 
 .cmp-auth {
   margin: 1rem 0;
+  margin-top: 0.5rem;
+  padding-left: 1rem;
   height: 12rem;
   overflow: scroll;
 }
@@ -451,6 +473,7 @@ select {
 .cmp-auth__tabs {
   display: flex;
   gap: 0.5rem;
+  padding-top: 0.5rem;
 }
 .cmp-auth__tabs[data-method=GET] {
   display: none;
@@ -460,18 +483,18 @@ select {
   font-size: 1rem;
   border: 1px solid black;
 }
-.cmp-auth__tab:focus-within label {
-  background-color: black;
-  color: white;
-}
 .cmp-auth__tab label {
   padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
   transition: all 250ms ease-in-out;
 }
-.cmp-auth__tab label:focus, .cmp-auth__tab label:hover, .cmp-auth__tab label:active {
+.cmp-auth__tab label:hover, .cmp-auth__tab label:active {
   background-color: black;
   color: white;
+}
+.cmp-auth__tab label:focus-within {
+  outline: 2px solid black;
+  outline-offset: 2px;
 }
 .cmp-auth__tab--active label {
   background-color: black;
@@ -556,6 +579,7 @@ select {
 
 .cmp-response {
   margin-top: 1rem;
+  padding-left: 1rem;
   border-top: 1px solid #e5e7eb;
 }
 .cmp-response__body {
@@ -567,6 +591,10 @@ select {
 }
 .cmp-response__copy-button {
   top: 27px !important;
+}
+.cmp-response__copy-button:focus {
+  outline: 2px solid black;
+  outline-offset: 2px;
 }
 .cmp-response code {
   display: block;
@@ -686,6 +714,7 @@ select {
 
 .cmp-url-search-params {
   margin: 1rem 0;
+  padding-left: 1rem;
   height: 12rem;
   overflow: scroll;
 }
@@ -718,23 +747,27 @@ select {
 .cmp-options-tabs {
   display: flex;
   gap: 0.5rem;
+  padding-left: 1rem;
+}
+.cmp-options-tabs--response {
+  padding-left: 0;
 }
 .cmp-options-tabs__tab {
   display: flex;
   font-size: 1rem;
   border: 1px solid black;
 }
-.cmp-options-tabs__tab:focus-within label {
-  background-color: black;
-  color: white;
-}
 .cmp-options-tabs__tab label {
   padding: 0.5rem 1rem;
   transition: all 250ms ease-in-out;
 }
-.cmp-options-tabs__tab label:focus, .cmp-options-tabs__tab label:hover, .cmp-options-tabs__tab label:active {
+.cmp-options-tabs__tab label:hover, .cmp-options-tabs__tab label:active {
   background-color: black;
   color: white;
+}
+.cmp-options-tabs__tab label:focus-within {
+  outline: 2px solid black;
+  outline-offset: 2px;
 }
 .cmp-options-tabs__tab--active label {
   background-color: black;
@@ -753,6 +786,7 @@ select {
   position: relative;
   height: 12rem;
   margin: 1rem 0;
+  padding-left: 1rem;
 }
 .cmp-preview--GET span:first-child {
   color: #006e51;
@@ -811,6 +845,10 @@ select {
 .cmp-copy-button:hover path {
   stroke: white;
 }
+.cmp-copy-button:focus {
+  outline: 2px solid black;
+  outline-offset: 2px;
+}
 .cmp-copy-button--checked {
   background-color: black;
 }
@@ -820,6 +858,7 @@ select {
 
 .cmp-request-body {
   margin: 1rem 0;
+  padding-left: 1rem;
   height: 12rem;
 }
 .cmp-request-body__tabs {
@@ -834,18 +873,18 @@ select {
   font-size: 1rem;
   border: 1px solid black;
 }
-.cmp-request-body__tab:focus-within label {
-  background-color: black;
-  color: white;
-}
 .cmp-request-body__tab label {
   padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
   transition: all 250ms ease-in-out;
 }
-.cmp-request-body__tab label:focus, .cmp-request-body__tab label:hover, .cmp-request-body__tab label:active {
+.cmp-request-body__tab label:hover, .cmp-request-body__tab label:active {
   background-color: black;
   color: white;
+}
+.cmp-request-body__tab label:focus-within {
+  outline: 2px solid black;
+  outline-offset: 2px;
 }
 .cmp-request-body__tab--active label {
   background-color: black;
@@ -989,6 +1028,10 @@ select {
 .cmp-history__options-button:hover path, .cmp-history__options-button--active path {
   stroke: white;
 }
+.cmp-history__options-button:focus {
+  outline: 2px solid black;
+  outline-offset: 2px;
+}
 .cmp-history__options-modal {
   display: flex;
   flex-direction: column;
@@ -1017,9 +1060,13 @@ select {
   width: 5ch;
   text-transform: uppercase;
 }
-.cmp-history__modal-button:focus, .cmp-history__modal-button:hover, .cmp-history__modal-button:active {
+.cmp-history__modal-button:hover, .cmp-history__modal-button:active {
   background-color: black;
   color: white;
+}
+.cmp-history__modal-button:focus {
+  outline: 2px solid black;
+  outline-offset: 2px;
 }
 .cmp-history__modal-button--delete {
   background-color: #dc2626;
@@ -1045,7 +1092,11 @@ select {
 .cmp-history__delete-entry-button:hover {
   background-color: #c6cbd4;
 }
+.cmp-history__delete-entry-button:focus {
+  border: 1px solid black;
+}
 .cmp-history__list-item {
+  width: 100%;
   display: flex;
   align-items: center;
   padding: 0.25rem;
