@@ -93,7 +93,7 @@
               </li>
               <li class="cmp-options-tabs__tab" id="body-tab">
                 <label>
-                  <input class="util-visually-hidden" type="checkbox" value="body" name="view-tab" />
+                  <input class="util-visually-hidden" tabindex="-1" type="checkbox" value="body" name="view-tab" />
                   Body
                 </label>
               </li>
@@ -117,18 +117,18 @@
             </div>
             <div class="cmp-headers">
               <div class="cmp-headers__header-pair">
-                <input type="checkbox" checked/>
+                <input type="checkbox" checked tabindex="-1"/>
                 <div class="obj-grid">
                   <div class="obj-grid__half util-margin-right">
                     <label class="cmp-headers__label">
                       <span>Header</span>
-                      <input class="cmp-headers__input cmp-headers__input--header" type="text" name="header" placeholder="Header"/>
+                      <input class="cmp-headers__input cmp-headers__input--header" type="text" name="header" placeholder="Header" tabindex="-1"/>
                     </label>
                   </div>
                   <div class="obj-grid__half">
                     <label class="cmp-headers__label">
                       <span>Value</span>
-                      <input class="cmp-headers__input cmp-headers__input--value" type="text" name="value" placeholder="Value"/>
+                      <input class="cmp-headers__input cmp-headers__input--value" type="text" name="value" placeholder="Value" tabindex="-1"/>
                     </label>
                   </div>
                 </div> 
@@ -138,25 +138,25 @@
               <ul class="cmp-auth__tabs">
                 <li class="cmp-auth__tab cmp-options-tabs__tab--active">
                   <label>
-                    <input class="util-visually-hidden" id="default-auth-tab" checked type="checkbox"  value="none" name="auth-tab" />
+                    <input class="util-visually-hidden" id="default-auth-tab" checked type="checkbox"  value="none" name="auth-tab" tabindex="-1"/>
                     none
                   </label>
                 </li>
                 <li class="cmp-auth__tab">
                   <label>
-                    <input class="util-visually-hidden" id="basic-auth-tab" type="checkbox"  value="basic-auth" name="auth-tab" />
+                    <input class="util-visually-hidden" id="basic-auth-tab" type="checkbox"  value="basic-auth" name="auth-tab" tabindex="-1"/>
                     Basic Auth
                   </label>
                 </li>
                 <li class="cmp-auth__tab">
                   <label>
-                    <input class="util-visually-hidden" id="bearer-token-auth-tab" type="checkbox"  value="bearer-token" name="auth-tab" />
+                    <input class="util-visually-hidden" id="bearer-token-auth-tab" type="checkbox"  value="bearer-token" name="auth-tab" tabindex="-1"/>
                     Bearer Token
                   </label>
                 </li>
                 <li class="cmp-auth__tab">
                   <label>
-                    <input class="util-visually-hidden" id="api-token-auth-tab" type="checkbox"  value="api-key" name="auth-tab" />
+                    <input class="util-visually-hidden" id="api-token-auth-tab" type="checkbox"  value="api-key" name="auth-tab" tabindex="-1"/>
                     API Key
                   </label>
                 </li>
@@ -167,13 +167,13 @@
                     <div class="obj-grid__half util-margin-right">
                       <label class="cmp-auth__label">
                         <span>Username</span>
-                        <input class="cmp-auth__input" id="basic-auth-username" type="text" name="username" placeholder="Username"/>
+                        <input class="cmp-auth__input" id="basic-auth-username" type="text" name="username" placeholder="Username" tabindex="-1"/>
                       </label>
                     </div>
                     <div class="obj-grid__half">
                       <label class="cmp-auth__label">
                         <span>Password</span>
-                        <input class="cmp-auth__input" id="basic-auth-password" type="text" name="password" placeholder="Password"/>
+                        <input class="cmp-auth__input" id="basic-auth-password" type="text" name="password" placeholder="Password" tabindex="-1"/>
                       </label>
                     </div>
                   </div>
@@ -183,7 +183,7 @@
                     <div class="obj-grid__half util-margin-right">
                       <label class="cmp-auth__label">
                         <span>Token</span>
-                        <input class="cmp-auth__input" id="bearer-token-auth-token" type="text" name="token" placeholder="Token"/>
+                        <input class="cmp-auth__input" id="bearer-token-auth-token" type="text" name="token" placeholder="Token" tabindex="-1"/>
                       </label>
                     </div>
                   </div>
@@ -193,15 +193,15 @@
                     <div class="obj-grid__half util-margin-right">
                       <label class="cmp-auth__label cmp-auth__label--row">
                         <span>Key:</span>
-                        <input class="cmp-auth__input util-margin-bottom" id="api-token-key" type="text" name="key" placeholder="Key"/>
+                        <input class="cmp-auth__input util-margin-bottom" id="api-token-key" type="text" name="key" placeholder="Key" tabindex="-1"/>
                       </label>
                       <label class="cmp-auth__label cmp-auth__label--row">
                         <span>Value:</span>
-                        <input class="cmp-auth__input util-margin-bottom" id="api-token-value" type="text" name="key" placeholder="Value"/>
+                        <input class="cmp-auth__input util-margin-bottom" id="api-token-value" type="text" name="key" placeholder="Value" tabindex="-1"/>
                       </label>
                       <label class="cmp-auth__label cmp-auth__label--row">
                         <span>Add to:</span>
-                        <select id="api-token-location" class="cmp-auth__select">
+                        <select id="api-token-location" class="cmp-auth__select" tabindex="-1">
                           <option value="headers" selected>headers</option>
                           <option value="params">params</option>
                         </select>
@@ -213,44 +213,44 @@
             </div>
             <div class="cmp-url-search-params">
               <div class="obj-grid cmp-url-search-params__params-pair">
-                <input type="checkbox" checked/>
+                <input type="checkbox" checked tabindex="-1"/>
                 <div class="obj-grid__half util-margin-right">
                   <label class="cmp-url-search-params__label">
                     <span>Query Parameter Key</span>
-                    <input class="cmp-url-search-params__input cmp-url-search-params__input--key" type="text" name="header" placeholder="Key"/>
+                    <input class="cmp-url-search-params__input cmp-url-search-params__input--key" type="text" name="header" placeholder="Key" tabindex="-1"/>
                   </label>
                 </div>
                 <div class="obj-grid__half">
                   <label class="cmp-url-search-params__label">
                     <span>Value</span>
-                    <input class="cmp-url-search-params__input cmp-url-search-params__input--value" type="text" name="value" placeholder="Value"/>
+                    <input class="cmp-url-search-params__input cmp-url-search-params__input--value" type="text" name="value" placeholder="Value" tabindex="-1"/>
                   </label>
                 </div>  
               </div>
             </div>
-            <div class="cmp-request-body">
+            <div class="cmp-request-body" tabindex="-1">
               <ul class="cmp-request-body__tabs" data-method="GET">
                 <li class="cmp-request-body__tab cmp-options-tabs__tab--active">
                   <label>
-                    <input class="util-visually-hidden" checked type="checkbox"  value="none" name="body-tab" />
+                    <input class="util-visually-hidden" checked type="checkbox"  value="none" name="body-tab" tabindex="-1"/>
                     none
                   </label>
                 </li>
                 <li class="cmp-request-body__tab">
                   <label>
-                    <input class="util-visually-hidden" type="checkbox"  value="form-data" name="body-tab" />
+                    <input class="util-visually-hidden" type="checkbox"  value="form-data" name="body-tab" tabindex="-1"/>
                     form-data
                   </label>
                 </li>
                 <li class="cmp-request-body__tab">
                   <label>
-                    <input class="util-visually-hidden" type="checkbox"  value="x-www-form-urlencoded" name="body-tab" />
+                    <input class="util-visually-hidden" type="checkbox"  value="x-www-form-urlencoded" name="body-tab" tabindex="-1"/>
                     x-www-form-urlencoded
                   </label>
                 </li>
                 <li class="cmp-request-body__tab">
                   <label>
-                    <input class="util-visually-hidden" type="checkbox"  value="raw" name="body-tab" />
+                    <input class="util-visually-hidden" type="checkbox"  value="raw" name="body-tab" tabindex="-1"/>
                     raw
                   </label>
                 </li>
@@ -261,13 +261,13 @@
                     <div class="obj-grid__half util-margin-right">
                       <label class="cmp-request-body__label">
                         <span>Key</span>
-                        <input class="cmp-request-body__input cmp-request-body__input--key" type="text" name="form-data-key" placeholder="Key"/>
+                        <input class="cmp-request-body__input cmp-request-body__input--key" type="text" name="form-data-key" placeholder="Key" tabindex="-1"/>
                       </label>
                     </div>
                     <div class="obj-grid__half">
                       <label class="cmp-request-body__label">
                         <span>Value</span>
-                        <input class="cmp-request-body__input cmp-request-body__input--value" type="text" name="form-data-value" placeholder="Value"/>
+                        <input class="cmp-request-body__input cmp-request-body__input--value" type="text" name="form-data-value" placeholder="Value" tabindex="-1"/>
                       </label>
                     </div>    
                   </div>
@@ -277,19 +277,19 @@
                     <div class="obj-grid__half util-margin-right">
                       <label class="cmp-request-body__label">
                         <span>Key</span>
-                        <input class="cmp-request-body__input cmp-request-body__input--key" type="text" name="x-www-form-urlencoded-key" placeholder="Key"/>
+                        <input class="cmp-request-body__input cmp-request-body__input--key" type="text" name="x-www-form-urlencoded-key" placeholder="Key" tabindex="-1"/>
                       </label>
                     </div>
                     <div class="obj-grid__half">
                       <label class="cmp-request-body__label">
                         <span>Value</span>
-                        <input class="cmp-request-body__input cmp-request-body__input--value" type="text" name="x-www-form-urlencoded-value" placeholder="Value"/>
+                        <input class="cmp-request-body__input cmp-request-body__input--value" type="text" name="x-www-form-urlencoded-value" placeholder="Value" tabindex="-1"/>
                       </label>
                     </div>      
                   </div>
                 </div>
                 <div class="cmp-request-body__raw">
-                  <textarea name="raw-text-body" class="cmp-request-body__text-area" placeholder="Raw Text Body"></textarea>
+                  <textarea name="raw-text-body" class="cmp-request-body__text-area" placeholder="Raw Text Body" tabindex="-1"></textarea>
                 </div>
               </div>  
             </div>
@@ -302,13 +302,13 @@
               <ul class="cmp-options-tabs cmp-options-tabs--response">
                 <li class="cmp-options-tabs__tab cmp-options-tabs__tab--active">
                   <label>
-                    <input class="util-visually-hidden" id="response-body-tab" checked type="checkbox"  value="body" name="view-tab" />
+                    <input class="util-visually-hidden" id="response-body-tab" checked type="checkbox"  value="body" name="view-tab" tabindex="-1"/>
                     Body
                   </label>
                 </li>  
                 <li class="cmp-options-tabs__tab">
                   <label>
-                    <input class="util-visually-hidden" type="checkbox"  value="headers" name="view-tab" />
+                    <input class="util-visually-hidden" type="checkbox"  value="headers" name="view-tab" tabindex="-1"/>
                     Headers
                   </label>
                 </li>      
@@ -330,7 +330,7 @@
                     XML
                   </label>
                 </div> -->
-                <button class="cmp-copy-button cmp-response__copy-button util-visually-hidden">
+                <button class="cmp-copy-button cmp-response__copy-button util-visually-hidden" tabindex="-1">
                   <span class="util-visually-hidden">copy to clipboard</span>
                   <svg class="cmp-copy-button__icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M20 9H11C9.89543 9 9 9.89543 9 11V20C9 21.1046 9.89543 22 11 22H20C21.1046 22 22 21.1046 22 20V11C22 9.89543 21.1046 9 20 9Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

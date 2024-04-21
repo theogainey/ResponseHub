@@ -296,6 +296,7 @@ select {
   color: #fff;
   padding: 0.5rem 1rem;
   display: flex;
+  transition: all 250ms ease-in-out;
 }
 .cmp-send-button:focus {
   outline: 2px solid black;
@@ -404,10 +405,17 @@ select {
 }
 .cmp-headers__header-pair {
   display: flex;
+  align-items: center;
   gap: 0.5rem;
 }
 .cmp-headers__header-pair input[type=checkbox] {
   width: 1rem;
+  margin: 0;
+  height: 1rem;
+}
+.cmp-headers__header-pair input[type=checkbox]:focus {
+  outline: 2px solid black;
+  outline-offset: 2px;
 }
 .cmp-headers__input {
   width: 100%;
@@ -418,6 +426,9 @@ select {
 }
 .cmp-headers__input--strike-through {
   text-decoration: line-through;
+}
+.cmp-headers__input:focus {
+  border-color: black;
 }
 .cmp-headers__label span {
   position: absolute;
@@ -442,6 +453,9 @@ select {
   font-size: 1.25rem;
   line-height: 1.5;
 }
+.cmp-auth__input:focus {
+  border-color: black;
+}
 .cmp-auth__select {
   width: 100%;
   border: none;
@@ -449,6 +463,9 @@ select {
   font-size: 1.25rem;
   line-height: 1.5;
   text-transform: capitalize;
+}
+.cmp-auth__select:focus {
+  border-color: black;
 }
 .cmp-auth__label span {
   position: absolute;
@@ -720,10 +737,17 @@ select {
 }
 .cmp-url-search-params__params-pair {
   display: flex;
+  align-items: center;
   gap: 0.5rem;
 }
 .cmp-url-search-params__params-pair input[type=checkbox] {
   width: 1rem;
+  margin: 0;
+  height: 1rem;
+}
+.cmp-url-search-params__params-pair input[type=checkbox]:focus {
+  outline: 2px solid black;
+  outline-offset: 2px;
 }
 .cmp-url-search-params__input {
   width: 100%;
@@ -734,6 +758,9 @@ select {
 }
 .cmp-url-search-params__input--strike-through {
   text-decoration: line-through;
+}
+.cmp-url-search-params__input:focus {
+  border-color: black;
 }
 .cmp-url-search-params__label span {
   position: absolute;
@@ -837,7 +864,7 @@ select {
   background-color: white;
   border: 1px solid black;
   padding: 0.5rem;
-  transition: background-color 250ms, color 250ms ease-in-out;
+  transition: all 250ms, color 250ms ease-in-out;
 }
 .cmp-copy-button:hover {
   background-color: black;
@@ -969,6 +996,9 @@ select {
   font-size: 1.25rem;
   line-height: 1.5;
 }
+.cmp-request-body__input:focus {
+  border-color: black;
+}
 .cmp-request-body__label span {
   position: absolute;
   left: -10000px;
@@ -1015,7 +1045,7 @@ select {
   justify-content: center;
   width: 2rem;
   padding: 0.25rem;
-  transition: background-color 250ms, color 250ms ease-in-out;
+  transition: all 250ms, color 250ms ease-in-out;
   background-color: white;
   border: 1px solid black;
 }

@@ -11,6 +11,9 @@
     border-bottom: $border-primary;
     font-size: 1.25rem;
     line-height: 1.5;
+    &:focus {
+      border-color: black;
+    }
   }
 
   &__select {
@@ -20,6 +23,10 @@
     font-size: 1.25rem;
     line-height: 1.5;
     text-transform: capitalize;
+    &:focus {
+      // TODO REVISIT THIS FOCUS STYLE
+      border-color: black;
+    }
   }
   &__label span {
     @include visually-hidden;

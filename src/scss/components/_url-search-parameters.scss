@@ -6,10 +6,17 @@
 
   &__params-pair{
     display: flex;
+    align-items: center;
     gap: 0.5rem;
 
     input[type="checkbox"]{
       width: 1rem;
+      margin: 0;
+      height: 1rem;
+  
+      &:focus {
+        @include focus-styles;
+      }
     }
   }
 
@@ -22,6 +29,10 @@
 
     &--strike-through{
       text-decoration: line-through;
+    }
+
+    &:focus {
+      border-color: black;
     }
   }
 

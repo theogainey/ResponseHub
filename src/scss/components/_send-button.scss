@@ -4,10 +4,11 @@
   border-left: none;
   height: 2.5rem;
   font-size: 1rem;
-  color: #fff;
+  color: #fff; 
   padding: 0.5rem 1rem;
   display: flex;
-  
+  transition: all 250ms ease-in-out;
+
   &:focus {
     @include focus-styles;
   }

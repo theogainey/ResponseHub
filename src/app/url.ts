@@ -1,5 +1,6 @@
 import { requestCanHaveBody } from "./body";
 import { printPreview } from "./preview";
+import { addTabbable, removeTabbable } from "./tabIndex";
 import { handleDirectURLSearchParams } from "./urlSearchParams";
 import { selectInputElement, selectElement } from "./utils";
 
@@ -80,7 +81,9 @@ const addURLListeners = () => {
   const bodyTabs = document.querySelector('.cmp-request-body__tabs');
   methodSelect.addEventListener('change', () => {
     optionsTabs?.setAttribute('data-method', methodSelect.value);
-    bodyTabs?.setAttribute('data-method', methodSelect.value);  
+    bodyTabs?.setAttribute('data-method', methodSelect.value);
+    const bodyOptionTabInput = selectElement('.cmp-options-tabs__tab input[value="body"]');
+    requestCanHaveBody(methodSelect.value) ? addTabbable(bodyOptionTabInput) : removeTabbable(bodyOptionTabInput); 
     if(isTabSelectedHidden(methodSelect.value)){
       selectDefaultTab();
     }  

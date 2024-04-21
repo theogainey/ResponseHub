@@ -71,21 +71,23 @@ const handleHeaderInputCheckbox = (parentDiv: Element) => () =>{
 }
 
 const createNewHeaderInput = (key?:string, value?: string, isActive?: string) => {
+  const requestOptionsLayoutDiv = selectElement('.obj-options-layout');
+  const tabIndex = requestOptionsLayoutDiv.getAttribute('data-view') === 'headers' ? 0 : -1; 
   const newHeaderInputContainer = document.createElement('div');
   newHeaderInputContainer.classList.add('cmp-headers__header-pair');
   newHeaderInputContainer.innerHTML = `
-    <input type="checkbox" ${isActive ? `${isActive === "true" ? 'checked': ''}` : 'checked'}/>
+    <input type="checkbox" ${isActive ? `${isActive === "true" ? 'checked': ''}` : 'checked'}  tabindex="${tabIndex}" />
     <div class="obj-grid">
       <div class="obj-grid__half util-margin-right">
         <label class="cmp-headers__label">
           <span>Header</span>
-          <input ${key ? `value="${key}"` : ''} class="cmp-headers__input cmp-headers__input--header" type="text" name="header" placeholder="Header"/>
+          <input ${key ? `value="${key}"` : ''} class="cmp-headers__input cmp-headers__input--header" type="text" name="header" placeholder="Header" tabindex="${tabIndex}" />
         </label>
       </div>
       <div class="obj-grid__half">
         <label class="cmp-headers__label">
           <span>Value</span>
-          <input ${value ? `value="${value}"` : ''}  class="cmp-headers__input cmp-headers__input--value" type="text" name="value" placeholder="Value"/>
+          <input ${value ? `value="${value}"` : ''}  class="cmp-headers__input cmp-headers__input--value" type="text" name="value" placeholder="Value" tabindex="${tabIndex}" />
         </label>
       </div> 
     </div>

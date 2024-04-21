@@ -1,12 +1,15 @@
 import { printPreview } from "./preview";
+import { removeElementTabbable, setElementTabbable } from "./tabIndex";
 import { selectElement } from "./utils";
 
 const addTabChangeHandler = (layoutDiv: Element) => (tabSelector: string) =>(tab:Element) =>{
   const tabInput = tab.querySelector('input');
   tabInput?.addEventListener('change', () => {
     const tabs = document.querySelectorAll(tabSelector);
-    tabs.forEach((e) => e.classList.remove('cmp-options-tabs__tab--active'))
-    tab.classList.add('cmp-options-tabs__tab--active')
+    tabs.forEach((e) => e.classList.remove('cmp-options-tabs__tab--active'));
+    tab.classList.add('cmp-options-tabs__tab--active');
+    setElementTabbable(tabInput.getAttribute('value') ?? '');
+    removeElementTabbable(layoutDiv.getAttribute('data-view') ?? '');
     layoutDiv?.setAttribute('data-view', tabInput.getAttribute('value') ?? '');
     printPreview();
   });

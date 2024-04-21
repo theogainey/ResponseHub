@@ -54,20 +54,22 @@ const handleURLSearchParamInputCheckbox = (parentDiv: Element) => () =>{
 }
 
 const createNewURLSearchParamInput = (key?:string, value?: string, isActive?: string) => {
+  const requestOptionsLayoutDiv = selectElement('.obj-options-layout');
+  const tabIndex = requestOptionsLayoutDiv.getAttribute('data-view') === 'url-search-params' ? 0 : -1; 
   const newURLSearchParamInputContainer = document.createElement('div');
   newURLSearchParamInputContainer.classList.add('obj-grid', 'cmp-url-search-params__params-pair');
   newURLSearchParamInputContainer.innerHTML = `
-    <input type="checkbox" ${isActive ? `${isActive === "true" ? 'checked': ''}` : 'checked'}/>
+    <input type="checkbox" ${isActive ? `${isActive === "true" ? 'checked': ''}` : 'checked'}  tabindex="${tabIndex}/>
     <div class="obj-grid__half util-margin-right">
       <label class="cmp-url-search-params__label">
         <span>URL Search Parameter Key</span>
-        <input ${key ? `value="${key}"` : ''} class="cmp-url-search-params__input cmp-url-search-params__input--key" type="text" name="header" placeholder="URL Search Parameter Key"/>
+        <input ${key ? `value="${key}"` : ''} class="cmp-url-search-params__input cmp-url-search-params__input--key" type="text" name="header" placeholder="URL Search Parameter Key"  tabindex="${tabIndex}/>
       </label>
     </div>
     <div class="obj-grid__half">
       <label class="cmp-url-search-params__label">
         <span>Value</span>
-        <input ${value ? `value="${value}"` : ''} class="cmp-url-search-params__input cmp-url-search-params__input--value" type="text" name="value" placeholder="value"/>
+        <input ${value ? `value="${value}"` : ''} class="cmp-url-search-params__input cmp-url-search-params__input--value" type="text" name="value" placeholder="value"  tabindex="${tabIndex}/>
       </label>
     </div>  
   `;
@@ -152,7 +154,7 @@ const printURLSearchParamsToURL = () => {
     const activeSearURLSearchParams = getActiveURLSearchParams().toString();
     const currentURL = getURL();
     const searchParamIndex = currentURL.indexOf('?');
-    if(!activeSearURLSearchParams && searchParamIndex !==1){
+    if(!activeSearURLSearchParams && searchParamIndex !== -1){
       setURL(currentURL.slice(0,searchParamIndex))  
       return;
     }
