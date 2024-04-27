@@ -1,6 +1,7 @@
 import { getAuthForHistory } from "./auth";
 import { getRawBody, getSelectedBodyDataType, requestCanHaveBody } from "./body";
 import { handleRequestError } from "./errors";
+import { getFileBody } from "./fileBody";
 import { getFormData } from "./formData";
 import { getFormURLEncodedData } from "./formURLEncoded";
 import { getHeadersForHistory, getActiveHeaders } from "./headers";
@@ -36,6 +37,9 @@ const getRequestBody = (bodyType: string) => {
     case 'x-www-form-urlencoded':
       const formURLEncodedData = getFormURLEncodedData();
       return { body: formURLEncodedData};
+    case 'file':
+      const fileBody = getFileBody();
+      return { body: fileBody}    
     case 'raw':
       return { body: getRawBody() };
     default:
