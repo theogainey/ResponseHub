@@ -1,3 +1,4 @@
+import * as focusTrap from 'focus-trap';
 import { setMethod, setURL, handleURLInputValidation } from "./url";
 import { setHeaders } from "./headers";
 import { setURLSearchParams } from "./urlSearchParams";
@@ -242,12 +243,14 @@ const requestHistoryDB = new RequestHistoryDB();
 const initHistory = async () => {
   const requests = await requestHistoryDB.getRequests();
   printHistory(requests);
-  const historyOptionsButton = document.querySelector('.cmp-history__options-button');
-  historyOptionsButton?.addEventListener('click', historyOptionsHandler);
-  const clearHistoryButton = document.querySelector('#clear-history-button');
-  clearHistoryButton?.addEventListener('click', clearRequestHistory);
-  const cancelClearHistoryButton = document.querySelector('#cancel-clear-history-button');
-  cancelClearHistoryButton?.addEventListener('click', historyOptionsHandler);
+  const historyModalTrapElements = document.getElementById('#history-options') as HTMLElement;
+  const historyModalFocusTrap = focusTrap.createFocusTrap(historyModalTrapElements);
+  const historyOptionsButton = selectElement('.cmp-history__options-button');
+  historyOptionsButton.addEventListener('click', historyOptionsHandler(historyModalFocusTrap));
+  const clearHistoryButton = selectElement('#clear-history-button');
+  clearHistoryButton.addEventListener('click', clearRequestHistory(historyModalFocusTrap));
+  const cancelClearHistoryButton = selectElement('#cancel-clear-history-button');
+  cancelClearHistoryButton.addEventListener('click', historyOptionsHandler(historyModalFocusTrap));
 
 };
 
@@ -256,15 +259,15 @@ const addRequestToHistory = async (request: RequestHistoryEntry) => {
   printNewHistoryEntry(request);
 };
 
-const clearRequestHistory = async () => {
+const clearRequestHistory = (trap:focusTrap.FocusTrap) => async () => {
   await requestHistoryDB.deleteAllRequests();
   const historyContainer = selectElement('.cmp-history__entry-area');
   historyContainer.innerHTML = '';
-  historyOptionsHandler();
+  historyOptionsHandler(trap);
 }
 
 // TODO make it so when the modal is open when you click off a modal it closes
-const historyOptionsHandler = () => {
+const historyOptionsHandler = (trap:focusTrap.FocusTrap) => () => {
   const historyOptionsModal = document.querySelector('.cmp-history__options-modal');
   const historyOptionsButton = selectElement('.cmp-history__options-button');
   historyOptionsButton.classList.toggle('cmp-history__options-button--active');
@@ -277,6 +280,7 @@ const historyOptionsHandler = () => {
     </svg>
     `
     historyOptionsModal?.classList.toggle('util-display-none');
+    trap.activate();
     return;
   }
   historyOptionsButton.innerHTML = `
@@ -289,5 +293,6 @@ const historyOptionsHandler = () => {
     </svg>
   `;
   historyOptionsModal?.classList.toggle('util-display-none');
+  trap.deactivate();
 }
 export { initHistory, addRequestToHistory };

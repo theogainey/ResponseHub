@@ -1,5 +1,5 @@
 const selectElement = (selector: string) => {
-  return document.querySelector(selector) as Element;
+  return document.querySelector(selector) as HTMLElement;
 }
 
 const selectInputElement = (selector: string) => {

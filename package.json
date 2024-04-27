@@ -4,7 +4,7 @@
   "description": "",
   "engines": {
     "node": "20.x"
-  },  
+  },
   "scripts": {
     "build": "npm run build:typescript && npm run build:scss && bash copy.sh",
     "build:scss": "sass src/scss/main.scss extension/main.css --no-source-map && cp extension/main.css docs/main.css",
@@ -35,6 +35,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.19.2",
+    "focus-trap": "^7.5.4",
     "highlight.js": "^11.9.0",
     "http-proxy-middleware": "^2.0.6",
     "prettier": "^3.1.0"
