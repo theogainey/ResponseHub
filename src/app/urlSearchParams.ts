@@ -4,13 +4,21 @@ import { getURL, setURL } from "./url";
 import { selectElement, selectInputElementFromComponent } from "./utils";
 
 const getURLSearchParamKey = (component:Element): string => {
-  const  { value } = selectInputElementFromComponent(component, '.cmp-url-search-params__input--key');
-  return value ?? ''
+  try{
+    const  { value } = selectInputElementFromComponent(component, '.cmp-url-search-params__input--key');
+    return value ?? ''  
+  }catch(_err){
+    return '';
+  }
 }  
 
 const getURLSearchParamValue = (component:Element): string => {
-  const  { value } = selectInputElementFromComponent(component, '.cmp-url-search-params__input--value');
-  return value ?? ''
+  try{
+    const  { value } = selectInputElementFromComponent(component, '.cmp-url-search-params__input--value');
+    return value ?? ''  
+  }catch {
+    return '';
+  }
 }  
 
 const getURLSearchParamKeyValuePair = (component:Element):[string, string] => [getURLSearchParamKey(component), getURLSearchParamValue(component)]; 
