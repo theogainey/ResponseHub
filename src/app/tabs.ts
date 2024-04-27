@@ -10,6 +10,9 @@ const addTabChangeHandler = (layoutDiv: Element) => (tabSelector: string) =>(tab
     tab.classList.add('cmp-options-tabs__tab--active');
     setElementTabbable(tabInput.getAttribute('value') ?? '');
     removeElementTabbable(layoutDiv.getAttribute('data-view') ?? '');
+    // IF I AM ON AUTH AND SELECT AND AUTH TYPE THEN MOVE TO ANOTHER TAB
+    // THE AUTH INPUTS ARE STILL TABABLE 
+    // I PERRSUME THE SAME IS TRUE FORM BODY TO ANTOTHER TAB TYPE 
     layoutDiv?.setAttribute('data-view', tabInput.getAttribute('value') ?? '');
     printPreview();
   });

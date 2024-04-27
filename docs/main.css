@@ -885,12 +885,12 @@ select {
 
 .cmp-request-body {
   margin: 1rem 0;
-  padding-left: 1rem;
   height: 12rem;
 }
 .cmp-request-body__tabs {
   display: flex;
   gap: 0.5rem;
+  padding-left: 1rem;
 }
 .cmp-request-body__tabs[data-method=GET] {
   display: none;
@@ -917,6 +917,9 @@ select {
   background-color: black;
   color: white;
 }
+.cmp-request-body__input-area {
+  width: 100%;
+}
 .cmp-request-body__input-area[data-view=none] .cmp-request-body__form-data {
   position: absolute;
   left: -10000px;
@@ -926,6 +929,14 @@ select {
   overflow: hidden;
 }
 .cmp-request-body__input-area[data-view=none] .cmp-request-body__x-www-form-urlencoded {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.cmp-request-body__input-area[data-view=none] .cmp-request-body__file {
   position: absolute;
   left: -10000px;
   top: auto;
@@ -949,6 +960,14 @@ select {
   height: 1px;
   overflow: hidden;
 }
+.cmp-request-body__input-area[data-view=form-data] .cmp-request-body__file {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
 .cmp-request-body__input-area[data-view=form-data] .cmp-request-body__raw {
   position: absolute;
   left: -10000px;
@@ -965,7 +984,39 @@ select {
   height: 1px;
   overflow: hidden;
 }
+.cmp-request-body__input-area[data-view=x-www-form-urlencoded] .cmp-request-body__file {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
 .cmp-request-body__input-area[data-view=x-www-form-urlencoded] .cmp-request-body__raw {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.cmp-request-body__input-area[data-view=file] .cmp-request-body__x-www-form-urlencoded {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.cmp-request-body__input-area[data-view=file] .cmp-request-body__form-data {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.cmp-request-body__input-area[data-view=file] .cmp-request-body__raw {
   position: absolute;
   left: -10000px;
   top: auto;
@@ -982,6 +1033,14 @@ select {
   overflow: hidden;
 }
 .cmp-request-body__input-area[data-view=raw] .cmp-request-body__form-data {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.cmp-request-body__input-area[data-view=raw] .cmp-request-body__file {
   position: absolute;
   left: -10000px;
   top: auto;
@@ -1007,8 +1066,9 @@ select {
   height: 1px;
   overflow: hidden;
 }
-.cmp-request-body__form-data, .cmp-request-body__x-www-form-urlencoded, .cmp-request-body__raw {
-  margin: 1rem 0;
+.cmp-request-body__form-data, .cmp-request-body__x-www-form-urlencoded, .cmp-request-body__file, .cmp-request-body__raw {
+  padding: 1rem;
+  padding-right: 0;
   overflow: scroll;
 }
 .cmp-request-body__text-area {
@@ -1020,6 +1080,24 @@ select {
   height: 8rem;
   resize: none;
   overflow: auto;
+}
+.cmp-request-body__file-input {
+  display: flex;
+}
+.cmp-request-body__file-input::file-selector-button {
+  transition: all 250ms ease-in-out;
+  background-color: white;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  border: 1px solid black;
+}
+.cmp-request-body__file-input:hover::file-selector-button {
+  background-color: black;
+  color: white;
+}
+.cmp-request-body__file-input:focus {
+  outline: 2px solid black;
+  outline-offset: 2px;
 }
 
 .cmp-history {

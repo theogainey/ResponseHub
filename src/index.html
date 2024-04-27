@@ -250,6 +250,12 @@
                 </li>
                 <li class="cmp-request-body__tab">
                   <label>
+                    <input class="util-visually-hidden" type="checkbox"  value="file" name="body-tab" tabindex="-1"/>
+                    file
+                  </label>
+                </li>
+                <li class="cmp-request-body__tab">
+                  <label>
                     <input class="util-visually-hidden" type="checkbox"  value="raw" name="body-tab" tabindex="-1"/>
                     raw
                   </label>
@@ -287,6 +293,9 @@
                       </label>
                     </div>      
                   </div>
+                </div>
+                <div class="cmp-request-body__file">
+                  <input class="cmp-request-body__file-input" type="file" name="file" tabindex="-1"/>
                 </div>
                 <div class="cmp-request-body__raw">
                   <textarea name="raw-text-body" class="cmp-request-body__text-area" placeholder="Raw Text Body" tabindex="-1"></textarea>

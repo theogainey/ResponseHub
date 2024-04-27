@@ -2,28 +2,36 @@
 const addTabbable = (e: Element) => e.setAttribute('tabindex', '0');
 const removeTabbable = (e: Element) => e.setAttribute('tabindex', '-1');
 
-const getSelector  = ( layoutArea: string):string => {
+const getSelector  = ( layoutArea: string, remove = false):string => {
   switch (layoutArea) {
     case 'preview':
       return '.cmp-copy-button';
     case 'headers':
-      return '.cmp-headers  input';
+      return '.cmp-headers input';
     case 'auth':
-      return '.cmp-auth__tabs  input';
+      if(remove){
+        return `${getSelector('basic-auth')}, ${getSelector('bearer-token')}, ${getSelector('api-key')}, ${getSelector('auth')}`
+      }
+      return '.cmp-auth__tabs input';
     case 'url-search-params':
+      if(remove){
+        return `${getSelector('form-data')}, ${getSelector('x-www-form-urlencoded')}, ${getSelector('file')}, ${getSelector('raw')},${getSelector('body')}`
+      }
       return '.cmp-url-search-params input';
     case 'body':
       return '.cmp-request-body__tabs input';
     case 'basic-auth':
-      return '.cmp-auth__basic-auth  input';
+      return '.cmp-auth__basic-auth input';
     case 'bearer-token':
-      return '.cmp-auth__bearer-token  input';
+      return '.cmp-auth__bearer-token input';
     case 'api-key':
-      return '.cmp-auth__api-key  input, .cmp-auth__api-key  select';
+      return '.cmp-auth__api-key input, .cmp-auth__api-key select';
     case 'form-data':
       return '.cmp-request-body__form-data input';
     case 'x-www-form-urlencoded':
       return '.cmp-request-body__x-www-form-urlencoded input';
+    case 'file':
+      return '.cmp-request-body__file input';
     case 'raw':
       return '.cmp-request-body__text-area';
     default:
@@ -38,8 +46,8 @@ const setElementTabbable = ( layoutArea: string) =>{
   inputs.forEach(addTabbable);
 }
 
-const removeElementTabbable =  ( layoutArea: string) => {
-  const selector = getSelector(layoutArea);
+const removeElementTabbable = ( layoutArea: string) => {
+  const selector = getSelector(layoutArea, true);
   if(selector === '') return;
   const inputs = document.querySelectorAll(selector);
   inputs.forEach(removeTabbable);

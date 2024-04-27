@@ -1,11 +1,12 @@
 .cmp-request-body {
   margin: 1rem 0;
-  padding-left: 1rem;
   height: $options-area-height;
 
   &__tabs {
     display: flex;
     gap: 0.5rem;
+    padding-left: 1rem;
+
 
     &[data-method="GET"]{
       display: none;
@@ -40,12 +41,16 @@
   }
 
   &__input-area {
+    width: 100%;
 
     &[data-view="none"] {
       .cmp-request-body__form-data {
         @include visually-hidden;
       }
       .cmp-request-body__x-www-form-urlencoded {
+        @include visually-hidden;
+      }
+      .cmp-request-body__file {
         @include visually-hidden;
       }
       .cmp-request-body__raw {
@@ -57,11 +62,28 @@
       .cmp-request-body__x-www-form-urlencoded {
         @include visually-hidden;
       }
+      .cmp-request-body__file {
+        @include visually-hidden;
+      }
       .cmp-request-body__raw {
         @include visually-hidden;
       }
     }
     &[data-view="x-www-form-urlencoded"] {
+      .cmp-request-body__form-data {
+        @include visually-hidden;
+      }
+      .cmp-request-body__file {
+        @include visually-hidden;
+      }
+      .cmp-request-body__raw {
+        @include visually-hidden;
+      }
+    }
+    &[data-view="file"] {
+      .cmp-request-body__x-www-form-urlencoded {
+        @include visually-hidden;
+      }
       .cmp-request-body__form-data {
         @include visually-hidden;
       }
@@ -74,6 +96,9 @@
         @include visually-hidden;
       }
       .cmp-request-body__form-data {
+        @include visually-hidden;
+      }
+      .cmp-request-body__file {
         @include visually-hidden;
       }
     }
@@ -97,11 +122,13 @@
 
   &__form-data,
   &__x-www-form-urlencoded,
+  &__file,
   &__raw {
-    margin: 1rem 0;
+    padding: 1rem;
+    padding-right: 0;
     overflow: scroll;
   }
-  
+
   &__text-area {
     border: none;
     font-family: inherit;
@@ -111,5 +138,23 @@
     height: 8rem;
     resize: none; 
     overflow: auto;
+  }
+
+  &__file-input{
+    display: flex;  
+    &::file-selector-button {
+      transition: all 250ms ease-in-out;
+      background-color: white;
+      padding:  0.25rem 0.5rem;
+      font-size: 0.875rem;
+      border: 1px solid black;  
+    }  
+    &:hover::file-selector-button {
+      background-color: black;
+      color: white;
+    }
+    &:focus {
+      @include focus-styles;
+    }
   }
 }
