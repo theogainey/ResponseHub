@@ -1224,6 +1224,25 @@ select {
   margin-right: 0.5rem;
   max-width: 14rem;
 }
+.cmp-history__skip-link {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.cmp-history__skip-link:focus {
+  position: initial;
+  height: 2rem;
+  padding: 0.25rem;
+  font-size: 0.75rem;
+  width: initial;
+  display: flex;
+  align-items: center;
+  outline: 2px solid black;
+  outline-offset: 2px;
+}
 .cmp-history__method {
   margin-right: 0.5rem;
   color: #fff;

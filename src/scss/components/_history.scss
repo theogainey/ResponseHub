@@ -132,7 +132,19 @@
       max-width: 14rem;
     }
   }
-
+  &__skip-link {
+    @include visually-hidden;
+    &:focus {
+      position: initial;
+      height: 2rem;
+      padding: 0.25rem;
+      font-size: 0.75rem;
+      width: initial;
+      display: flex;
+      align-items: center;
+      @include focus-styles;
+    }
+  }
   &__method {
     margin-right: 0.5rem;
     color: #fff;
