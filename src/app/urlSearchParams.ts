@@ -67,7 +67,10 @@ const createNewURLSearchParamInput = (key?:string, value?: string, isActive?: st
   const newURLSearchParamInputContainer = document.createElement('div');
   newURLSearchParamInputContainer.classList.add('obj-grid', 'cmp-url-search-params__params-pair');
   newURLSearchParamInputContainer.innerHTML = `
-    <input type="checkbox" ${isActive ? `${isActive === "true" ? 'checked': ''}` : 'checked'}  tabindex="${tabIndex}/>
+    <label>
+      active
+      <input type="checkbox" ${isActive ? `${isActive === "true" ? 'checked': ''}` : 'checked'}  tabindex="${tabIndex}/>
+    </label>
     <div class="obj-grid__half util-margin-right">
       <label class="cmp-url-search-params__label">
         <span>URL Search Parameter Key</span>

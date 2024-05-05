@@ -76,7 +76,10 @@ const createNewHeaderInput = (key?:string, value?: string, isActive?: string) =>
   const newHeaderInputContainer = document.createElement('div');
   newHeaderInputContainer.classList.add('cmp-headers__header-pair');
   newHeaderInputContainer.innerHTML = `
-    <input type="checkbox" ${isActive ? `${isActive === "true" ? 'checked': ''}` : 'checked'}  tabindex="${tabIndex}" />
+    <label>
+      active
+      <input type="checkbox" ${isActive ? `${isActive === "true" ? 'checked': ''}` : 'checked'}  tabindex="${tabIndex}" />
+    </label>
     <div class="obj-grid">
       <div class="obj-grid__half util-margin-right">
         <label class="cmp-headers__label">

@@ -352,7 +352,7 @@ select {
   padding-right: calc(1ch - 1px);
 }
 .cmp-url-input__method--GET {
-  color: #006e51;
+  color: #006147;
 }
 .cmp-url-input__method--POST {
   color: #b22956;
@@ -407,6 +407,9 @@ select {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+.cmp-headers__header-pair label {
+  font-size: 0;
 }
 .cmp-headers__header-pair input[type=checkbox] {
   width: 1rem;
@@ -740,6 +743,9 @@ select {
   align-items: center;
   gap: 0.5rem;
 }
+.cmp-url-search-params__params-pair label {
+  font-size: 0;
+}
 .cmp-url-search-params__params-pair input[type=checkbox] {
   width: 1rem;
   margin: 0;
@@ -816,7 +822,7 @@ select {
   padding-left: 1rem;
 }
 .cmp-preview--GET span:first-child {
-  color: #006e51;
+  color: #006147;
 }
 .cmp-preview--POST span:first-child {
   color: #b22956;
@@ -1066,6 +1072,9 @@ select {
   height: 1px;
   overflow: hidden;
 }
+.cmp-request-body__file label {
+  font-size: 0;
+}
 .cmp-request-body__form-data, .cmp-request-body__x-www-form-urlencoded, .cmp-request-body__file, .cmp-request-body__raw {
   padding: 1rem;
   padding-right: 0;
@@ -1116,7 +1125,10 @@ select {
   padding-top: 0;
   height: 2.5rem;
   border-bottom: 1px solid #e5e7eb;
+}
+.cmp-history__header h2 {
   font-size: 1.25rem;
+  font-weight: 400;
 }
 .cmp-history__options-button {
   display: flex;
@@ -1259,7 +1271,7 @@ select {
   padding: 0 0.25rem;
 }
 .cmp-history__method--GET {
-  background-color: #006e51;
+  background-color: #006147;
 }
 .cmp-history__method--POST {
   background-color: #b22956;

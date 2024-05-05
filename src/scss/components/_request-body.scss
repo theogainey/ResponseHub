@@ -119,7 +119,11 @@
   &__label span {
     @include visually-hidden;
   }
-
+  &__file {
+    label {
+      font-size: 0;
+    }
+  }
   &__form-data,
   &__x-www-form-urlencoded,
   &__file,

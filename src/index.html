@@ -10,13 +10,13 @@
   </head>
   <body>
     <div class="obj-layout">
-      <div class="obj-side-layout">
+      <div class="obj-side-layout" role="complementary">
         <div class="cmp-history">
           <div class="cmp-history__header">
-            <span>History</span>
+            <h2>History</h2>
             <a href="#main" class="cmp-history__skip-link">Skip Request History</a>
             <div id="#history-options">
-              <button class="cmp-history__options-button">
+              <button class="cmp-history__options-button" aria-label="Delete History">
                 <svg viewBox="0 0 24 24" fill="none">
                   <path d="M3 6H21" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                   <path d="M19 6V20C19 21 18 22 17 22H7C6 22 5 21 5 20V6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -45,7 +45,8 @@
           </div>
         </div>  
       </div>
-      <div class="obj-main-layout" id="main">
+      <main class="obj-main-layout" id="main">
+        <h1 class="util-visually-hidden">Request</h1>
         <div class="obj-max-width">
           <div class="cmp-url-input">
             <!-- TODO BUTTON ACCESSIBILITY -->
@@ -120,7 +121,10 @@
             </div>
             <div class="cmp-headers">
               <div class="cmp-headers__header-pair">
-                <input type="checkbox" checked tabindex="-1"/>
+                <label>
+                  active
+                  <input type="checkbox" checked tabindex="-1"/>
+                </label>
                 <div class="obj-grid">
                   <div class="obj-grid__half util-margin-right">
                     <label class="cmp-headers__label">
@@ -216,7 +220,10 @@
             </div>
             <div class="cmp-url-search-params">
               <div class="obj-grid cmp-url-search-params__params-pair">
-                <input type="checkbox" checked tabindex="-1"/>
+                <label>
+                  active
+                  <input type="checkbox" checked tabindex="-1"/>
+                </label>
                 <div class="obj-grid__half util-margin-right">
                   <label class="cmp-url-search-params__label">
                     <span>Query Parameter Key</span>
@@ -298,7 +305,11 @@
                   </div>
                 </div>
                 <div class="cmp-request-body__file">
-                  <input class="cmp-request-body__file-input" type="file" name="file" tabindex="-1"/>
+                  <label>
+                    <input class="cmp-request-body__file-input" type="file" name="file" tabindex="-1"/>
+                    Upload File
+
+                  </label>
                 </div>
                 <div class="cmp-request-body__raw">
                   <textarea name="raw-text-body" class="cmp-request-body__text-area" placeholder="Raw Text Body" tabindex="-1"></textarea>
@@ -331,17 +342,6 @@
               </div>
             </div>
             <div class="cmp-response__body">
-              <!-- <div class="cmp-response__button-container">
-                <div class="cmp-response__languages util-visually-hidden">
-                  <label class="cmp-response__languages-button" id="json-button">
-                    <input class="util-visually-hidden" type="checkbox"  name="formatting-language" />
-                    JSON
-                  </label>
-                  <label class="cmp-response__languages-button" id="xml-button">
-                    <input class="util-visually-hidden" type="checkbox"  name="formatting-language" />
-                    XML
-                  </label>
-                </div> -->
                 <button class="cmp-copy-button cmp-response__copy-button util-visually-hidden" tabindex="-1">
                   <span class="util-visually-hidden">copy to clipboard</span>
                   <svg class="cmp-copy-button__icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -364,7 +364,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   </body>
 </html>

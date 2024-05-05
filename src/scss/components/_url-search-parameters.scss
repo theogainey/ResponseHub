@@ -8,6 +8,10 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    
+    label {
+      font-size: 0;
+    }
 
     input[type="checkbox"]{
       width: 1rem;

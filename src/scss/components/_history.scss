@@ -14,7 +14,10 @@
     padding-top: 0;
     height: 2.5rem;
     border-bottom: 1px solid #e5e7eb;
-    font-size: 1.25rem;
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 400;
+    }
   }
 
   &__options-button {
