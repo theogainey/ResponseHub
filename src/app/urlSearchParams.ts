@@ -69,18 +69,18 @@ const createNewURLSearchParamInput = (key?:string, value?: string, isActive?: st
   newURLSearchParamInputContainer.innerHTML = `
     <label>
       active
-      <input type="checkbox" ${isActive ? `${isActive === "true" ? 'checked': ''}` : 'checked'}  tabindex="${tabIndex}/>
+      <input type="checkbox" ${isActive ? `${isActive === "true" ? 'checked': ''}` : 'checked'}  tabindex="${tabIndex}"/>
     </label>
     <div class="obj-grid__half util-margin-right">
       <label class="cmp-url-search-params__label">
-        <span>URL Search Parameter Key</span>
-        <input ${key ? `value="${key}"` : ''} class="cmp-url-search-params__input cmp-url-search-params__input--key" type="text" name="header" placeholder="URL Search Parameter Key"  tabindex="${tabIndex}/>
+        <span>Query Parameter Key</span>
+        <input ${key ? `value="${key}"` : ''} class="cmp-url-search-params__input cmp-url-search-params__input--key" type="text" name="header" placeholder="Key" tabindex="${tabIndex}"/>
       </label>
     </div>
     <div class="obj-grid__half">
       <label class="cmp-url-search-params__label">
         <span>Value</span>
-        <input ${value ? `value="${value}"` : ''} class="cmp-url-search-params__input cmp-url-search-params__input--value" type="text" name="value" placeholder="value"  tabindex="${tabIndex}/>
+        <input  ${value ? `value="${value}"` : ''} class="cmp-url-search-params__input cmp-url-search-params__input--value" type="text" name="value" placeholder="Value" tabindex="${tabIndex}"/>
       </label>
     </div>  
   `;
