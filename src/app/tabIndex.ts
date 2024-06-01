@@ -14,11 +14,11 @@ const getSelector  = ( layoutArea: string, remove = false):string => {
       }
       return '.cmp-auth__tabs input';
     case 'url-search-params':
+      return '.cmp-url-search-params input';
+    case 'body':
       if(remove){
         return `${getSelector('form-data')}, ${getSelector('x-www-form-urlencoded')}, ${getSelector('file')}, ${getSelector('raw')},${getSelector('body')}`
       }
-      return '.cmp-url-search-params input';
-    case 'body':
       return '.cmp-request-body__tabs input';
     case 'basic-auth':
       return '.cmp-auth__basic-auth input';
@@ -50,6 +50,8 @@ const removeElementTabbable = ( layoutArea: string) => {
   const selector = getSelector(layoutArea, true);
   if(selector === '') return;
   const inputs = document.querySelectorAll(selector);
+  console.log(inputs);
+
   inputs.forEach(removeTabbable);
 }
 

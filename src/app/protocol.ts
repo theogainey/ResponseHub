@@ -1,8 +1,46 @@
+import { addTabbable, removeElementTabbable, removeTabbable, setElementTabbable } from "./tabIndex";
 import { selectElement } from "./utils";
 
 const protocolStateCache = new Map();
 
-const handleChangeToGraphQL = () =>{
+const HTTPOnlyTabs = [
+  {layoutArea:'preview', inputSelector: 'input[value="preview"]'}, 
+  {layoutArea:'url-search-params', inputSelector: 'input[value="url-search-params"]'},
+  {layoutArea:'body', inputSelector: 'input[value="body"]'},
+];
+
+const GraphQLOnlyTabs =  [
+  {layoutArea:'query', inputSelector: 'input[value="query"]'},
+];
+
+const removeTabIndexesByGroups = ( tabGroups: Array<any> ) =>{
+  tabGroups.forEach(({layoutArea, inputSelector})=> {
+    const tab = selectElement(inputSelector);
+    removeTabbable(tab);
+    removeElementTabbable(layoutArea);
+  })
+}
+
+const addTabIndexesByGroups = ( tabGroups: Array<any> ) =>{
+  tabGroups.forEach(({layoutArea, inputSelector})=> {
+    const tab = selectElement(inputSelector);
+    addTabbable(tab);
+    setElementTabbable(layoutArea);
+  });
+}
+
+const setTabIndexesForHTTP = () => {
+  removeTabIndexesByGroups(GraphQLOnlyTabs);
+  addTabIndexesByGroups(HTTPOnlyTabs);
+}
+
+const setTabIndexesForGraphQL = () =>{
+  removeTabIndexesByGroups(HTTPOnlyTabs);
+  addTabIndexesByGroups(GraphQLOnlyTabs);
+}
+
+const handleChangeToGraphQL = () => {
+  // remove option tabs
   const urlMethodSelect = selectElement('#method-select');
   const urlMethodSelectLabel = selectElement('#method-select-label');
   const urlInput = selectElement('.cmp-url-input__url');
@@ -11,7 +49,12 @@ const handleChangeToGraphQL = () =>{
   urlMethodSelect.remove();
   urlMethodSelectLabel.remove();
   urlInput.classList.add('cmp-url-input__url--graphql');
-  console.log(urlInput);
+  const requestOptionList = selectElement('.cmp-options-tabs');
+  requestOptionList.setAttribute('data-method', 'GraphQL');
+  // set query tab to active  
+  const queryTab = selectElement('input[value="query"]');
+  queryTab.click();
+  setTabIndexesForGraphQL();
 }
 
 const createNewMethodSelect = ( urlInputArea:HTMLElement ) => {
@@ -37,15 +80,27 @@ const createNewMethodSelect = ( urlInputArea:HTMLElement ) => {
 }
 
 const handleChangeToHTTP = () => {
+ const previewTab = selectElement('input[value="preview"');
  const urlInputArea = selectElement('.cmp-url-input');
  const urlInput = selectElement('.cmp-url-input__url');
+ const requestOptionList = selectElement('.cmp-options-tabs');
  urlInput.classList.remove('cmp-url-input__url--graphql');
  if( protocolStateCache.has('method-select') && protocolStateCache.has('method-select-label') ){
-    urlInputArea.prepend(protocolStateCache.get('method-select'));
+    const urlMethodSelect = protocolStateCache.get('method-select');
+    urlInputArea.prepend(urlMethodSelect);
     urlInputArea.prepend(protocolStateCache.get('method-select-label'));
+    requestOptionList.setAttribute('data-method', urlMethodSelect.value);
+    // set preview tab to active  
+    previewTab.click();
+    setTabIndexesForHTTP();
     return;
   }
   createNewMethodSelect(urlInputArea);
+  requestOptionList.setAttribute('data-method', 'GET');
+  // click preview tab to set correct tab indexes
+  previewTab.click();
+  setTabIndexesForHTTP();
+
 }
 const handleProtocolSelectChange = (viewControlElement:HTMLElement ) => (e:Event) => {
   const newProtocol = (e.target as HTMLSelectElement).value; 
@@ -68,7 +123,3 @@ const addProtocolListeners = () => {
 }
 
 export { addProtocolListeners };
-  function selectElementFromComponent(urlInput: HTMLElement, arg1: string) {
-    throw new Error("Function not implemented.");
-  }
-

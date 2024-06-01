@@ -158,6 +158,14 @@ select {
   height: 1px;
   overflow: hidden;
 }
+.obj-options-layout[data-view=preview] .cmp-graphql-query {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
 .obj-options-layout[data-view=headers] .cmp-auth {
   position: absolute;
   left: -10000px;
@@ -183,6 +191,14 @@ select {
   overflow: hidden;
 }
 .obj-options-layout[data-view=headers] .cmp-request-body {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.obj-options-layout[data-view=headers] .cmp-graphql-query {
   position: absolute;
   left: -10000px;
   top: auto;
@@ -222,6 +238,14 @@ select {
   height: 1px;
   overflow: hidden;
 }
+.obj-options-layout[data-view=url-search-params] .cmp-graphql-query {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
 .obj-options-layout[data-view=body] .cmp-auth {
   position: absolute;
   left: -10000px;
@@ -254,6 +278,14 @@ select {
   height: 1px;
   overflow: hidden;
 }
+.obj-options-layout[data-view=body] .cmp-graphql-query {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
 .obj-options-layout[data-view=auth] .cmp-request-body {
   position: absolute;
   left: -10000px;
@@ -279,6 +311,54 @@ select {
   overflow: hidden;
 }
 .obj-options-layout[data-view=auth] .cmp-url-search-params {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.obj-options-layout[data-view=auth] .cmp-graphql-query {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.obj-options-layout[data-view=query] .cmp-request-body {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.obj-options-layout[data-view=query] .cmp-headers {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.obj-options-layout[data-view=query] .cmp-preview {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.obj-options-layout[data-view=query] .cmp-url-search-params {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.obj-options-layout[data-view=query] .cmp-auth {
   position: absolute;
   left: -10000px;
   top: auto;
@@ -809,7 +889,28 @@ select {
   background-color: black;
   color: white;
 }
-.cmp-options-tabs[data-method=GET] #body-tab, .cmp-options-tabs[data-method=HEAD] #body-tab, .cmp-options-tabs[data-method=OPTIONS] #body-tab {
+.cmp-options-tabs[data-method=GET] #query-tab,
+.cmp-options-tabs[data-method=GET] #body-tab, .cmp-options-tabs[data-method=HEAD] #query-tab,
+.cmp-options-tabs[data-method=HEAD] #body-tab, .cmp-options-tabs[data-method=OPTIONS] #query-tab,
+.cmp-options-tabs[data-method=OPTIONS] #body-tab {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.cmp-options-tabs:not([data-method=GraphQL]) #query-tab {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.cmp-options-tabs[data-method=GraphQL] #preview-tab,
+.cmp-options-tabs[data-method=GraphQL] #params-tab,
+.cmp-options-tabs[data-method=GraphQL] #body-tab {
   position: absolute;
   left: -10000px;
   top: auto;

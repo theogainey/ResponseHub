@@ -13,6 +13,9 @@
     .cmp-request-body {
       @include visually-hidden;
     }
+    .cmp-graphql-query {
+      @include visually-hidden;
+    }
   }
 
   &[data-view="headers"]{
@@ -26,6 +29,9 @@
       @include visually-hidden;
     }
     .cmp-request-body {
+      @include visually-hidden;
+    }
+    .cmp-graphql-query {
       @include visually-hidden;
     }
   }
@@ -43,6 +49,9 @@
     .cmp-request-body {
       @include visually-hidden;
     }
+    .cmp-graphql-query {
+      @include visually-hidden;
+    }
   }
 
   &[data-view="body"]{
@@ -58,6 +67,9 @@
     .cmp-url-search-params {
       @include visually-hidden;
     }
+    .cmp-graphql-query {
+      @include visually-hidden;
+    }
   }
 
   &[data-view="auth"]{
@@ -71,6 +83,27 @@
       @include visually-hidden;
     }
     .cmp-url-search-params {
+      @include visually-hidden;
+    }
+    .cmp-graphql-query {
+      @include visually-hidden;
+    }
+  }
+
+  &[data-view="query"]{
+    .cmp-request-body {
+      @include visually-hidden;
+    }
+    .cmp-headers {
+      @include visually-hidden;
+    }
+    .cmp-preview {
+      @include visually-hidden;
+    }
+    .cmp-url-search-params {
+      @include visually-hidden;
+    }
+    .cmp-auth {
       @include visually-hidden;
     }
   }

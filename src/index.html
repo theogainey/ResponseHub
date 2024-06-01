@@ -83,19 +83,25 @@
                   Preview
                 </label>
               </li>
-              <li class="cmp-options-tabs__tab">
+              <li class="cmp-options-tabs__tab" id="query-tab"> 
+                <label>
+                  <input class="util-visually-hidden" tabindex="-1" type="checkbox" value="query" name="view-tab" />
+                  Query
+                </label>
+              </li>
+              <li class="cmp-options-tabs__tab" id="headers-tab">
                 <label>
                   <input class="util-visually-hidden"  type="checkbox" value="headers" name="view-tab" />
                   Headers
                 </label>
               </li>
-              <li class="cmp-options-tabs__tab">
+              <li class="cmp-options-tabs__tab" id="auth-tab">
                 <label>
                   <input class="util-visually-hidden"  type="checkbox" value="auth" name="view-tab" />
                   Auth
                 </label>
               </li>
-              <li class="cmp-options-tabs__tab">
+              <li class="cmp-options-tabs__tab" id="params-tab">
                 <label>
                   <input class="util-visually-hidden" type="checkbox" value="url-search-params" name="view-tab" />
                   Params

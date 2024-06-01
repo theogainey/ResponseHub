@@ -38,6 +38,19 @@
   &[data-method="GET"],
   &[data-method="HEAD"], 
   &[data-method="OPTIONS"]{
+    #query-tab,
+    #body-tab {
+      @include visually-hidden;
+    }
+  }
+  &:not([data-method="GraphQL"]){
+    #query-tab {
+      @include visually-hidden;
+    }
+  }
+  &[data-method="GraphQL"] {
+    #preview-tab,
+    #params-tab,
     #body-tab {
       @include visually-hidden;
     }

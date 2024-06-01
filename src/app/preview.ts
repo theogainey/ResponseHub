@@ -98,8 +98,11 @@ const formatHTTPMessage = ({ path, searchParams, host, headers, method, body }: 
 const printPreview = () => {
   const previewCodeElement = selectElement('.cmp-preview pre code');
   // TODO ADD NOTE THAT THIS DOESN'T INCLUDE Headers Automatically included by the browser
-  const formattedMessage = formatHTTPMessage(getHTTPMessageData());
-  previewCodeElement.innerHTML = highlight(formattedMessage, 'http');
+  const protocol = selectInputElement('#protocol-select').value;
+  if(protocol === 'HTTP'){
+    const formattedMessage = formatHTTPMessage(getHTTPMessageData());
+    previewCodeElement.innerHTML = highlight(formattedMessage, 'http');  
+  }
 }
 
 const copyToPreviewClipBoard =  () => {
