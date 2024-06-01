@@ -382,6 +382,9 @@ select {
   border-left: none;
   border-right: none;
 }
+.cmp-url-input__url--graphql {
+  border-left: 1px solid #e5e7eb;
+}
 .cmp-url-input__url:focus {
   border: 2px solid black;
   padding-top: calc(0.5rem - 1px);
@@ -1290,6 +1293,18 @@ select {
 }
 .cmp-history__method--OPTIONS {
   background-color: #a327c4;
+}
+
+.cmp-protocol-select {
+  position: absolute;
+  top: 1rem;
+  padding-left: 1rem;
+}
+.cmp-protocol-select__select {
+  font-family: "Noto Sans Mono", monospace;
+  text-align: center;
+  font-size: 1rem;
+  border: none;
 }
 
 .cmp-site-preview {

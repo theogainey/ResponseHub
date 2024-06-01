@@ -2,6 +2,10 @@ const selectElement = (selector: string) => {
   return document.querySelector(selector) as HTMLElement;
 }
 
+const selectElementFromComponent = (component:Element, selector: string) => {
+  return component.querySelector(selector) as HTMLElement;
+}
+
 const selectInputElement = (selector: string) => {
   return document.querySelector(selector) as HTMLInputElement;
 }

@@ -8,6 +8,7 @@ import { addURLListeners } from "./url";
 import { addFormDataListeners } from "./formData";
 import { addFormURLEncodedListeners } from "./formURLEncoded";
 import { initHistory } from "./requestHistory";
+import { addProtocolListeners } from "./protocol";
 
 document.addEventListener("DOMContentLoaded", () => {
   const sendButton = document.getElementById('send-button');
@@ -24,4 +25,5 @@ document.addEventListener("DOMContentLoaded", () => {
   addFormDataListeners();
   addFormURLEncodedListeners();
   initHistory();
+  addProtocolListeners();
 });

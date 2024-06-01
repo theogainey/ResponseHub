@@ -61,7 +61,9 @@
     border: $border-primary;
     border-left: none;
     border-right: none;
-
+    &--graphql {
+      border-left: $border-primary;
+    }
     &:focus {
       border: 2px solid black;
       padding-top: calc(0.5rem - 1px);

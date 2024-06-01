@@ -45,12 +45,18 @@
           </div>
         </div>  
       </div>
-      <main class="obj-main-layout" id="main">
+      <main class="obj-main-layout" id="main" data-protocol="HTTP">
         <h1 class="util-visually-hidden">Request</h1>
         <div class="obj-max-width">
+          <div class="cmp-protocol-select">
+            <label class="util-visually-hidden" for="protocol-select">Protocol Select</label>
+            <select id="protocol-select" class="cmp-protocol-select__select">
+              <option value="HTTP" selected>HTTP</option>
+              <option value="GraphQL">GraphQL</option>
+            </select>
+          </div>
           <div class="cmp-url-input">
-            <!-- TODO BUTTON ACCESSIBILITY -->
-            <label class="util-visually-hidden" for="method-select">HTTP method</label>
+            <label class="util-visually-hidden" id="method-select-label" for="method-select">HTTP method</label>
             <select id="method-select" class="cmp-url-input__method cmp-url-input__method--GET">
               <option value="GET" selected>GET</option>
               <option value="POST">POST</option>

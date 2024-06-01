@@ -1,0 +1,14 @@
+.cmp-protocol-select{
+  position: absolute;
+  top: 1rem;
+  padding-left: 1rem;
+  &__select{
+    font-family: "Noto Sans Mono", monospace;
+    // appearance: none;
+    text-align: center;
+    font-size: 1rem;
+    border: none;
+  }
+}
+
+
