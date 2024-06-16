@@ -707,8 +707,7 @@ select {
   overflow-x: scroll;
   max-width: 100%;
   min-width: 100px;
-  padding: 1rem;
-  padding-left: 0;
+  padding: 1rem 0;
   font-size: 1rem;
   color: var(--response-color);
 }
@@ -969,6 +968,7 @@ select {
 .cmp-copy-button {
   display: flex;
   position: absolute;
+  z-index: 10;
   top: 0;
   right: 0;
   background-color: white;

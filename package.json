@@ -33,9 +33,21 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
+    "@codemirror/autocomplete": "^6.0.0",
+    "@codemirror/commands": "^6.0.0",
+    "@codemirror/lang-html": "^6.4.9",
+    "@codemirror/lang-json": "^6.0.1",
+    "@codemirror/language": "^6.0.0",
+    "@codemirror/lint": "^6.0.0",
+    "@codemirror/search": "^6.0.0",
+    "@codemirror/state": "^6.0.0",
+    "@codemirror/view": "^6.0.0",
+    "@lezer/highlight": "^1.0.0",
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "focus-trap": "^7.5.4",
+    "graphql": "^16.5.0",
+    "graphql-language-service": "^5.2.1",
     "highlight.js": "^11.9.0",
     "http-proxy-middleware": "^2.0.6",
     "prettier": "^3.1.0"

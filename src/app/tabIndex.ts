@@ -50,8 +50,6 @@ const removeElementTabbable = ( layoutArea: string) => {
   const selector = getSelector(layoutArea, true);
   if(selector === '') return;
   const inputs = document.querySelectorAll(selector);
-  console.log(inputs);
-
   inputs.forEach(removeTabbable);
 }
 

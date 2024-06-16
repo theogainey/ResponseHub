@@ -2,6 +2,7 @@ import { toggleHiddenWithTimeout, toggleHidden, selectInputElement, selectElemen
 import prettier from "prettier/standalone";
 import htmlParser from "prettier/plugins/html";
 import { getLanguage, highLightWithLineNumbers, highlight } from './hljs';
+import { EditorView, responseSetup, html, json } from './codemirror';
 
 
 const RESPONSE_STATE = {
@@ -118,18 +119,24 @@ const formatCode = async (code: string) => {
 }
 
 const printResponse = async (data:string) => {
+  clearResponse();
   const responseTextElement = selectElement('.cmp-response__text');
   const formattedCode = await formatCode(data);
   const language = getLanguage(formattedCode)
-  const highlightedCode = highLightWithLineNumbers(formattedCode, language);
-  responseTextElement.innerHTML = highlightedCode;
-  // setResponseLanguage(highlightedCode.language ?? 'xml');
+  const languageExtension = language === 'json' ? json() : html();
+  const view = new EditorView({
+    doc: formattedCode,
+    extensions: [responseSetup, languageExtension],
+    parent: responseTextElement,
+  });
+  
   showResponseFormattingButtons(data);  
 }
 
 const printHeaders = (response: Response) => {
   const responseHeadersElement = selectElement('.cmp-response__headers pre code');
   let headers = '' 
+  // @ts-expect-error
   for (const pair of response.headers.entries()) {
     headers += `${pair[0]}: ${pair[1]}\n`
   }
