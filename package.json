@@ -44,7 +44,7 @@
     "@codemirror/view": "^6.0.0",
     "@lezer/highlight": "^1.0.0",
     "cors": "^2.8.5",
-    "express": "^4.19.2",
+    "express": "^4.20.0",
     "focus-trap": "^7.5.4",
     "graphql": "^16.5.0",
     "graphql-language-service": "^5.2.1",
